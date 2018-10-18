@@ -12,23 +12,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Interfaces/InicioSesion.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Interfaces/CrearOferta.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Negocio/ProductoNegocio.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Interfaces/EncargadoTienda.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Negocio/TiendaProducto.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Clases/Comuna.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Interfaces/RegistarUsuario.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Interfaces/ModificarUsuario.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Interfaces/ListarUsuarios.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Interfaces/ListarProductos.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Clases/Producto.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Negocio/Registros.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Clases/Usuario.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Interfaces/RegistrarProducto.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Clases/Conexion.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Negocio/UsuarioNegocio.java</file>
-            <file>file:/C:/Users/Ivan/Desktop/Portafolio/ProyectoFinal/src/Negocio/Validacion.java</file>
+            <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Conexion.java</file>
         </group>
     </open-files>
 </project-private>

@@ -242,9 +242,7 @@ public class EncargadoTienda extends javax.swing.JFrame {
             registraroferta.lblIDEMPRESAUSAR.setText(this.lblIdEmpresa.getText());
             registraroferta.setVisible(true);
             dispose();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_MenuRegistarProductoActionPerformed
@@ -254,8 +252,9 @@ public class EncargadoTienda extends javax.swing.JFrame {
                try {
             // TODO add your handling code here:
             ListarProductos listarproductos =  new ListarProductos();
-            listarproductos.lbIdTienda.setText(this.lblIdEmpresa.getText());
+            listarproductos.lblIDdelatienda.setText(this.lblIdEmpresa.getText());
             listarproductos.setVisible(true);
+            dispose();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
         }

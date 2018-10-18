@@ -166,12 +166,12 @@ Empresa emp = new Empresa();
                   EncargadoTienda encargadoTienda = new EncargadoTienda();
                   rs= validacion.devolverUsuariocompleto(TxtUsuario.getText(), TxtClave.getText());
                   
-                   while (rs.next()) {           
-            encargadoTienda.lblempleado.setText(rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4));
-                    encargadoTienda.lblIdEmpleado.setText(rs.getString(1));
-                    encargadoTienda.lblIdEmpresa.setText(rs.getString(5));
-                    encargadoTienda.lbltienda.setText(ti.getNombreTiendaStringxEmpresa(Integer.parseInt(rs.getString(5))));
-                    encargadoTienda.lblempresa.setText(emp.getNombreEmpresa(Integer.parseInt(rs.getString(5))));
+                   while (rs.next()) {     //Extraemos los datos del usuario y los colocaremos en la siguiente pantalla       
+            encargadoTienda.lblempleado.setText(rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4));//nombre apellido apellido
+                    encargadoTienda.lblIdEmpleado.setText(rs.getString(1));//id del usuario
+                    encargadoTienda.lblIdEmpresa.setText(rs.getString(5));//id de la tienda a la cual esta asignado 
+                    encargadoTienda.lbltienda.setText(ti.getNombreTiendaStringxEmpresa(Integer.parseInt(rs.getString(5)))); // nos devuelve el nombre de la tienda segun su id 
+                    encargadoTienda.lblempresa.setText(emp.getNombreEmpresa(Integer.parseInt(rs.getString(5))));// nos devuelve el nombre de la empresa a la cual la tienda asignada
                   }
                    
                   encargadoTienda.setVisible(true);

@@ -49,7 +49,7 @@ public class ListarProductos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableListarProductos = new javax.swing.JTable();
         BtnAceptar = new javax.swing.JButton();
-        lbIdTienda = new javax.swing.JLabel();
+        lblIDdelatienda = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuCrearOferta = new javax.swing.JMenuItem();
@@ -74,7 +74,7 @@ public class ListarProductos extends javax.swing.JFrame {
             }
         });
 
-        lbIdTienda.setEnabled(false);
+        lblIDdelatienda.setText("  ");
 
         jMenu1.setText("Ofertas");
 
@@ -128,26 +128,23 @@ public class ListarProductos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(319, 319, 319)
-                .addComponent(lbIdTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblIDdelatienda)
+                .addGap(215, 215, 215))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(BtnAceptar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbIdTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnAceptar)
+                    .addComponent(lblIDdelatienda)))
         );
 
         pack();
@@ -222,7 +219,7 @@ public class ListarProductos extends javax.swing.JFrame {
     }
 
     public void setFilas() throws SQLException, ClassNotFoundException{
-        idtienda= Integer.parseInt(this.lbIdTienda.getText());
+        idtienda = Integer.parseInt(this.lblIDdelatienda.getText());
         Connection conn = null;
         Conexion conexion = new Conexion();
         conn=conexion.getConnection();
@@ -261,6 +258,6 @@ public class ListarProductos extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JLabel lbIdTienda;
+    public javax.swing.JLabel lblIDdelatienda;
     // End of variables declaration//GEN-END:variables
 }
