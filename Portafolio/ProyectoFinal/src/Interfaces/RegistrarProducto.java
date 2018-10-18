@@ -405,14 +405,14 @@ rss.close();
                          registro.insertarProducto(prod);
                          tindaprod.insertarProductoTienda(prodControl.getUltimoRegistro(),Integer.parseInt(this.lblIDEMPRESAUSAR.getText()));
                          
+                         dispose();
     } catch (IOException | ClassNotFoundException | SQLException ex) {
         Logger.getLogger(RegistrarProducto.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-        EncargadoTienda encargado  = new EncargadoTienda();
-        encargado.setVisible(true);
+      
         dispose();
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
