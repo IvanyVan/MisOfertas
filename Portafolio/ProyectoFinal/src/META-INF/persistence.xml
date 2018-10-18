@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ProyectoFinalPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Clases.Tipousuario</class>
+    <class>Clases.Ticketdescuento</class>
+    <class>Clases.Producto</class>
+    <class>Clases.Prioridad</class>
+    <class>Clases.Oferta</class>
+    <class>Clases.Usuario</class>
+    <class>Clases.Tienda</class>
+    <class>Clases.Empresa</class>
+    <class>Clases.Comuna</class>
+    <class>Clases.VwListadoProductos</class>
+    <class>Clases.Rubroproducto</class>
+    <class>Clases.Region</class>
+    <class>Clases.Valoracion</class>
+    <class>Clases.Marca</class>
+    <class>Clases.Catgoriaproducto</class>
+    <class>Negocio.TiendaProducto</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+      <property name="javax.persistence.jdbc.user" value="MO2"/>
+      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.password" value="123"/>
+    </properties>
+  </persistence-unit>
+</persistence>
