@@ -13,17 +13,20 @@ import Clases.Tipousuario;
 import Clases.Usuario;
 import Negocio.Registros;
 import Negocio.UsuarioNegocio;
+import Negocio.Validacion;
 import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Eduardo
  */
 public class ModificarUsuario extends javax.swing.JFrame {
+
     ResultSet rss = null;
     ResultSet rssT= null;
      List lista =  new List(); 
@@ -33,7 +36,9 @@ public class ModificarUsuario extends javax.swing.JFrame {
         Region region = new Region();
         Comuna comuna = new Comuna();
         Empresa empresa = new Empresa();
-UsuarioNegocio usuarioN = new UsuarioNegocio();
+        Validacion validacion = new Validacion();
+        UsuarioNegocio usuarioN = new UsuarioNegocio();
+
         
     public ModificarUsuario() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -379,40 +384,87 @@ UsuarioNegocio usuarioN = new UsuarioNegocio();
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
       Registros registro = new Registros();
+      int validado=0;
+        LbErrorNombres.setVisible(false);
+        LbErrorApepa.setVisible(false);
+        LbErrorApema.setVisible(false);
+        LbErrorClave.setVisible(false);
+        LbErrorDireccion.setVisible(false);
+        LbErrorCorreo.setVisible(false);
+        LbErrorTelefono.setVisible(false);
+                
       
         try {
             if (TxtNombre.getText().trim().length()<=0) {
                 LbErrorNombres.setText("El nombre no puede estar vacio");
                 LbErrorNombres.setVisible(true);
-                }
+                validado++;
+                };
             if(TxtApellidoPaterno.getText().trim().length()<=0){
                 LbErrorApepa.setText("El apellido paterno no puede estar vacio");
                 LbErrorApepa.setVisible(true);
-                }if(TxtApellidoMaterno.getText().trim().length()<=0){
+                validado++;
+                };
+            if(TxtApellidoMaterno.getText().trim().length()<=0){
                 LbErrorApema.setText("El apellido materno no puede estar vacio");
                 LbErrorApema.setVisible(true);
-                }if(TxtContrasena.getText().trim().length()<=0){
+                validado++;
+                };
+                if(TxtContrasena.getText().trim().length()<=0){
                     LbErrorClave.setText("La clave no puede estar vacia");
                     LbErrorClave.setVisible(true);
-                }if(TxtDireccion.getText().trim().length()<=0){
+                    validado++;
+                };
+                if(TxtDireccion.getText().trim().length()<=0){
                     LbErrorDireccion.setText("La direccion no puede estar vacia");
                     LbErrorDireccion.setVisible(true);
-                }if(TxtCorreo.getText().trim().length()<=0){
+                    validado++;
+                };
+                if(TxtCorreo.getText().trim().length()<=0){
                     LbErrorCorreo.setText("El correo no puede estar vacio");
                     LbErrorCorreo.setVisible(true);
-                }if(TxtTelefono.getText().trim().length()<=0){
+                    validado++;
+                };
+                if(TxtTelefono.getText().trim().length()<=0){
                     LbErrorTelefono.setText("El telefono no puede estar vacio");
                     LbErrorTelefono.setVisible(true);
-                }
+                    validado++;
+                };
+                if(validacion.validacionNumeros(TxtNombre.getText())){
+                    LbErrorNombres.setText("El nombre no puede tener numeros");
+                    LbErrorNombres.setVisible(true);
+                    validado++;
+                };
+                if(validacion.validacionNumeros(TxtApellidoPaterno.getText())){
+                    LbErrorApepa.setText("El apellido no puede tener numeros");
+                    LbErrorApepa.setVisible(true);
+                    validado++;
+                };
+                if(validacion.validacionNumeros(TxtApellidoMaterno.getText())){
+                    LbErrorApema.setText("El apellido no puede tener numeros");
+                    LbErrorApema.setVisible(true);
+                    validado++;
+                };
+                if(validacion.validacionLetras(TxtTelefono.getText())){
+                    LbErrorTelefono.setText("El telefono no puede tener letras");
+                    LbErrorTelefono.setVisible(true);
+                    validado++;
+                };
+                if(validado>0){
+                    validado=0;
+                }else{
             usuarioN.ModificarUsuario(5,TxtDireccion.getText(), TxtApellidoPaterno.getText(),CbxRut.getSelectedItem().toString(),
                     TxtApellidoMaterno.getText(),0,TxtContrasena.getText(),0, comuna.getIDxNombre(CbxComuna.getSelectedItem().toString()),
                     TxtNombre.getText(), tusuario.getIDxNombre(CbxRoles.getSelectedItem().toString()),
                     tienda.getIDxNombre(CbxTiendas.getSelectedItem().toString()),TxtCorreo.getText(),
                     0, TxtTelefono.getText());
+                    JOptionPane.showMessageDialog(null, "Usuario modificado");
+             LbModificado.setText("Usuario Modificado");
+             
             
+                }
             
-            LbModificado.setText("Usuario Modificado");
-            LbModificado.setVisible(true);
+           
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);

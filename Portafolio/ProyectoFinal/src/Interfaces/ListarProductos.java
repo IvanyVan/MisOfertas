@@ -22,6 +22,7 @@ public class ListarProductos extends javax.swing.JFrame {
      int idtienda = 0;
     DefaultTableModel ListarTablaProductos;
     
+     
     /**
      * Creates new form ListarUsuarios
      * @throws java.sql.SQLException
@@ -31,6 +32,7 @@ public class ListarProductos extends javax.swing.JFrame {
         
        // lblIDEMPRESAUSAR.setVisible(false);
         ListarTablaProductos = new DefaultTableModel(null,getColumna());
+        idtienda = Integer.parseInt(this.lblIDdelatienda.getText());
         setFilas();
         initComponents();
          this.setLocationRelativeTo(null);
@@ -219,7 +221,6 @@ public class ListarProductos extends javax.swing.JFrame {
     }
 
     public void setFilas() throws SQLException, ClassNotFoundException{
-        idtienda = Integer.parseInt(this.lblIDdelatienda.getText());
         Connection conn = null;
         Conexion conexion = new Conexion();
         conn=conexion.getConnection();
