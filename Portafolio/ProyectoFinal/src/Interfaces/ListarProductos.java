@@ -2,6 +2,9 @@
 package Interfaces;
 
 import Clases.Conexion;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +26,7 @@ public class ListarProductos extends javax.swing.JFrame {
     public ListarProductos() throws SQLException, ClassNotFoundException {
           ListarTablaProductos = new DefaultTableModel(null,getColumna());
           initComponents();
-      
+       this.getContentPane().setBackground(Color.WHITE);
          this.setLocationRelativeTo(null);
          this.lblIDdelatienda.setVisible(false);
     }
@@ -38,19 +41,10 @@ public class ListarProductos extends javax.swing.JFrame {
         BtnAceptar = new javax.swing.JButton();
         lblIDdelatienda = new javax.swing.JLabel();
         btnListar = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        MenuCrearOferta = new javax.swing.JMenuItem();
-        MenuListarOferta = new javax.swing.JMenuItem();
-        MenuModificarOferta = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        MenuRegistarProducto = new javax.swing.JMenuItem();
-        MenuListarProductos = new javax.swing.JMenuItem();
-        MenuModificarProducto = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        MenuReporteOferta = new javax.swing.JMenuItem();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         TableListarProductos.setModel(ListarTablaProductos);
         jScrollPane1.setViewportView(TableListarProductos);
@@ -71,80 +65,42 @@ public class ListarProductos extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Ofertas");
-
-        MenuCrearOferta.setText("Crear Oferta");
-        jMenu1.add(MenuCrearOferta);
-
-        MenuListarOferta.setText("Listar Ofertas");
-        jMenu1.add(MenuListarOferta);
-
-        MenuModificarOferta.setText("Modificar Oferta");
-        jMenu1.add(MenuModificarOferta);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Productos");
-
-        MenuRegistarProducto.setText("Registrar Producto");
-        MenuRegistarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuRegistarProductoActionPerformed(evt);
-            }
-        });
-        jMenu2.add(MenuRegistarProducto);
-
-        MenuListarProductos.setText("Listar Productos");
-        jMenu2.add(MenuListarProductos);
-
-        MenuModificarProducto.setText("Modificar Producto");
-        jMenu2.add(MenuModificarProducto);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Reportes");
-
-        MenuReporteOferta.setText("Generar Reporte");
-        MenuReporteOferta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuReporteOfertaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(MenuReporteOferta);
-
-        jMenuBar1.add(jMenu3);
-
-        setJMenuBar(jMenuBar1);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Iconocompleto.png"))); // NOI18N
+        jLabel7.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
-                        .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(273, 273, 273)
-                        .addComponent(lblIDdelatienda)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addComponent(lblIDdelatienda)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(BtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                        .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lblIDdelatienda))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                            .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(60, 60, 60)
+                        .addComponent(lblIDdelatienda))
+                    .addComponent(jLabel7))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,20 +109,6 @@ public class ListarProductos extends javax.swing.JFrame {
     private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
       dispose();        
     }//GEN-LAST:event_BtnAceptarActionPerformed
-
-    private void MenuRegistarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistarProductoActionPerformed
-        try {
-            RegistrarProducto registraroferta =  new RegistrarProducto();
-            registraroferta.setVisible(true);
-            dispose();
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_MenuRegistarProductoActionPerformed
-
-    private void MenuReporteOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReporteOfertaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuReporteOfertaActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // TODO add your handling code here:
@@ -178,7 +120,14 @@ public class ListarProductos extends javax.swing.JFrame {
              Logger.getLogger(ListarProductos.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_btnListarActionPerformed
+@Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Img/iconoV2.png"));
 
+
+        return retValue;
+    }
     /**
      * @param args the command line arguments
      */
@@ -251,19 +200,9 @@ public class ListarProductos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;
-    private javax.swing.JMenuItem MenuCrearOferta;
-    private javax.swing.JMenuItem MenuListarOferta;
-    private javax.swing.JMenuItem MenuListarProductos;
-    private javax.swing.JMenuItem MenuModificarOferta;
-    private javax.swing.JMenuItem MenuModificarProducto;
-    private javax.swing.JMenuItem MenuRegistarProducto;
-    private javax.swing.JMenuItem MenuReporteOferta;
     public javax.swing.JTable TableListarProductos;
     private javax.swing.JButton btnListar;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblIDdelatienda;
     // End of variables declaration//GEN-END:variables

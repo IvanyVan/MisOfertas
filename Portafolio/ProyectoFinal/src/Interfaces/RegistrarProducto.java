@@ -15,8 +15,10 @@ import Clases.Rubroproducto;
 import Negocio.ProductoNegocio;
 import Negocio.Registros;
 import Negocio.TiendaProducto;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.List;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -50,6 +52,7 @@ ProductoNegocio prodControl = new ProductoNegocio();
     public RegistrarProducto() throws ClassNotFoundException, SQLException {
       
   initComponents();
+   this.getContentPane().setBackground(Color.WHITE);
          this.setLocationRelativeTo(null);
          lblIDEMPRESAUSAR.setVisible(false);
          LbErrorNombres.setVisible(false);
@@ -111,20 +114,10 @@ rss.close();
         txtFoto = new javax.swing.JTextField();
         btnBuscarFoto = new javax.swing.JButton();
         lblIDEMPRESAUSAR = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        MenuCrearOferta = new javax.swing.JMenuItem();
-        MenuListarOferta = new javax.swing.JMenuItem();
-        MenuModificarOferta = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        MenuRegistarProducto = new javax.swing.JMenuItem();
-        MenuListarProductos = new javax.swing.JMenuItem();
-        MenuModificarProducto = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        MenuReporteOferta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(getIconImage());
 
         jLabel1.setText("Nombre del producto");
 
@@ -203,61 +196,6 @@ rss.close();
             }
         });
 
-        jMenu1.setText("Ofertas");
-
-        MenuCrearOferta.setText("Crear Oferta");
-        MenuCrearOferta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuCrearOfertaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(MenuCrearOferta);
-
-        MenuListarOferta.setText("Listar Ofertas");
-        jMenu1.add(MenuListarOferta);
-
-        MenuModificarOferta.setText("Modificar Oferta");
-        jMenu1.add(MenuModificarOferta);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Productos");
-
-        MenuRegistarProducto.setText("Registrar Producto");
-        MenuRegistarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuRegistarProductoActionPerformed(evt);
-            }
-        });
-        jMenu2.add(MenuRegistarProducto);
-
-        MenuListarProductos.setText("Listar Productos");
-        MenuListarProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuListarProductosActionPerformed(evt);
-            }
-        });
-        jMenu2.add(MenuListarProductos);
-
-        MenuModificarProducto.setText("Modificar Producto");
-        jMenu2.add(MenuModificarProducto);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Reportes");
-
-        MenuReporteOferta.setText("Generar Reporte");
-        MenuReporteOferta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuReporteOfertaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(MenuReporteOferta);
-
-        jMenuBar1.add(jMenu3);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -321,7 +259,7 @@ rss.close();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
@@ -414,23 +352,6 @@ rss.close();
         dispose();
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
-    private void MenuRegistarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistarProductoActionPerformed
-        try {
-            // TODO add your handling code here:
-            RegistrarProducto registraroferta =  new RegistrarProducto();
-            registraroferta.setVisible(true);
-            dispose();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_MenuRegistarProductoActionPerformed
-
-    private void MenuReporteOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReporteOfertaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuReporteOfertaActionPerformed
-
     private void TxtprecioprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtprecioprodActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtprecioprodActionPerformed
@@ -452,17 +373,14 @@ rss.close();
 
     this.lblFoto.setIcon(imagen);
     }//GEN-LAST:event_btnBuscarFotoActionPerformed
+@Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Img/iconoV2.png"));
 
-    private void MenuListarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListarProductosActionPerformed
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_MenuListarProductosActionPerformed
 
-    private void MenuCrearOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearOfertaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuCrearOfertaActionPerformed
-
+        return retValue;
+    }
     
     /**
      * @param args the command line arguments
@@ -518,13 +436,6 @@ rss.close();
     private javax.swing.JLabel LbErrorNombre;
     private javax.swing.JLabel LbErrorNombres;
     private javax.swing.JLabel LbErrorTelefono;
-    private javax.swing.JMenuItem MenuCrearOferta;
-    private javax.swing.JMenuItem MenuListarOferta;
-    private javax.swing.JMenuItem MenuListarProductos;
-    private javax.swing.JMenuItem MenuModificarOferta;
-    private javax.swing.JMenuItem MenuModificarProducto;
-    private javax.swing.JMenuItem MenuRegistarProducto;
-    private javax.swing.JMenuItem MenuReporteOferta;
     private javax.swing.JTextField TxtDescripprod;
     private javax.swing.JTextField TxtNombreProd;
     private javax.swing.JTextField Txtprecioprod;
@@ -541,10 +452,6 @@ rss.close();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblFoto;
     public javax.swing.JLabel lblIDEMPRESAUSAR;
     private javax.swing.JTextField txtFoto;

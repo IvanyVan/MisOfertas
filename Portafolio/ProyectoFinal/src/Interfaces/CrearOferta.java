@@ -8,6 +8,9 @@ package Interfaces;
 import Clases.Catgoriaproducto;
 import Clases.Conexion;
 import Clases.Rubroproducto;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +37,7 @@ public final class CrearOferta extends javax.swing.JFrame {
     public CrearOferta() throws ClassNotFoundException, SQLException {
         ListarTablaProductos = new DefaultTableModel(null,getColumna());
          initComponents();
-         
+          this.getContentPane().setBackground(Color.WHITE);
        
         this.lblIDdelatienda.setVisible(false);
         this.setLocationRelativeTo(null);
@@ -79,18 +82,10 @@ public final class CrearOferta extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblIDdelatienda = new javax.swing.JLabel();
         lblIDdelatienda1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        MenuListarOferta = new javax.swing.JMenuItem();
-        MenuModificarOferta = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        MenuRegistarProducto = new javax.swing.JMenuItem();
-        MenuListarProductos = new javax.swing.JMenuItem();
-        MenuModificarProducto = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        MenuReporteOferta = new javax.swing.JMenuItem();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         jLabel2.setText("Porcentaje Descuento");
 
@@ -165,7 +160,7 @@ public final class CrearOferta extends javax.swing.JFrame {
                     .addComponent(CbxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarProducto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -176,57 +171,8 @@ public final class CrearOferta extends javax.swing.JFrame {
 
         lblIDdelatienda1.setText("  ");
 
-        jMenu1.setText("Ofertas");
-
-        MenuListarOferta.setText("Listar Ofertas");
-        MenuListarOferta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuListarOfertaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(MenuListarOferta);
-
-        MenuModificarOferta.setText("Modificar Oferta");
-        jMenu1.add(MenuModificarOferta);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Productos");
-
-        MenuRegistarProducto.setText("Registrar Producto");
-        MenuRegistarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuRegistarProductoActionPerformed(evt);
-            }
-        });
-        jMenu2.add(MenuRegistarProducto);
-
-        MenuListarProductos.setText("Listar Productos");
-        MenuListarProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuListarProductosActionPerformed(evt);
-            }
-        });
-        jMenu2.add(MenuListarProductos);
-
-        MenuModificarProducto.setText("Modificar Producto");
-        jMenu2.add(MenuModificarProducto);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Reportes");
-
-        MenuReporteOferta.setText("Generar Reporte");
-        MenuReporteOferta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuReporteOfertaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(MenuReporteOferta);
-
-        jMenuBar1.add(jMenu3);
-
-        setJMenuBar(jMenuBar1);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Iconocompleto.png"))); // NOI18N
+        jLabel8.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,9 +185,6 @@ public final class CrearOferta extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(LbNombreUsuario))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -259,12 +202,20 @@ public final class CrearOferta extends javax.swing.JFrame {
                                         .addGap(59, 59, 59)
                                         .addComponent(BtnRegistarOferta)
                                         .addGap(38, 38, 38)
-                                        .addComponent(BtnCancelar)))
+                                        .addComponent(BtnCancelar))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(LbNombreUsuario)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(128, 128, 128)
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 33, Short.MAX_VALUE)))
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 33, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -293,69 +244,37 @@ public final class CrearOferta extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TxtNMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TxtNMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnRegistarOferta)
-                    .addComponent(BtnCancelar))
-                .addGap(62, 62, 62)
-                .addComponent(LbNombreUsuario)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(TxtNMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(TxtNMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnRegistarOferta)
+                            .addComponent(BtnCancelar))
+                        .addGap(72, 72, 72)
+                        .addComponent(LbNombreUsuario))
+                    .addComponent(jLabel8))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(271, 271, 271)
                     .addComponent(lblIDdelatienda)
-                    .addContainerGap(272, Short.MAX_VALUE)))
+                    .addContainerGap(298, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(271, 271, 271)
                     .addComponent(lblIDdelatienda1)
-                    .addContainerGap(272, Short.MAX_VALUE)))
+                    .addContainerGap(298, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void MenuListarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListarOfertaActionPerformed
-        // TODO add your handling code here:
-        ListarOfertas paginanueva =  new ListarOfertas();
-        paginanueva.setVisible(true);
-        dispose();
-
-    }//GEN-LAST:event_MenuListarOfertaActionPerformed
-
-    private void MenuRegistarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistarProductoActionPerformed
-        try {
-            // TODO add your handling code here:
-            RegistrarProducto registraroferta =  new RegistrarProducto();
-            registraroferta.setVisible(true);
-            dispose();
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_MenuRegistarProductoActionPerformed
-
-    private void MenuListarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListarProductosActionPerformed
-        // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            ListarProductos listarproductos =  new ListarProductos();
-            listarproductos.setVisible(true);
-            dispose();
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_MenuListarProductosActionPerformed
-
-    private void MenuReporteOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReporteOfertaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuReporteOfertaActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
         // TODO add your handling code here:
@@ -427,7 +346,14 @@ public final class CrearOferta extends javax.swing.JFrame {
         }
         rs.close();
     }
-    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Img/iconoV2.png"));
+
+
+        return retValue;
+    }
     
   
     public static void main(String args[]) {
@@ -472,12 +398,6 @@ public final class CrearOferta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CbxCategoria;
     private javax.swing.JComboBox<String> CbxRubro;
     private javax.swing.JLabel LbNombreUsuario;
-    private javax.swing.JMenuItem MenuListarOferta;
-    private javax.swing.JMenuItem MenuListarProductos;
-    private javax.swing.JMenuItem MenuModificarOferta;
-    private javax.swing.JMenuItem MenuModificarProducto;
-    private javax.swing.JMenuItem MenuRegistarProducto;
-    private javax.swing.JMenuItem MenuReporteOferta;
     public javax.swing.JTable TableListarProductos;
     private javax.swing.JTextField TxtNMaximo;
     private javax.swing.JTextField TxtNMinimo;
@@ -491,10 +411,7 @@ public final class CrearOferta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;

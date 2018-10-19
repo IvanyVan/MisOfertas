@@ -28,6 +28,7 @@ public class EncargadoTienda extends javax.swing.JFrame {
          lblIdEmpresa.setVisible(false);
          lblIdEmpleado.setVisible(false);
          lblIdTienda.setVisible(false);
+         jMenu3.setVisible(false);
     }
 
     /**
@@ -66,13 +67,13 @@ public class EncargadoTienda extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
 
-        jLabel1.setFont(new java.awt.Font("Gabriola", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel1.setText("Empresa:");
 
-        jLabel2.setFont(new java.awt.Font("Gabriola", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel2.setText("Bienvenido:");
 
-        jLabel3.setFont(new java.awt.Font("Gabriola", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel3.setText("Tienda:");
 
         lblIdEmpleado.setEnabled(false);
@@ -91,9 +92,13 @@ public class EncargadoTienda extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Iconocompleto.png"))); // NOI18N
         jLabel6.setText(" ");
 
-        jMenu1.setText("Ofertas");
-        jMenu1.setFont(new java.awt.Font("Gabriola", 3, 24)); // NOI18N
+        jMenuBar1.setBackground(new java.awt.Color(255, 102, 102));
+        jMenuBar1.setForeground(new java.awt.Color(255, 102, 102));
 
+        jMenu1.setText("Ofertas");
+        jMenu1.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+
+        MenuCrearOferta.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuCrearOferta.setText("Crear Oferta");
         MenuCrearOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +107,7 @@ public class EncargadoTienda extends javax.swing.JFrame {
         });
         jMenu1.add(MenuCrearOferta);
 
+        MenuListarOferta.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuListarOferta.setText("Listar Ofertas");
         MenuListarOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,14 +116,16 @@ public class EncargadoTienda extends javax.swing.JFrame {
         });
         jMenu1.add(MenuListarOferta);
 
+        MenuModificarOferta.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuModificarOferta.setText("Modificar Oferta");
         jMenu1.add(MenuModificarOferta);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Productos");
-        jMenu2.setFont(new java.awt.Font("Gabriola", 3, 24)); // NOI18N
+        jMenu2.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
 
+        MenuRegistarProducto.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuRegistarProducto.setText("Registrar Producto");
         MenuRegistarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +134,7 @@ public class EncargadoTienda extends javax.swing.JFrame {
         });
         jMenu2.add(MenuRegistarProducto);
 
+        MenuListarProductos.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuListarProductos.setText("Listar Productos");
         MenuListarProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,14 +143,16 @@ public class EncargadoTienda extends javax.swing.JFrame {
         });
         jMenu2.add(MenuListarProductos);
 
+        MenuModificarProducto.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuModificarProducto.setText("Modificar Producto");
         jMenu2.add(MenuModificarProducto);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Reportes");
-        jMenu3.setFont(new java.awt.Font("Gabriola", 3, 24)); // NOI18N
+        jMenu3.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
 
+        MenuReporteOferta.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuReporteOferta.setText("Generar Reporte");
         MenuReporteOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,7 +172,17 @@ public class EncargadoTienda extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbltienda, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblempleado, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,60 +192,45 @@ public class EncargadoTienda extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbltienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblempleado, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE))
-                                .addGap(38, 38, 38)
+                                .addGap(588, 588, 588)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblIdEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 256, Short.MAX_VALUE)))
+                        .addGap(0, 430, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblIdTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(192, 192, 192))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(lblempleado)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(lblIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(lblempresa))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(lbltienda)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblIdEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
+                .addComponent(lblIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblIdEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(lblIdTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(lblempleado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(lblempresa))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(lbltienda))))
                 .addContainerGap())
         );
 
