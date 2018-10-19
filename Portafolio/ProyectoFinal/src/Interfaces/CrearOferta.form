@@ -141,6 +141,20 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="367" max="-2" attributes="0"/>
+                  <Component id="lblIDdelatienda" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="368" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="367" max="-2" attributes="0"/>
+                  <Component id="lblIDdelatienda1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="368" max="32767" attributes="0"/>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -180,6 +194,20 @@
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Component id="LbNombreUsuario" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
+                  <Component id="lblIDdelatienda" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="272" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
+                  <Component id="lblIDdelatienda1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="272" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -359,6 +387,22 @@
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIDdelatienda">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="  "/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIDdelatienda1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="  "/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

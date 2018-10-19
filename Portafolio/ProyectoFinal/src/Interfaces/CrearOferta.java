@@ -26,16 +26,18 @@ public final class CrearOferta extends javax.swing.JFrame {
     Rubroproducto rubro = new Rubroproducto();
     Catgoriaproducto categoria = new Catgoriaproducto();
     ResultSet rss = null;
-     DefaultTableModel ListarTablaProductos ;
-
+    DefaultTableModel ListarTablaProductos ;
+    
+    int idtienda = 0;
    
     
     public CrearOferta() throws ClassNotFoundException, SQLException {
-        
-         ListarTablaProductos = new DefaultTableModel(null,getColumna());
-        setFilas();
-        initComponents();
-         this.setLocationRelativeTo(null);
+        ListarTablaProductos = new DefaultTableModel(null,getColumna());
+         initComponents();
+         
+       
+        this.lblIDdelatienda.setVisible(false);
+        this.setLocationRelativeTo(null);
         rss = rubro.getRubroProd();
         while (rss.next()) {    
             CbxRubro.addItem(rss.getString("NOMBRE_RUBRO"));
@@ -75,6 +77,8 @@ public final class CrearOferta extends javax.swing.JFrame {
         TableListarProductos = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lblIDdelatienda = new javax.swing.JLabel();
+        lblIDdelatienda1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuListarOferta = new javax.swing.JMenuItem();
@@ -168,6 +172,10 @@ public final class CrearOferta extends javax.swing.JFrame {
 
         jLabel7.setText("Fecha de expiracón");
 
+        lblIDdelatienda.setText("  ");
+
+        lblIDdelatienda1.setText("  ");
+
         jMenu1.setText("Ofertas");
 
         MenuListarOferta.setText("Listar Ofertas");
@@ -258,6 +266,16 @@ public final class CrearOferta extends javax.swing.JFrame {
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 33, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(367, 367, 367)
+                    .addComponent(lblIDdelatienda)
+                    .addContainerGap(368, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(367, 367, 367)
+                    .addComponent(lblIDdelatienda1)
+                    .addContainerGap(368, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,6 +307,16 @@ public final class CrearOferta extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addComponent(LbNombreUsuario)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(271, 271, 271)
+                    .addComponent(lblIDdelatienda)
+                    .addContainerGap(272, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(271, 271, 271)
+                    .addComponent(lblIDdelatienda1)
+                    .addContainerGap(272, Short.MAX_VALUE)))
         );
 
         pack();
@@ -308,9 +336,7 @@ public final class CrearOferta extends javax.swing.JFrame {
             RegistrarProducto registraroferta =  new RegistrarProducto();
             registraroferta.setVisible(true);
             dispose();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_MenuRegistarProductoActionPerformed
@@ -322,9 +348,7 @@ public final class CrearOferta extends javax.swing.JFrame {
             ListarProductos listarproductos =  new ListarProductos();
             listarproductos.setVisible(true);
             dispose();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_MenuListarProductosActionPerformed
@@ -339,9 +363,11 @@ public final class CrearOferta extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
-          ListarTablaProductos = new DefaultTableModel(null,getColumna());
+          
         try {
-            setFilasPorFiltro();
+           // setFilasPorFiltro();
+           idtienda = Integer.parseInt(lblIDdelatienda.getText());
+           setFilas();
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(CrearOferta.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -354,7 +380,7 @@ public final class CrearOferta extends javax.swing.JFrame {
     }
     
     public void setFilas() throws SQLException, ClassNotFoundException{
-        
+  ListarTablaProductos.setRowCount(0);
         Connection conn = null;
         Conexion conexion = new Conexion();
         conn=conexion.getConnection();
@@ -362,9 +388,9 @@ public final class CrearOferta extends javax.swing.JFrame {
         ResultSet rs = null;
         String tipo=null;
         String query =  "SELECT p.nombre_producto, p.precio_producto, p.stock_producto, p.descripcion_producto, r.nombre_rubro, c.nombre_categoriaprod, m.nombre_marca\n" +
-"FROM Producto p ,marca m , CATGORIAPRODUCTO c, rubroproducto r \n" +
-"WHERE p.marca_id_marca = m.id_marca and p.catprod_id_catprod= c.id_categoriaproducto and p.rubroproducto_id_rubro = r.id_rubro";
-        sentencia =conn.createStatement();
+"FROM Producto p ,marca m , CATGORIAPRODUCTO c, rubroproducto r, tienda_produco tp \n" +
+"WHERE p.marca_id_marca = m.id_marca and p.catprod_id_catprod= c.id_categoriaproducto and p.rubroproducto_id_rubro = r.id_rubro and tp.producto_id_producto = p.id_producto and tp.tienda_id_tienda = "+idtienda+"";
+         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
         Object datos []=new Object[7];
@@ -433,9 +459,7 @@ public final class CrearOferta extends javax.swing.JFrame {
             public void run() {
                 try {
                     new CrearOferta().setVisible(true);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(CrearOferta.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
+                } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(CrearOferta.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -474,5 +498,7 @@ public final class CrearOferta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JLabel lblIDdelatienda;
+    public javax.swing.JLabel lblIDdelatienda1;
     // End of variables declaration//GEN-END:variables
 }

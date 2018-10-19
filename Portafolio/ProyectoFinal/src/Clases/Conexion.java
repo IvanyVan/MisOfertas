@@ -21,6 +21,7 @@ public class Conexion {
 public Connection getConnection() throws ClassNotFoundException, SQLException{
 
 String driver="oracle.jdbc.OracleDriver";
+//String url="jdbc:oracle:thin:@35.237.6.81:1521:XE";
 String url="jdbc:oracle:thin:@localhost:1521:XE";
 String username="MO2";
 String password="123";

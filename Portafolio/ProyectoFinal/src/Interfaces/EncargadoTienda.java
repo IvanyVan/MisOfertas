@@ -247,9 +247,7 @@ public class EncargadoTienda extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuRegistarProductoActionPerformed
 
     private void MenuListarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListarProductosActionPerformed
-        // TODO add your handling code here:
-               try {
-            // TODO add your handling code here:
+         try {
             ListarProductos listarproductos =  new ListarProductos();
             listarproductos.lblIDdelatienda.setText(this.lblIdEmpresa.getText());
             listarproductos.setVisible(true);
@@ -263,9 +261,8 @@ public class EncargadoTienda extends javax.swing.JFrame {
         CrearOferta crearoferta = null;
         try {
             crearoferta = new CrearOferta();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+            crearoferta.lblIDdelatienda.setText(this.lblIdEmpresa.getText());
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
         }
         crearoferta.setVisible(true);
