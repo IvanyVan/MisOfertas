@@ -18,14 +18,14 @@ import java.sql.Statement;
  */
 public class Validacion {
 
-    public boolean validarUsuario(String user, String clave) throws SQLException, ClassNotFoundException{
+    public boolean validarUsuario(String rut, String clave) throws SQLException, ClassNotFoundException{
         boolean validar = false;
         Connection conn = null;
         Conexion conexion = new Conexion();
         conn=conexion.getConnection();
         Statement sentencia = null;
         ResultSet rs = null;
-        String query = "Select count(*) from USUARIO where nombre_usuario ='"+user+"' and password_usuario='"+clave+"'";
+        String query = "Select count(*) from USUARIO where rut_usuario ='"+rut+"' and password_usuario='"+clave+"'";
         sentencia=conn.createStatement();
         rs = sentencia.executeQuery(query);
         while (rs.next()) {            
@@ -52,7 +52,7 @@ public class Validacion {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select TIPOUSUARIO_ID_TIPOUSUARIO from USUARIO where nombre_usuario='"+user+"' and password_usuario='"+clave+"'"; 
+        String query = "select TIPOUSUARIO_ID_TIPOUSUARIO from USUARIO where rut_usuario='"+user+"' and password_usuario='"+clave+"'"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
          while (rs.next()) {            
@@ -67,7 +67,7 @@ public class Validacion {
          return tipo;
     }
    
-       public ResultSet devolverUsuariocompleto (String user,String clave) throws ClassNotFoundException, SQLException{
+       public ResultSet devolverUsuariocompleto (String rut,String clave) throws ClassNotFoundException, SQLException{
         
         Connection conn = null;
         Conexion conexion = new Conexion();
@@ -75,7 +75,7 @@ public class Validacion {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select Id_usuario,Nombre_usuario,apepa_usuario,apema_usuario,tienda_id_tienda from USUARIO where nombre_usuario='"+user+"' and password_usuario='"+clave+"'"; 
+        String query = "select Id_usuario,Nombre_usuario,apepa_usuario,apema_usuario,tienda_id_tienda from USUARIO where rut_usuario='"+rut+"' and password_usuario='"+clave+"'"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
         

@@ -52,7 +52,7 @@ Empresa emp = new Empresa();
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        TxtUsuario = new javax.swing.JTextField();
+        TxtUsuarioRut = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TxtClave = new javax.swing.JPasswordField();
         BtnInicioSesion = new javax.swing.JButton();
@@ -66,9 +66,9 @@ Empresa emp = new Empresa();
         setIconImage(getIconImage());
 
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jLabel1.setText("USUARIO");
+        jLabel1.setText("RUT");
 
-        TxtUsuario.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
+        TxtUsuarioRut.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA");
@@ -113,7 +113,7 @@ Empresa emp = new Empresa();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TxtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TxtUsuarioRut, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -130,7 +130,7 @@ Empresa emp = new Empresa();
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtUsuarioRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,7 +143,7 @@ Empresa emp = new Empresa();
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        TxtUsuario.getAccessibleContext().setAccessibleName("NombreUsuarioTxt");
+        TxtUsuarioRut.getAccessibleContext().setAccessibleName("NombreUsuarioTxt");
         BtnInicioSesion.getAccessibleContext().setAccessibleName("");
         BtnInicioSesion.getAccessibleContext().setAccessibleDescription("");
 
@@ -155,16 +155,16 @@ Empresa emp = new Empresa();
         boolean validado;
         
         try {
-          validado = validacion.validarUsuario(TxtUsuario.getText(), TxtClave.getText());
+          validado = validacion.validarUsuario(TxtUsuarioRut.getText(), TxtClave.getText());
             if (validado==true) {
-                if(validacion.devolverTipo(TxtUsuario.getText(), TxtClave.getText()).equals("1")){
+                if(validacion.devolverTipo(TxtUsuarioRut.getText(), TxtClave.getText()).equals("1")){
                     Administrador administrador = new Administrador();
                     administrador.setVisible(true);
                     
                     dispose();
-                }if(validacion.devolverTipo(TxtUsuario.getText(), TxtClave.getText()).equals("2")){
+                }if(validacion.devolverTipo(TxtUsuarioRut.getText(), TxtClave.getText()).equals("2")){
                   EncargadoTienda encargadoTienda = new EncargadoTienda();
-                  rs= validacion.devolverUsuariocompleto(TxtUsuario.getText(), TxtClave.getText());
+                  rs= validacion.devolverUsuariocompleto(TxtUsuarioRut.getText(), TxtClave.getText());
                   
                    while (rs.next()) {     //Extraemos los datos del usuario y los colocaremos en la siguiente pantalla       
             encargadoTienda.lblempleado.setText(rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4));//nombre apellido apellido
@@ -176,11 +176,16 @@ Empresa emp = new Empresa();
                    
                   encargadoTienda.setVisible(true);
                     dispose();  
-                }if(validacion.devolverTipo(TxtUsuario.getText(), TxtClave.getText()).equals("3")){
+                }if(validacion.devolverTipo(TxtUsuarioRut.getText(), TxtClave.getText()).equals("3")){
                     Gerente gerente = new Gerente();
                     gerente.setVisible(true);
                     
                     dispose();
+                }
+                if(validacion.devolverTipo(TxtUsuarioRut.getText(), TxtClave.getText()).equals("4")){
+                    
+                    LbError.setText("Este usuario esta inhabilitado");
+                    LbError.setVisible(true);
                 }
                 
                 
@@ -247,7 +252,7 @@ Empresa emp = new Empresa();
     private javax.swing.JButton BtnInicioSesion;
     private javax.swing.JLabel LbError;
     private javax.swing.JPasswordField TxtClave;
-    private javax.swing.JTextField TxtUsuario;
+    private javax.swing.JTextField TxtUsuarioRut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

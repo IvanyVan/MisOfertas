@@ -187,6 +187,20 @@ public class Tienda implements Serializable {
          return rs;
     }
     
+        public ResultSet getTiendaxID(int idComuna) throws ClassNotFoundException, SQLException{
+        
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select * from Tienda where comuna_id_comuna ="+idComuna+"";
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+         return rs;
+}
         
                public int getIDxNombre(String nomtienda) throws ClassNotFoundException, SQLException{
         int id = 0;

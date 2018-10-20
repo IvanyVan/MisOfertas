@@ -51,7 +51,7 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="TxtClave" min="-2" pref="162" max="-2" attributes="0"/>
-                          <Component id="TxtUsuario" min="-2" pref="162" max="-2" attributes="0"/>
+                          <Component id="TxtUsuarioRut" min="-2" pref="162" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -75,7 +75,7 @@
               <Component id="jLabel3" min="-2" pref="220" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="TxtUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtUsuarioRut" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -98,10 +98,10 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Georgia" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="USUARIO"/>
+        <Property name="text" type="java.lang.String" value="RUT"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="TxtUsuario">
+    <Component class="javax.swing.JTextField" name="TxtUsuarioRut">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Georgia" size="14" style="2"/>

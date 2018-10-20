@@ -90,7 +90,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
         TxtDireccion = new javax.swing.JTextField();
         CbxRoles = new javax.swing.JComboBox<>();
         CbxTiendas = new javax.swing.JComboBox<>();
-        ChxActivo = new javax.swing.JCheckBox();
         BtnModificar = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JButton();
         CbxRut = new javax.swing.JComboBox<>();
@@ -145,9 +144,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 CbxTiendasActionPerformed(evt);
             }
         });
-
-        ChxActivo.setSelected(true);
-        ChxActivo.setText("Activo");
 
         BtnModificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         BtnModificar.setText("Modificar");
@@ -241,16 +237,13 @@ public class ModificarUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(105, 105, 105)
-                                        .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(42, 42, 42)
-                                        .addComponent(BtnCancelar)))
-                                .addGap(33, 33, 33)
-                                .addComponent(ChxActivo))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel12)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(105, 105, 105)
+                                    .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(42, 42, 42)
+                                    .addComponent(BtnCancelar)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -365,8 +358,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ChxActivo))
+                    .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addComponent(LbModificado)
                 .addContainerGap())
@@ -452,13 +444,15 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 };
                 if(validado>0){
                     validado=0;
+                  
+                
                 }else{
             usuarioN.ModificarUsuario(5,TxtDireccion.getText(), TxtApellidoPaterno.getText(),CbxRut.getSelectedItem().toString(),
                     TxtApellidoMaterno.getText(),0,TxtContrasena.getText(),0, comuna.getIDxNombre(CbxComuna.getSelectedItem().toString()),
                     TxtNombre.getText(), tusuario.getIDxNombre(CbxRoles.getSelectedItem().toString()),
                     tienda.getIDxNombre(CbxTiendas.getSelectedItem().toString()),TxtCorreo.getText(),
                     0, TxtTelefono.getText());
-                    JOptionPane.showMessageDialog(null, "Usuario modificado");
+               JOptionPane.showMessageDialog(null, "Usuario Modificado");
              LbModificado.setText("Usuario Modificado");
              
             
@@ -491,6 +485,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 TxtDireccion.setText(rss.getString("DIRECCION_USUARIO"));
                 TxtCorreo.setText(rss.getString("CORREO_USUARIO"));
                 TxtTelefono.setText(rss.getString("TELEFONO_USUARIO"));
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -607,7 +602,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CbxRoles;
     private javax.swing.JComboBox<String> CbxRut;
     private javax.swing.JComboBox<String> CbxTiendas;
-    private javax.swing.JCheckBox ChxActivo;
     private javax.swing.JLabel LbErrorApema;
     private javax.swing.JLabel LbErrorApepa;
     private javax.swing.JLabel LbErrorClave;
