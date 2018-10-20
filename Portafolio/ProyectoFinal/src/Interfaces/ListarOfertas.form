@@ -35,6 +35,11 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="undecorated" type="boolean" value="true"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1150, 530]"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -55,14 +60,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="BtnAceptar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="860" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="BtnAceptar" min="-2" pref="246" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane2" pref="1126" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -71,9 +77,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="607" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="417" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="BtnAceptar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,6 +109,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="BtnAceptar">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
       <Events>

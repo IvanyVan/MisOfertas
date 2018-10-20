@@ -41,14 +41,23 @@ public class ListarProductos extends javax.swing.JFrame {
         BtnAceptar = new javax.swing.JButton();
         lblIDdelatienda = new javax.swing.JLabel();
         btnListar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 255, 204));
         setIconImage(getIconImage());
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1150, 530));
+        setResizable(false);
 
+        TableListarProductos.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         TableListarProductos.setModel(ListarTablaProductos);
+        TableListarProductos.setGridColor(new java.awt.Color(204, 255, 255));
+        TableListarProductos.setSelectionBackground(new java.awt.Color(204, 255, 204));
+        TableListarProductos.setSelectionForeground(new java.awt.Color(0, 0, 51));
+        TableListarProductos.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(TableListarProductos);
 
+        BtnAceptar.setBackground(new java.awt.Color(153, 153, 255));
         BtnAceptar.setText("Aceptar");
         BtnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +67,7 @@ public class ListarProductos extends javax.swing.JFrame {
 
         lblIDdelatienda.setText("  ");
 
+        btnListar.setBackground(new java.awt.Color(153, 255, 153));
         btnListar.setText("Listar");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,42 +75,31 @@ public class ListarProductos extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Iconocompleto.png"))); // NOI18N
-        jLabel7.setText(" ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1105, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(lblIDdelatienda)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(lblIDdelatienda)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                            .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(60, 60, 60)
-                        .addComponent(lblIDdelatienda))
-                    .addComponent(jLabel7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblIDdelatienda))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -202,7 +201,6 @@ public class ListarProductos extends javax.swing.JFrame {
     private javax.swing.JButton BtnAceptar;
     public javax.swing.JTable TableListarProductos;
     private javax.swing.JButton btnListar;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblIDdelatienda;
     // End of variables declaration//GEN-END:variables

@@ -66,6 +66,7 @@ public class EncargadoTienda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel1.setText("Empresa:");
@@ -196,7 +197,7 @@ public class EncargadoTienda extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblIdEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 430, Short.MAX_VALUE)))
+                        .addGap(0, 600, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -212,11 +213,11 @@ public class EncargadoTienda extends javax.swing.JFrame {
                 .addComponent(lblIdEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(lblIdTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(layout.createSequentialGroup()
@@ -245,6 +246,8 @@ public class EncargadoTienda extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             RegistrarProducto registraroferta =  new RegistrarProducto();
+            
+            //this.rootPane.getContentPane().add(registraroferta);
             registraroferta.lblIDEMPRESAUSAR.setText(this.lblIdEmpresa.getText());
             registraroferta.setVisible(true);
         } catch (ClassNotFoundException | SQLException ex) {

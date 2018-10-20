@@ -16,6 +16,7 @@ public class ListarOfertas extends javax.swing.JFrame {
      */
     public ListarOfertas() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -44,6 +45,9 @@ public class ListarOfertas extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1150, 530));
+        setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,6 +62,7 @@ public class ListarOfertas extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        BtnAceptar.setBackground(new java.awt.Color(153, 153, 255));
         BtnAceptar.setText("Aceptar");
         BtnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,21 +75,22 @@ public class ListarOfertas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(BtnAceptar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1126, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(BtnAceptar))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BtnAceptar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
