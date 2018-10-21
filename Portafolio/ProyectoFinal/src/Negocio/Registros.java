@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,28 +54,20 @@ public class Registros {
 			cn.setAutoCommit(false);
 String query = "insert into producto (ID_PRODUCTO,NOMBRE_PRODUCTO,PRECIO_PRODUCTO,STOCK_PRODUCTO,DESCRIPCION_PRODUCTO,IMAGEN_PRODUCTO,RUBROPRODUCTO_ID_RUBRO,MARCA_ID_MARCA,CATPROD_ID_CATPROD,OFERTA_ID_OFERTA)"
         + " values(PRODUCTO_ID_PRODUCTO_SEQ.nextval,'"+prod.getNombreProducto()+"',"+prod.getPrecioProducto()+","+prod.getStockProducto()+",'"+prod.getDescripcionProducto()+"',"
-        + ""+prod.getImagenProducto()+","+prod.getRubroproductoIdRubro()+","+prod.getMarcaIdMarca()+","+prod.getCatprodIdCatprod()+",null);";
+        + ""+Arrays.toString(prod.getImagenProducto())+","+prod.getRubroproductoIdRubro()+","+prod.getMarcaIdMarca()+","+prod.getCatprodIdCatprod()+",null);";
 			pstm = cn.prepareStatement(query);
-			//pstm.setBytes(5,prod.getImagenProducto());
-			//pstm.setString(1, prod.getNombreProducto());
-			//pstm.setString(4, prod.getDescripcionProducto());
-			//pstm.setInt(3,prod.getStockProducto());
-			//pstm.setInt(6, prod.getRubroproductoIdRubro());
-//			pstm.setInt(8, prod.getMarcaIdMarca());
-//			pstm.setInt(7, prod.getIdProducto());
-//                       // pstm.setInt(2, prod.getPrecioProducto());
-//                       // pstm.setString(10, null);
-//                        pstm.setInt(9, prod.getCatprodIdCatprod());
-			pstm.executeUpdate(); 
+                        pstm.executeUpdate(); 
 			cn.commit();
                         
-		} catch (Exception e) {
+		} catch (ClassNotFoundException | SQLException e) {
 		
-			
+			JOptionPane.showMessageDialog(null, "Error al registrar producto", "No se pudo registrar el producto "
+                + "Error: "+e, JOptionPane.ERROR_MESSAGE);
 		} finally {
 			try {
 				pstm.close();
 			} catch (Exception e) {
+                              
 			}
 		}
 	}

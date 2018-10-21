@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -48,42 +48,42 @@ public class Oferta implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID_OFERTA")
-    private BigDecimal idOferta;
+    private Integer idOferta;
     @Basic(optional = false)
     @Column(name = "MAXIMO_PRO")
-    private BigInteger maximoPro;
+    private Integer maximoPro;
     @Basic(optional = false)
     @Column(name = "MINIMO_PRO")
-    private BigInteger minimoPro;
+    private Integer minimoPro;
     @Basic(optional = false)
     @Column(name = "FECHA_LIMITE")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaLimite;
+    private String fechaLimite;
     @Basic(optional = false)
     @Column(name = "FECHA_REGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
     @Basic(optional = false)
     @Column(name = "PORCENTAJE_DESCUENTO")
-    private BigInteger porcentajeDescuento;
-    @OneToMany(mappedBy = "ofertaIdOferta")
-    private Collection<VwListadoProductos> vwListadoProductosCollection;
-    @OneToMany(mappedBy = "ofertaIdOferta")
-    private Collection<Valoracion> valoracionCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ofertaIdOferta")
-    private Producto producto;
-    @JoinColumn(name = "PRODUCTO_ID_PRODUCTO", referencedColumnName = "ID_PRODUCTO")
-    @OneToOne(optional = false)
-    private Producto productoIdProducto;
+    private Integer porcentajeDescuento;
+//    @OneToMany(mappedBy = "ofertaIdOferta")
+//    private Collection<VwListadoProductos> vwListadoProductosCollection;
+//    @OneToMany(mappedBy = "ofertaIdOferta")
+//    private Collection<Valoracion> valoracionCollection;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ofertaIdOferta")
+//    private Producto producto;
+//    @JoinColumn(name = "PRODUCTO_ID_PRODUCTO", referencedColumnName = "ID_PRODUCTO")
+//    @OneToOne(optional = false)
+    private int productoIdProducto;
 
     public Oferta() {
     }
 
-    public Oferta(BigDecimal idOferta) {
+    public Oferta(Integer idOferta) {
         this.idOferta = idOferta;
     }
 
-    public Oferta(BigDecimal idOferta, BigInteger maximoPro, BigInteger minimoPro, Date fechaLimite, Date fechaRegistro, BigInteger porcentajeDescuento) {
+    public Oferta(Integer idOferta, Integer maximoPro, Integer minimoPro, String fechaLimite, Date fechaRegistro, Integer porcentajeDescuento) {
         this.idOferta = idOferta;
         this.maximoPro = maximoPro;
         this.minimoPro = minimoPro;
@@ -92,35 +92,35 @@ public class Oferta implements Serializable {
         this.porcentajeDescuento = porcentajeDescuento;
     }
 
-    public BigDecimal getIdOferta() {
+    public Integer getIdOferta() {
         return idOferta;
     }
 
-    public void setIdOferta(BigDecimal idOferta) {
+    public void setIdOferta(Integer idOferta) {
         this.idOferta = idOferta;
     }
 
-    public BigInteger getMaximoPro() {
+    public Integer getMaximoPro() {
         return maximoPro;
     }
 
-    public void setMaximoPro(BigInteger maximoPro) {
+    public void setMaximoPro(Integer maximoPro) {
         this.maximoPro = maximoPro;
     }
 
-    public BigInteger getMinimoPro() {
+    public Integer getMinimoPro() {
         return minimoPro;
     }
 
-    public void setMinimoPro(BigInteger minimoPro) {
+    public void setMinimoPro(Integer minimoPro) {
         this.minimoPro = minimoPro;
     }
 
-    public Date getFechaLimite() {
+    public String getFechaLimite() {
         return fechaLimite;
     }
 
-    public void setFechaLimite(Date fechaLimite) {
+    public void setFechaLimite(String fechaLimite) {
         this.fechaLimite = fechaLimite;
     }
 
@@ -132,45 +132,45 @@ public class Oferta implements Serializable {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public BigInteger getPorcentajeDescuento() {
+    public Integer getPorcentajeDescuento() {
         return porcentajeDescuento;
     }
 
-    public void setPorcentajeDescuento(BigInteger porcentajeDescuento) {
+    public void setPorcentajeDescuento(Integer porcentajeDescuento) {
         this.porcentajeDescuento = porcentajeDescuento;
     }
+//
+//    @XmlTransient
+//    public Collection<VwListadoProductos> getVwListadoProductosCollection() {
+//        return vwListadoProductosCollection;
+//    }
+//
+//    public void setVwListadoProductosCollection(Collection<VwListadoProductos> vwListadoProductosCollection) {
+//        this.vwListadoProductosCollection = vwListadoProductosCollection;
+//    }
+//
+//    @XmlTransient
+//    public Collection<Valoracion> getValoracionCollection() {
+//        return valoracionCollection;
+//    }
+//
+//    public void setValoracionCollection(Collection<Valoracion> valoracionCollection) {
+//        this.valoracionCollection = valoracionCollection;
+//    }
+//
+//    public Producto getProducto() {
+//        return producto;
+//    }
+//
+//    public void setProducto(Producto producto) {
+//        this.producto = producto;
+//    }
 
-    @XmlTransient
-    public Collection<VwListadoProductos> getVwListadoProductosCollection() {
-        return vwListadoProductosCollection;
-    }
-
-    public void setVwListadoProductosCollection(Collection<VwListadoProductos> vwListadoProductosCollection) {
-        this.vwListadoProductosCollection = vwListadoProductosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Valoracion> getValoracionCollection() {
-        return valoracionCollection;
-    }
-
-    public void setValoracionCollection(Collection<Valoracion> valoracionCollection) {
-        this.valoracionCollection = valoracionCollection;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public Producto getProductoIdProducto() {
+    public int getProductoIdProducto() {
         return productoIdProducto;
     }
 
-    public void setProductoIdProducto(Producto productoIdProducto) {
+    public void setProductoIdProducto(int productoIdProducto) {
         this.productoIdProducto = productoIdProducto;
     }
 

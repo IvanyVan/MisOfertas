@@ -32,6 +32,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -354,10 +355,12 @@ rss.close();
                       
                          registro.insertarProducto(prod);
                          tindaprod.insertarProductoTienda(prodControl.getUltimoRegistro(),Integer.parseInt(this.lblIDEMPRESAUSAR.getText()));
-                         
+JOptionPane.showMessageDialog(null, "Producto insertado", "Se registro un nuevo producto", JOptionPane.INFORMATION_MESSAGE);
                          dispose();
     } catch (IOException | ClassNotFoundException | SQLException ex) {
-        Logger.getLogger(RegistrarProducto.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, "Error al registrar producto", "No se pudo registrar el producto "
+                + "Error: "+ex, JOptionPane.ERROR_MESSAGE);
+      //  Logger.getLogger(RegistrarProducto.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 

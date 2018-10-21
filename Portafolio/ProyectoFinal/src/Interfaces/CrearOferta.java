@@ -8,6 +8,7 @@ package Interfaces;
 import Clases.Catgoriaproducto;
 import Clases.Conexion;
 import Clases.Rubroproducto;
+import Clases.Oferta;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -19,13 +20,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import Negocio.OfertaNegocio;
+import java.sql.Date;
+import java.text.ParseException;
+import java.util.Calendar;
 
 /**
  *
  * @author Eduardo
  */
 public final class CrearOferta extends javax.swing.JFrame {
-
+    
+    OfertaNegocio ofertaN = new OfertaNegocio();
     Rubroproducto rubro = new Rubroproducto();
     Catgoriaproducto categoria = new Catgoriaproducto();
     ResultSet rss = null;
@@ -35,10 +41,11 @@ public final class CrearOferta extends javax.swing.JFrame {
    
     
     public CrearOferta() throws ClassNotFoundException, SQLException {
-        ListarTablaProductos = new DefaultTableModel(null,getColumna());
+        ListarTablaProductos = new DefaultTableModel(null,getColumna1());
+        
          initComponents();
           this.getContentPane().setBackground(Color.WHITE);
-       
+      this.TableListarProductos.setVisible(true);
         this.lblIDdelatienda.setVisible(false);
         this.setLocationRelativeTo(null);
         rss = rubro.getRubroProd();
@@ -101,6 +108,11 @@ public final class CrearOferta extends javax.swing.JFrame {
         BtnRegistarOferta.setText("Registrar");
         BtnRegistarOferta.setActionCommand("");
         BtnRegistarOferta.setPreferredSize(new java.awt.Dimension(177, 31));
+        BtnRegistarOferta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistarOfertaActionPerformed(evt);
+            }
+        });
 
         BtnCancelar.setBackground(new java.awt.Color(255, 153, 153));
         BtnCancelar.setText("Cancelar");
@@ -190,6 +202,8 @@ public final class CrearOferta extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel7.setText("Fecha de expiracón");
+
+        jDateChooser1.setDateFormatString("dd/MM/yyyy");
 
         lblIDdelatienda.setText("  ");
 
@@ -291,14 +305,44 @@ public final class CrearOferta extends javax.swing.JFrame {
         try {
            // setFilasPorFiltro();
            idtienda = Integer.parseInt(lblIDdelatienda.getText());
+           ListarTablaProductos.setColumnIdentifiers(getColumna());
            setFilas();
+          this.TableListarProductos.getColumnModel().getColumn(0).setMaxWidth(0);
+           this.TableListarProductos.getColumnModel().getColumn(0).setMinWidth(0);
+           this.TableListarProductos.getColumnModel().getColumn(0).setPreferredWidth(0);
+           this.TableListarProductos.setVisible(true);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(CrearOferta.class.getName()).log(Level.SEVERE, null, ex);
         }
          this.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
 
-    public String [] getColumna(){
+    private void BtnRegistarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistarOfertaActionPerformed
+        Oferta ofertaObj = new Oferta();
+        int filaseleccionada;
+                filaseleccionada =    TableListarProductos.getSelectedRow();
+                int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);
+                int mes = jDateChooser1.getCalendar().get(Calendar.MONTH);
+                int agno = jDateChooser1.getCalendar().get(Calendar.YEAR);
+               String fecha = dia+"/"+mes+"/"+agno;
+                
+        ofertaObj.setMaximoPro(Integer.parseInt(TxtNMaximo.getText()));
+        ofertaObj.setMinimoPro(Integer.parseInt(TxtNMinimo.getText()));
+        ofertaObj.setFechaLimite(fecha);
+        ofertaObj.setPorcentajeDescuento(Integer.parseInt(TxtPorcentajeDescuento.getText()));
+        try {
+            ofertaN.crearOferta(ofertaObj,Integer.parseInt(TableListarProductos.getValueAt(filaseleccionada, 0).toString()));
+        } catch (ParseException ex) {
+            Logger.getLogger(CrearOferta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_BtnRegistarOfertaActionPerformed
+ public String [] getColumna(){
+        String columna[]= new String[]{"ID","NOMBRE","PRECIO","STOCK","DESCRIPCION","RUBRO","CATEGORIA","MARCA"};
+        return columna;
+    }
+    
+    public String [] getColumna1(){
         String columna[]= new String[]{"NOMBRE","PRECIO","STOCK","DESCRIPCION","RUBRO","CATEGORIA","MARCA"};
         return columna;
     }
@@ -311,20 +355,21 @@ public final class CrearOferta extends javax.swing.JFrame {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query =  "SELECT p.nombre_producto, p.precio_producto, p.stock_producto, p.descripcion_producto, r.nombre_rubro, c.nombre_categoriaprod, m.nombre_marca\n" +
+        String query =  "SELECT p.ID_PRODUCTO, p.nombre_producto, p.precio_producto, p.stock_producto, p.descripcion_producto, r.nombre_rubro, c.nombre_categoriaprod, m.nombre_marca\n" +
 "FROM Producto p ,marca m , CATGORIAPRODUCTO c, rubroproducto r, tienda_produco tp \n" +
 "WHERE p.marca_id_marca = m.id_marca and p.catprod_id_catprod= c.id_categoriaproducto and p.rubroproducto_id_rubro = r.id_rubro and tp.producto_id_producto = p.id_producto and tp.tienda_id_tienda = "+idtienda+"";
          sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
-        Object datos []=new Object[7];
+        Object datos []=new Object[8];
         while(rs.next()){
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 8; i++) {
                 datos[i]= rs.getObject(i+1);
             }
              ListarTablaProductos.addRow(datos);
         }
         rs.close();
+        
     }
     
       public void setFilasPorFiltro() throws SQLException, ClassNotFoundException{
@@ -407,7 +452,7 @@ public final class CrearOferta extends javax.swing.JFrame {
     private javax.swing.JTextField TxtNMinimo;
     private javax.swing.JTextField TxtPorcentajeDescuento;
     private javax.swing.JButton btnBuscarProducto;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    public com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

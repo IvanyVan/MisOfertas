@@ -411,6 +411,7 @@ public class RegistarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("empty-statement")
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
      Registros registro = new Registros();
         int validado = 0;
@@ -492,7 +493,7 @@ public class RegistarUsuario extends javax.swing.JFrame {
 //                };
                 if(validado>0){
                     validado=0;
-                    
+                     JOptionPane.showMessageDialog(null, "Registro no completado","Usuario no se pudo registrar correctamente", JOptionPane.WARNING_MESSAGE);
                 }
              else {
                 usuarioN.RegistrarUsuario(5, TxtDireccion.getText(), TxtApellidoPaterno.getText(), TxtRut.getText(),
@@ -500,14 +501,11 @@ public class RegistarUsuario extends javax.swing.JFrame {
                     TxtNombre.getText(),tusuario.getIDxNombre(CbxRoles.getSelectedItem().toString()),
                     tienda.getIDxNombre(CbxTiendas.getSelectedItem().toString()),//tienda
                     TxtCorreoElectronico.getText(),0,TxtTelefono.getText() );
-                JOptionPane.showMessageDialog(null, "Usuario Registrado");
-                
+                 JOptionPane.showMessageDialog(null, "Registro completado","Usuario Registrado correctamente", JOptionPane.INFORMATION_MESSAGE);
             }
             
             
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BtnRegistrarActionPerformed
@@ -531,7 +529,7 @@ public class RegistarUsuario extends javax.swing.JFrame {
                 CbxTiendas.addItem(rss.getString(2));
             }
             
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | NumberFormatException | SQLException e) {
         }
     }//GEN-LAST:event_CbxComunaActionPerformed
 
@@ -554,9 +552,7 @@ public class RegistarUsuario extends javax.swing.JFrame {
             
         }
         
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SQLException ex) {
+    } catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_CbxRegionActionPerformed
@@ -565,9 +561,7 @@ public class RegistarUsuario extends javax.swing.JFrame {
             ListarUsuarios listar = null;
         try {
             listar = new ListarUsuarios();
-        } catch (SQLException ex) {
-            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
          listar.setVisible(true);
@@ -578,9 +572,7 @@ public class RegistarUsuario extends javax.swing.JFrame {
         ModificarUsuario modificar = null;
     try {
         modificar = new ModificarUsuario();
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SQLException ex) {
+    } catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
     }
         modificar.setVisible(true);
@@ -632,9 +624,7 @@ public class RegistarUsuario extends javax.swing.JFrame {
         }
         rss.close();
         
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SQLException ex) {
+    } catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_CbxEmpresaActionPerformed
