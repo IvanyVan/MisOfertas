@@ -478,6 +478,11 @@ public class RegistarUsuario extends javax.swing.JFrame {
                     LbErroRut.setVisible(true);
                     validado++;
                 };
+                if(validacion.isValidRut(TxtRut.getText().trim())==false){
+                    LbErroRut.setText("Inserte rut sin punto y con guión");
+                    LbErroRut.setVisible(true);
+                    validado++;
+                };
                 if(TxtContrasena.getText().trim().length()<=0){
                     LbErrorClave.setText("La clave no puede estar vacia");
                     LbErrorClave.setVisible(true);

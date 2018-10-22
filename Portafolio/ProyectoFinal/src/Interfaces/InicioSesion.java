@@ -153,6 +153,8 @@ Empresa emp = new Empresa();
     private void BtnInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInicioSesionActionPerformed
          ResultSet rs = null;
         boolean validado;
+        if (validacion.isValidRut(TxtUsuarioRut.getText())==true) {
+            
         
         try {
           validado = validacion.validarUsuario(TxtUsuarioRut.getText(), TxtClave.getText());
@@ -198,7 +200,12 @@ Empresa emp = new Empresa();
        } catch (ClassNotFoundException ex) {
            Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
        }
-         
+        }else{
+             LbError.setText("Ingrese un rut valido, sin puntos y guión.");
+                    LbError.setVisible(true);
+        }
+         TxtUsuarioRut.setText("");
+         TxtClave.setText("");
     }//GEN-LAST:event_BtnInicioSesionActionPerformed
 @Override
     public Image getIconImage() {

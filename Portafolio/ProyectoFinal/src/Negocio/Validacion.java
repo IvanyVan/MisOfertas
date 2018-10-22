@@ -11,6 +11,8 @@ import static java.sql.JDBCType.NULL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -119,29 +121,51 @@ public class Validacion {
        return validado;
    }
    
-   public boolean validarRut(String rut) {
- 
-boolean validacion = false;
-try {
-rut =  rut.toUpperCase();
-rut = rut.replace(".", "");
-rut = rut.replace("-", "");
-int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
- 
-char dv = rut.charAt(rut.length() - 1);
- 
-int m = 0, s = 1;
-for (; rutAux != 0; rutAux /= 10) {
-s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+public boolean isValidRut(String rut)
+{
+    boolean ret = false;
+    if(rut != null && rut.trim().length() > 0)
+    {
+        try {
+            rut = rut.replaceAll("[.]", "").replaceAll("-", "").trim().toUpperCase();
+            char dv = rut.charAt(rut.length() - 1);
+            String mantisa = rut.substring(0, rut.length() - 1);
+            if( isInteger( mantisa ) )
+            {
+                int mantisaInt = Integer.parseInt( mantisa );
+                ret = validarRut( mantisaInt, dv ) ;
+            }
+        }
+        catch (NumberFormatException e) 
+        {
+            JOptionPane.showMessageDialog(null, "[Error al ingresar el rut] ["+rut+"]", ""+e, JOptionPane.WARNING_MESSAGE);
+        
+        }
+    }
+    return ret;
 }
-if (dv == (char) (s != 0 ? s + 47 : 75)) {
-validacion = true;
+
+private boolean validarRut(int rut, char dv)
+{
+    int m = 0, s = 1;
+    for (; rut != 0; rut /= 10)
+    {
+        s = (s + rut % 10 * (9 - m++ % 6)) % 11;
+
+    }
+    return Character.toUpperCase(dv) == (char) (s != 0 ? s + 47 : 75) ;
 }
- 
-} catch (java.lang.NumberFormatException e) {
-} catch (Exception e) {
-}
-return validacion;
+
+public boolean isInteger(String cad)
+{
+    for(int i = 0; i<cad.length(); i++){
+        if( !Character.isDigit(cad.charAt(i)) )
+        {
+            return false;
+        }
+    }
+    return true;
+
 }
 
 
