@@ -6,6 +6,8 @@
 package Interfaces;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,11 +46,16 @@ public class Administrador extends javax.swing.JFrame {
         MenuGenerarBI = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
+        setPreferredSize(new java.awt.Dimension(1241, 730));
+        setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Iconocompleto.png"))); // NOI18N
 
         jMenu4.setText("Usuario");
+        jMenu4.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
 
+        MenuCrearUsuario.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuCrearUsuario.setText("Registar Usuario");
         MenuCrearUsuario.setActionCommand("Registrar Usuario");
         MenuCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +65,7 @@ public class Administrador extends javax.swing.JFrame {
         });
         jMenu4.add(MenuCrearUsuario);
 
+        MenuLIstarUsuarios.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuLIstarUsuarios.setText("Listar Usuarios");
         MenuLIstarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +74,7 @@ public class Administrador extends javax.swing.JFrame {
         });
         jMenu4.add(MenuLIstarUsuarios);
 
+        MenuModificarUsuario.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         MenuModificarUsuario.setText("Modificar Usuario");
         MenuModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +86,7 @@ public class Administrador extends javax.swing.JFrame {
         jMenuBar2.add(jMenu4);
 
         jMenu5.setText("Reporte");
+        jMenu5.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
 
         MenuGenerarBI.setText("Generar BI");
         MenuGenerarBI.addActionListener(new java.awt.event.ActionListener() {
@@ -95,13 +105,13 @@ public class Administrador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 293, Short.MAX_VALUE)
+                .addGap(0, 889, Short.MAX_VALUE)
                 .addComponent(jLabel1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 459, Short.MAX_VALUE)
+                .addGap(0, 607, Short.MAX_VALUE)
                 .addComponent(jLabel1))
         );
 
@@ -112,13 +122,11 @@ public class Administrador extends javax.swing.JFrame {
           RegistarUsuario registrar = null;
         try {
             registrar = new RegistarUsuario();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
           registrar.setVisible(true);
-          dispose();
+        
          
           
           
@@ -148,15 +156,19 @@ public class Administrador extends javax.swing.JFrame {
         ModificarUsuario modificar = null;
         try {
             modificar = new ModificarUsuario();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
         modificar.setVisible(true);
-        dispose();
     }//GEN-LAST:event_MenuModificarUsuarioActionPerformed
+ @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Img/iconoV2.png"));
 
+
+        return retValue;
+    }
     /**
      * @param args the command line arguments
      */

@@ -6,6 +6,7 @@
 package Interfaces;
 
 import Clases.Conexion;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,12 +26,15 @@ public class ListarUsuarios extends javax.swing.JFrame {
     
     /**
      * Creates new form ListarUsuarios
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     public ListarUsuarios() throws SQLException, ClassNotFoundException {
         ListarTablaUsuarios = new DefaultTableModel(null,getColumna());
         setFilas();
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+         this.getContentPane().setBackground(Color.WHITE);
         
      
     }
@@ -47,18 +51,18 @@ public class ListarUsuarios extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableListarUsuarios = new javax.swing.JTable();
         BtnAceptar = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        RegistrarUsuario = new javax.swing.JMenuItem();
-        ModificarUsuario = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1150, 530));
+        setResizable(false);
 
+        TableListarUsuarios.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         TableListarUsuarios.setModel(ListarTablaUsuarios);
         jScrollPane1.setViewportView(TableListarUsuarios);
 
+        BtnAceptar.setBackground(new java.awt.Color(153, 153, 255));
+        BtnAceptar.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         BtnAceptar.setText("Aceptar");
         BtnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,55 +70,27 @@ public class ListarUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Usuario");
-
-        RegistrarUsuario.setText("Registrar Usuario");
-        RegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarUsuarioActionPerformed(evt);
-            }
-        });
-        jMenu1.add(RegistrarUsuario);
-
-        ModificarUsuario.setText("Modificar Usuario");
-        ModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarUsuarioActionPerformed(evt);
-            }
-        });
-        jMenu1.add(ModificarUsuario);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Reporte");
-
-        jMenuItem3.setText("Generar BI");
-        jMenu2.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1126, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
-                .addGap(4, 4, 4)
-                .addComponent(BtnAceptar))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,34 +99,6 @@ public class ListarUsuarios extends javax.swing.JFrame {
     private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
       dispose();        
     }//GEN-LAST:event_BtnAceptarActionPerformed
-
-    private void RegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarUsuarioActionPerformed
-            RegistarUsuario registrar = null;
-        try {
-            registrar = new RegistarUsuario();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          registrar.setVisible(true);
-          dispose();
-         
-          
-    }//GEN-LAST:event_RegistrarUsuarioActionPerformed
-
-    private void ModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarUsuarioActionPerformed
-         ModificarUsuario modificar = null;
-        try {
-            modificar = new ModificarUsuario();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        modificar.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_ModificarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,13 +174,7 @@ public class ListarUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;
-    private javax.swing.JMenuItem ModificarUsuario;
-    private javax.swing.JMenuItem RegistrarUsuario;
     public javax.swing.JTable TableListarUsuarios;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

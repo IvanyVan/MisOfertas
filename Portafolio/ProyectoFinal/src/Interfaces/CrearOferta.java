@@ -95,13 +95,13 @@ public final class CrearOferta extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1150, 530));
         setResizable(false);
 
-        jLabel2.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         jLabel2.setText("Porcentaje Descuento");
 
-        jLabel3.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         jLabel3.setText("N° Minimo de compras");
 
-        jLabel4.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         jLabel4.setText("N° Maximo de compras");
 
         BtnRegistarOferta.setBackground(new java.awt.Color(153, 255, 153));
@@ -200,7 +200,7 @@ public final class CrearOferta extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel7.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         jLabel7.setText("Fecha de expiracón");
 
         jDateChooser1.setDateFormatString("dd/MM/yyyy");
@@ -229,7 +229,7 @@ public final class CrearOferta extends javax.swing.JFrame {
                             .addComponent(TxtNMaximo, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                             .addComponent(TxtNMinimo)
                             .addComponent(TxtPorcentajeDescuento))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
