@@ -29,6 +29,8 @@ public class EncargadoTienda extends javax.swing.JFrame {
          lblIdEmpleado.setVisible(false);
          lblIdTienda.setVisible(false);
          jMenu3.setVisible(false);
+         MenuModificarOferta.setVisible(false);
+         MenuModificarProducto.setVisible(false);
     }
 
     /**
@@ -288,7 +290,13 @@ public class EncargadoTienda extends javax.swing.JFrame {
     
     private void MenuListarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListarOfertaActionPerformed
         // TODO add your handling code here:
-          ListarOfertas paginanueva =  new ListarOfertas();
+          ListarOferta paginanueva = null;
+        try {
+            paginanueva = new ListarOferta();
+            paginanueva.lblIDdelatienda.setText(this.lblIdEmpresa.getText());
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+        }
         paginanueva.setVisible(true);
     }//GEN-LAST:event_MenuListarOfertaActionPerformed
 

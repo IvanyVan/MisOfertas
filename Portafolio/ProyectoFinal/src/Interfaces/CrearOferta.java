@@ -44,6 +44,10 @@ public final class CrearOferta extends javax.swing.JFrame {
         ListarTablaProductos = new DefaultTableModel(null,getColumna1());
         
          initComponents();
+         lblrubro.setVisible(false);
+         lblcategoria.setVisible(false);
+         CbxRubro.setVisible(false);
+         CbxCategoria.setVisible(false);
           this.getContentPane().setBackground(Color.WHITE);
       this.TableListarProductos.setVisible(true);
         this.lblIDdelatienda.setVisible(false);
@@ -80,8 +84,8 @@ public final class CrearOferta extends javax.swing.JFrame {
         CbxCategoria = new javax.swing.JComboBox<>();
         btnBuscarProducto = new javax.swing.JButton();
         CbxRubro = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblcategoria = new javax.swing.JLabel();
+        lblrubro = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableListarProductos = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
@@ -142,11 +146,11 @@ public final class CrearOferta extends javax.swing.JFrame {
 
         CbxRubro.setEnabled(false);
 
-        jLabel5.setText("Categoria");
-        jLabel5.setEnabled(false);
+        lblcategoria.setText("Categoria");
+        lblcategoria.setEnabled(false);
 
-        jLabel6.setText("Rubro");
-        jLabel6.setEnabled(false);
+        lblrubro.setText("Rubro");
+        lblrubro.setEnabled(false);
 
         TableListarProductos.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         TableListarProductos.setModel(ListarTablaProductos);
@@ -168,12 +172,12 @@ public final class CrearOferta extends javax.swing.JFrame {
                             .addComponent(btnBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
+                            .addComponent(lblrubro)
                             .addComponent(CbxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(106, 106, 106)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(lblcategoria)
                                 .addGap(112, 112, 112))
                             .addComponent(CbxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -185,8 +189,8 @@ public final class CrearOferta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(lblcategoria)
+                    .addComponent(lblrubro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -457,13 +461,13 @@ public final class CrearOferta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblIDdelatienda;
     public javax.swing.JLabel lblIDdelatienda1;
+    private javax.swing.JLabel lblcategoria;
+    private javax.swing.JLabel lblrubro;
     // End of variables declaration//GEN-END:variables
 }
