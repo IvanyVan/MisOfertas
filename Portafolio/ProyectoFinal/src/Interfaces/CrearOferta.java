@@ -21,9 +21,11 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import Negocio.OfertaNegocio;
+import Negocio.Validacion;
 import java.sql.Date;
 import java.text.ParseException;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,7 +38,7 @@ public final class CrearOferta extends javax.swing.JFrame {
     Catgoriaproducto categoria = new Catgoriaproducto();
     ResultSet rss = null;
     DefaultTableModel ListarTablaProductos ;
-    
+    Validacion validacion = new Validacion();
     int idtienda = 0;
    
     
@@ -44,6 +46,9 @@ public final class CrearOferta extends javax.swing.JFrame {
         ListarTablaProductos = new DefaultTableModel(null,getColumna1());
         
          initComponents();
+         lblMaxCompras.setVisible(false);
+         lblMinCompras.setVisible(false);
+         lbldescuento.setVisible(false);
          lblrubro.setVisible(false);
          lblcategoria.setVisible(false);
          CbxRubro.setVisible(false);
@@ -65,7 +70,9 @@ public final class CrearOferta extends javax.swing.JFrame {
         //setFilas();
     }
 
-    
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -92,6 +99,9 @@ public final class CrearOferta extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblIDdelatienda = new javax.swing.JLabel();
         lblIDdelatienda1 = new javax.swing.JLabel();
+        lbldescuento = new javax.swing.JLabel();
+        lblMinCompras = new javax.swing.JLabel();
+        lblMaxCompras = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -213,6 +223,18 @@ public final class CrearOferta extends javax.swing.JFrame {
 
         lblIDdelatienda1.setText("  ");
 
+        lbldescuento.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        lbldescuento.setForeground(new java.awt.Color(255, 51, 51));
+        lbldescuento.setText("jLabel5");
+
+        lblMinCompras.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        lblMinCompras.setForeground(new java.awt.Color(255, 51, 51));
+        lblMinCompras.setText("jLabel5");
+
+        lblMaxCompras.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        lblMaxCompras.setForeground(new java.awt.Color(255, 51, 51));
+        lblMaxCompras.setText("jLabel5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -233,7 +255,12 @@ public final class CrearOferta extends javax.swing.JFrame {
                             .addComponent(TxtNMaximo, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                             .addComponent(TxtNMinimo)
                             .addComponent(TxtPorcentajeDescuento))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbldescuento)
+                            .addComponent(lblMinCompras)
+                            .addComponent(lblMaxCompras))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 357, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
@@ -242,8 +269,7 @@ public final class CrearOferta extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(BtnRegistarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(284, 284, 284)))
+                                .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -260,29 +286,32 @@ public final class CrearOferta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(TxtPorcentajeDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbldescuento))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(TxtNMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtNMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMinCompras))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(TxtNMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(BtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                    .addComponent(BtnRegistarOferta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(TxtNMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMaxCompras)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BtnRegistarOferta, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(73, 73, 73))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -322,9 +351,48 @@ public final class CrearOferta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
 
     private void BtnRegistarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistarOfertaActionPerformed
-        Oferta ofertaObj = new Oferta();
+         Oferta ofertaObj = new Oferta();
         int filaseleccionada;
-                filaseleccionada =    TableListarProductos.getSelectedRow();
+        int validado = 0;
+          lblMaxCompras.setVisible(false);
+         lblMinCompras.setVisible(false);
+         lbldescuento.setVisible(false);
+         if(validacion.validacionLetras(TxtPorcentajeDescuento.getText())){// validacion de descuento
+                    lbldescuento.setText("El descuento no puede tener letras");
+                    lbldescuento.setVisible(true);
+                    validado++;
+                };
+                if(TxtPorcentajeDescuento.getText().trim().length()<=0){
+                    lbldescuento.setText("El descuento de compras no debe estar vacío");
+                         lbldescuento.setVisible(true);
+                    validado++;
+                       }
+                
+                if(validacion.validacionLetras(TxtNMaximo.getText())){//validacion de compras maximas
+                    lblMaxCompras.setText("El maximo de compras no puede tener letras");
+                    lblMaxCompras.setVisible(true);
+                    validado++;
+                };
+                 if(TxtNMaximo.getText().trim().length()<=0){
+                    lblMaxCompras.setText("El maximo de compras no debe estar vacío");
+                         lblMaxCompras.setVisible(true);
+                    validado++;
+                       }
+                
+                if(validacion.validacionLetras(TxtNMinimo.getText())){//validaciones menores
+                    lblMinCompras.setText("El minimo de compras no puede tener letras");
+                    lblMinCompras.setVisible(true);
+                    validado++;}
+               
+                       if(TxtNMinimo.getText().trim().length()<=0){
+                    lblMinCompras.setText("El minimo de compras no debe estar vacío");
+                         lblMinCompras.setVisible(true);
+                    validado++;
+                       }
+        if(validado>1){
+             JOptionPane.showMessageDialog(null, "Registro no completado","Verifique datos ingresados", JOptionPane.WARNING_MESSAGE);
+        }else{
+            filaseleccionada =    TableListarProductos.getSelectedRow();
                 int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);
                 int mes = jDateChooser1.getCalendar().get(Calendar.MONTH);
                 int agno = jDateChooser1.getCalendar().get(Calendar.YEAR);
@@ -335,11 +403,15 @@ public final class CrearOferta extends javax.swing.JFrame {
         ofertaObj.setFechaLimite(fecha);
         ofertaObj.setPorcentajeDescuento(Integer.parseInt(TxtPorcentajeDescuento.getText()));
         try {
-            ofertaN.crearOferta(ofertaObj,Integer.parseInt(TableListarProductos.getValueAt(filaseleccionada, 0).toString()));
+           
+           JOptionPane.showMessageDialog(null,ofertaN.crearOferta(ofertaObj,Integer.parseInt(TableListarProductos.getValueAt(filaseleccionada, 0).toString())), "Proceso terminado"
+                   , JOptionPane.INFORMATION_MESSAGE);
+           this.dispose();
         } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Error al registrar ", "No se registró la oferta", JOptionPane.INFORMATION_MESSAGE);
             Logger.getLogger(CrearOferta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        }
     }//GEN-LAST:event_BtnRegistarOfertaActionPerformed
  public String [] getColumna(){
         String columna[]= new String[]{"ID","NOMBRE","PRECIO","STOCK","DESCRIPCION","RUBRO","CATEGORIA","MARCA"};
@@ -371,6 +443,8 @@ public final class CrearOferta extends javax.swing.JFrame {
                 datos[i]= rs.getObject(i+1);
             }
              ListarTablaProductos.addRow(datos);
+             
+          
         }
         rs.close();
         
@@ -467,7 +541,10 @@ public final class CrearOferta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblIDdelatienda;
     public javax.swing.JLabel lblIDdelatienda1;
+    private javax.swing.JLabel lblMaxCompras;
+    private javax.swing.JLabel lblMinCompras;
     private javax.swing.JLabel lblcategoria;
+    private javax.swing.JLabel lbldescuento;
     private javax.swing.JLabel lblrubro;
     // End of variables declaration//GEN-END:variables
 }

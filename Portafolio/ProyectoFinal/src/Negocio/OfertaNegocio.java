@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,9 +25,9 @@ public class OfertaNegocio {
     
     
         
-   public void crearOferta(Oferta oferta, int idProducto) throws ParseException {
+   public String crearOferta(Oferta oferta, int idProducto) throws ParseException {
 
-     
+     String mensaje = "";
 
 		Connection cn = null;
                 Conexion conexion =  new Conexion();
@@ -34,27 +35,27 @@ public class OfertaNegocio {
 		try {
 			cn = conexion.getConnection();
 			cn.setAutoCommit(false);
-                     
-//                        int dia = oferta.getFechaLimite().getDay();
-//                        int mes = oferta.getFechaLimite().getMonth();
-//                        int agno = oferta.getFechaLimite().getYear();TO_DATE('"+fecha+"','DD-MM-YYYY')
-//                          String fecha =""+dia+"-"+mes+"-"+agno+""; //prueba segunda formato fecha
                         
 String query = "Begin\n" +
 "\n" +
-"oferta_tapi.ins("+idProducto+","+oferta.getMaximoPro()+",sysdate,1,'"+oferta.getFechaLimite()+"',"+oferta.getPorcentajeDescuento()+","+oferta.getMinimoPro()+");\n" +
+"oferta_tapi.ins("+idProducto+","+oferta.getMaximoPro()+",sysdate,1,TO_DATE('"+oferta.getFechaLimite()+"','DD-MM-YYYY HH:MI'),"+oferta.getPorcentajeDescuento()+","+oferta.getMinimoPro()+");\n" +
 "\n" +
 "end;";
+mensaje = "Registro completado";
 			pstm = cn.prepareStatement(query);
                         pstm.executeUpdate(); 
 			cn.commit();
 		} catch (ClassNotFoundException | SQLException e) {
+                    mensaje = "Error: Registo no completado";
 		} finally {
 			try {
 				pstm.close();
 			} catch (SQLException e) {
+                             mensaje = "Error: Registo no completado";
 			}
 		}
+                
+                return mensaje;
 	}
     
     
