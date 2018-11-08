@@ -8,7 +8,7 @@ package Interfaces;
 import Clases.Empresa;
 import Clases.Tienda;
 import Negocio.Validacion;
-import com.sun.xml.internal.ws.api.message.Message;
+//import com.sun.xml.internal.ws.api.message.Message;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

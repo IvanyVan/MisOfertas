@@ -490,11 +490,11 @@ public class ModificarUsuario extends javax.swing.JFrame {
                   
                 
                 }else{
-            usuarioN.ModificarUsuario(5,TxtDireccion.getText(), TxtApellidoPaterno.getText(),CbxRut.getSelectedItem().toString(),
-                    TxtApellidoMaterno.getText(),0,TxtContrasena.getText(),0, comuna.getIDxNombre(CbxComuna.getSelectedItem().toString()),
-                    TxtNombre.getText(), tusuario.getIDxNombre(CbxRoles.getSelectedItem().toString()),
-                    tienda.getIDxNombre(CbxTiendas.getSelectedItem().toString()),TxtCorreo.getText(),
-                    0, TxtTelefono.getText());
+            usuarioN.ModificarUsuario(TxtDireccion.getText(),TxtApellidoPaterno.getText(), 
+                       "N",CbxRut.getSelectedItem().toString(), TxtApellidoMaterno.getText(),
+                       TxtContrasena.getText(),comuna.getIDxNombre(CbxComuna.getSelectedItem().toString()),
+                       TxtNombre.getText(),tusuario.getIDxNombre(CbxRoles.getSelectedItem().toString()),
+                        TxtCorreo.getText(),0,TxtTelefono.getText());
                JOptionPane.showMessageDialog(null, "Usuario Modificado");
              LbModificado.setText("Usuario Modificado");
              

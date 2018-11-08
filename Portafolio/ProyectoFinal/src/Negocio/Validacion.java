@@ -54,7 +54,7 @@ public class Validacion {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select TIPOUSUARIO_ID_TIPOUSUARIO from USUARIO where rut_usuario='"+user+"' and password_usuario='"+clave+"'"; 
+        String query = "select ID_TIPOUSUARIO from USUARIO where rut_usuario='"+user+"' and password_usuario='"+clave+"'"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
          while (rs.next()) {            

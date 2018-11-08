@@ -19,7 +19,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import Negocio.OfertaNegocio;
 import Negocio.Validacion;
 import java.sql.Date;
