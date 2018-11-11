@@ -586,7 +586,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
             CbxTiendas.addItem(rss.getString(2));
             
         }
-        
+        rss.close();
     } catch (ClassNotFoundException ex) {
         Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
     } catch (SQLException ex) {

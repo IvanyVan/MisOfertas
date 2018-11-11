@@ -142,7 +142,7 @@ public class ListarUsuarios extends javax.swing.JFrame {
     }
     
     public String [] getColumna(){
-        String columna[]= new String[]{"RUT","NOMBRE","APELLIDO PATERNO","APELLIDO MATERNO","CORREO ELECTRONICO","DIRECCION","TELEFONO","ROL","COMUNA","TIENDA"};
+        String columna[]= new String[]{"RUT","NOMBRE","APELLIDO PATERNO","APELLIDO MATERNO","CORREO ELECTRONICO","DIRECCION","TELEFONO","ROL","COMUNA"};
         return columna;
     }
     
@@ -155,16 +155,16 @@ public class ListarUsuarios extends javax.swing.JFrame {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query =  "select U.RUT_USUARIO,U.NOMBRE_USUARIO,U.APEPA_USUARIO,U.APEMA_USUARIO,U.CORREO_USUARIO,U.DIRECCION_USUARIO,U.TELEFONO_USUARIO,R.NOMBRE_TIPOUSUARIO,C.NOMBRE_COMUNA,T.NOMBRE_TIENDA\n" +
-"FROM USUARIO U , TIPOUSUARIO R, COMUNA C,TIENDA T \n" +
-"WHERE u.tipousuario_id_tipousuario = r.id_tipousuario AND u.comuna_id_comuna = c.id_comuna AND u.tienda_id_tienda = t.id_tienda";
+        String query =  "select U.RUT_USUARIO,U.NOMBRE_USUARIO,U.APEPA_USUARIO,U.APEMA_USUARIO,U.CORREO_USUARIO,U.DIRECCION_USUARIO,U.TELEFONO_USUARIO,R.NOMBRE_TIPOUSUARIO,C.NOMBRE_COMUNA\n" +
+"FROM USUARIO U , TIPOUSUARIO R, COMUNA C \n" +
+"WHERE u.id_tipousuario = r.id_tipousuario AND u.id_comuna = c.id_comuna ";
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
-        Object datos []=new Object[10];
+        Object datos []=new Object[9];
         
         while(rs.next()){
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 9; i++) {
                 datos[i]= rs.getObject(i+1);
             }
             ListarTablaUsuarios.addRow(datos);

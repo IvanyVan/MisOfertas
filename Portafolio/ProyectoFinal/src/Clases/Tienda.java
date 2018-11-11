@@ -180,7 +180,7 @@ public class Tienda implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select * from TIENDA where empresa_id_empresa ="+empresa+" order by id_tienda"; 
+        String query = "select * from TIENDA where id_empresa ="+empresa+" order by id_tienda"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
@@ -195,7 +195,7 @@ public class Tienda implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select * from Tienda where comuna_id_comuna ="+idComuna+"";
+        String query = "select * from Tienda where id_comuna ="+idComuna+"";
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
@@ -231,7 +231,7 @@ public class Tienda implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select NOMBRE_TIENDA from TIENDA where empresa_id_empresa ="+empresa+" order by id_tienda"; 
+        String query = "select NOMBRE_TIENDA from TIENDA where id_empresa ="+empresa+" order by id_tienda"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
         while(rs.next()){
