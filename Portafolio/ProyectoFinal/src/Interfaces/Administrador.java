@@ -23,6 +23,7 @@ public class Administrador extends javax.swing.JFrame {
     GridBagLayout layout =  new GridBagLayout();
     RegistrarUsuarioP pregistrar;
     ModificarUsuarioP pmodificar;
+    ListarUsuariosP plistado;
     /**
      * Creates new form Administrador
      * @throws java.lang.ClassNotFoundException
@@ -31,6 +32,7 @@ public class Administrador extends javax.swing.JFrame {
     public Administrador() throws ClassNotFoundException, SQLException {
         this.pregistrar = new RegistrarUsuarioP();
         this.pmodificar = new ModificarUsuarioP();
+        this.plistado =  new ListarUsuariosP();
         initComponents();
        this.getContentPane().setBackground(Color.WHITE);
          this.setLocationRelativeTo(null);
@@ -42,8 +44,12 @@ public class Administrador extends javax.swing.JFrame {
          c.gridx = 0;
          c.gridy = 0 ;
          jPAdministrador.add(pmodificar);
+                c.gridx = 0;
+         c.gridy = 0 ;
+         jPAdministrador.add(plistado);
          pregistrar.setVisible(false);
          pmodificar.setVisible(false);
+         plistado.setVisible(false);
     }
 
     /**
@@ -168,6 +174,7 @@ public class Administrador extends javax.swing.JFrame {
         
          pregistrar.setVisible(true);
           pmodificar.setVisible(false);
+          plistado.setVisible(false);
           
           
     }//GEN-LAST:event_MenuCrearUsuarioActionPerformed
@@ -178,7 +185,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void MenuLIstarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLIstarUsuariosActionPerformed
          
-         ListarUsuarios listar = null;
+         /*ListarUsuarios listar = null;
         try {
             listar = new ListarUsuarios();
         } catch (SQLException ex) {
@@ -186,8 +193,10 @@ public class Administrador extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-         listar.setVisible(true);
-       
+         listar.setVisible(true);*/
+          pregistrar.setVisible(false);
+          pmodificar.setVisible(false);
+          plistado.setVisible(true);
          
     }//GEN-LAST:event_MenuLIstarUsuariosActionPerformed
 
@@ -201,6 +210,7 @@ public class Administrador extends javax.swing.JFrame {
         modificar.setVisible(true);*/
        pmodificar.setVisible(true);
        pregistrar.setVisible(false);
+       plistado.setVisible(false);
     }//GEN-LAST:event_MenuModificarUsuarioActionPerformed
  @Override
     public Image getIconImage() {
