@@ -13,6 +13,7 @@ import Clases.Region;
 import Negocio.Registros;
 import Negocio.UsuarioNegocio;
 import Negocio.Validacion;
+import Negocio.HasharClave;
 import java.awt.Color;
 import java.awt.List;
 import java.sql.ResultSet;
@@ -93,7 +94,7 @@ public class RegistrarUsuarioP extends javax.swing.JPanel {
         CbxRoles = new javax.swing.JComboBox<>();
         LbErrorTelefono = new javax.swing.JLabel();
         CbxTiendas = new javax.swing.JComboBox<>();
-        TxtContrasena = new javax.swing.JPasswordField();
+        TxtContraseña = new javax.swing.JPasswordField();
         Region = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -210,7 +211,7 @@ public class RegistrarUsuarioP extends javax.swing.JPanel {
             }
         });
 
-        TxtContrasena.setToolTipText("ingrese contraseña");
+        TxtContraseña.setToolTipText("ingrese contraseña");
 
         Region.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         Region.setText("Región");
@@ -314,7 +315,7 @@ public class RegistrarUsuarioP extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TxtRut, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                                     .addComponent(TxtApellidoMaterno)
-                                    .addComponent(TxtContrasena)
+                                    .addComponent(TxtContraseña)
                                     .addComponent(TxtRepetirContraseña)
                                     .addComponent(TxtTelefono)
                                     .addComponent(TxtDireccion)))
@@ -418,7 +419,7 @@ public class RegistrarUsuarioP extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                            .addComponent(TxtContrasena)
+                            .addComponent(TxtContraseña)
                             .addComponent(LbErrorClave))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -494,7 +495,7 @@ public class RegistrarUsuarioP extends javax.swing.JPanel {
         TxtNombre.setText("");
         TxtApellidoMaterno.setText("");
         TxtApellidoPaterno.setText("");
-        TxtContrasena.setText("");
+        TxtContraseña.setText("");
         TxtCorreoElectronico.setText("");
         TxtDireccion.setText("");
         TxtTelefono.setText("");
@@ -582,13 +583,13 @@ public class RegistrarUsuarioP extends javax.swing.JPanel {
                 LbErroRut.setVisible(true);
                 validado++;
             };
-            if(TxtContrasena.getText().trim().length()<=0){
+            if(TxtContraseña.getText().trim().length()<=0){
                 LbErrorClave.setText("La clave no puede estar vacia");
                 LbErrorClave.setVisible(true);
                 validado++;
             };
 
-            if(TxtContrasena.getText().trim()!=TxtRepetirContraseña.getText().trim()){
+            if(!TxtContraseña.getText().equals(TxtRepetirContraseña.getText())){
                 LbErrorClave.setText("Contraseñas no son iguales");
                 LbErrorClave.setVisible(true);
                 validado++;
@@ -639,14 +640,17 @@ public class RegistrarUsuarioP extends javax.swing.JPanel {
                 LbErroRut.setVisible(true);
                 validado++;
             }
+            
             if(validado>0){
                 validado=0;
                 JOptionPane.showMessageDialog(null, "Registro no completado","Usuario no registrado", JOptionPane.WARNING_MESSAGE);
             }
             else {
+                HasharClave hs = new HasharClave();
+                String ClaveHash = hs.MD5(TxtContraseña.getText());
                 usuarioN.RegistrarUsuario( TxtDireccion.getText(),TxtApellidoPaterno.getText(),
                     "N",TxtRut.getText(), TxtApellidoMaterno.getText(),
-                    TxtContrasena.getText(),comuna.getIDxNombre(CbxComuna.getSelectedItem().toString()),
+                    ClaveHash,comuna.getIDxNombre(CbxComuna.getSelectedItem().toString()),
                     TxtNombre.getText(),tusuario.getIDxNombre(CbxRoles.getSelectedItem().toString()),
                     TxtCorreoElectronico.getText(),0,TxtTelefono.getText()
                 );
@@ -700,7 +704,7 @@ public class RegistrarUsuarioP extends javax.swing.JPanel {
     private javax.swing.JLabel Region;
     private javax.swing.JTextField TxtApellidoMaterno;
     private javax.swing.JTextField TxtApellidoPaterno;
-    private javax.swing.JPasswordField TxtContrasena;
+    private javax.swing.JPasswordField TxtContraseña;
     private javax.swing.JTextField TxtCorreoElectronico;
     private javax.swing.JTextField TxtDireccion;
     private javax.swing.JTextField TxtNombre;

@@ -61,7 +61,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="TxtRut" pref="161" max="32767" attributes="0"/>
                                   <Component id="TxtApellidoMaterno" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="TxtContrasena" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="TxtContraseña" alignment="0" max="32767" attributes="0"/>
                                   <Component id="TxtRepetirContraseña" max="32767" attributes="0"/>
                                   <Component id="TxtTelefono" alignment="0" max="32767" attributes="0"/>
                                   <Component id="TxtDireccion" alignment="0" max="32767" attributes="0"/>
@@ -201,7 +201,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" pref="27" max="32767" attributes="0"/>
-                          <Component id="TxtContrasena" alignment="3" max="32767" attributes="0"/>
+                          <Component id="TxtContraseña" alignment="3" max="32767" attributes="0"/>
                           <Component id="LbErrorClave" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -476,7 +476,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="TxtContrasena">
+    <Component class="javax.swing.JPasswordField" name="TxtContrase&#xf1;a">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="ingrese contrase&#xf1;a"/>
       </Properties>
