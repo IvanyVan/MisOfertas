@@ -284,7 +284,7 @@ public class Usuario implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select * from USUARIO order by id_usuario"; 
+        String query = "select * from USUARIO"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
@@ -299,7 +299,7 @@ public class Usuario implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select * from USUARIO where rut_usuario = '"+rut+"' order by id_usuario"; 
+        String query = "select * from USUARIO where rut_usuario = '"+rut+"'"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        

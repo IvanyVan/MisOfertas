@@ -3,6 +3,7 @@ package Interfaces;
 import Clases.Empresa;
 import Clases.Tienda;
 import Negocio.Validacion;
+import Negocio.HasharClave;
 //import com.sun.xml.internal.ws.api.message.Message;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -139,6 +140,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private void BtnInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInicioSesionActionPerformed
         ResultSet rs = null;
         boolean validado;
+<<<<<<< HEAD
         if (validacion.isValidRut(TxtUsuarioRut.getText()) == true) {
 
             try {
@@ -178,6 +180,43 @@ public class InicioSesion extends javax.swing.JFrame {
                         LbError.setVisible(true);
                     }
                 } else {
+=======
+        HasharClave hs = new HasharClave();
+        if (validacion.isValidRut(TxtUsuarioRut.getText())==true) {
+            String ClaveHash = hs.MD5(TxtClave.getText());
+        
+        try {
+          validado = validacion.validarUsuario(TxtUsuarioRut.getText(), ClaveHash);
+            if (validado==true) {
+                if(validacion.devolverTipo(TxtUsuarioRut.getText(), ClaveHash).equals("1")){
+                    Administrador administrador = new Administrador();
+                    administrador.setVisible(true);
+                    
+                    dispose();
+                }if(validacion.devolverTipo(TxtUsuarioRut.getText(), ClaveHash).equals("2")){
+                  EncargadoTienda encargadoTienda = new EncargadoTienda();
+                  rs= validacion.devolverUsuariocompleto(TxtUsuarioRut.getText(), ClaveHash);
+                  
+                   while (rs.next()) {     //Extraemos los datos del usuario y los colocaremos en la siguiente pantalla       
+            encargadoTienda.lblempleado.setText(rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4));//nombre apellido apellido
+                    encargadoTienda.lblIdEmpleado.setText(rs.getString(1));//id del usuario
+                    encargadoTienda.lblIdEmpresa.setText(rs.getString(5));//id de la tienda a la cual esta asignado 
+                    encargadoTienda.lbltienda.setText(ti.getNombreTiendaStringxEmpresa(Integer.parseInt(rs.getString(5)))); // nos devuelve el nombre de la tienda segun su id 
+                    encargadoTienda.lblempresa.setText(emp.getNombreEmpresa(Integer.parseInt(rs.getString(5))));// nos devuelve el nombre de la empresa a la cual la tienda asignada
+                  }
+                   
+                  encargadoTienda.setVisible(true);
+                    dispose();  
+                }if(validacion.devolverTipo(TxtUsuarioRut.getText(), ClaveHash).equals("3")){
+                    Gerente gerente = new Gerente();
+                    gerente.setVisible(true);
+                    
+                    dispose();
+                }
+                if(validacion.devolverTipo(TxtUsuarioRut.getText(), ClaveHash).equals("4")){
+                    
+                    LbError.setText("Este usuario esta inhabilitado");
+>>>>>>> origin/master
                     LbError.setVisible(true);
                 }
             } catch (SQLException ex) {

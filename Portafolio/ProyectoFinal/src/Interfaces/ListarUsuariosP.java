@@ -11,32 +11,22 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Eduardo
+ * @author Ivan
  */
-public class ListarUsuarios extends javax.swing.JFrame {
-    
-    
-    DefaultTableModel ListarTablaUsuarios;
-    
+public class ListarUsuariosP extends javax.swing.JPanel {
+   DefaultTableModel ListarTablaUsuarios;
     /**
-     * Creates new form ListarUsuarios
-     * @throws java.sql.SQLException
-     * @throws java.lang.ClassNotFoundException
+     * Creates new form ListarUsuariosP
      */
-    public ListarUsuarios() throws SQLException, ClassNotFoundException {
-        ListarTablaUsuarios = new DefaultTableModel(null,getColumna());
+    public ListarUsuariosP() throws SQLException, ClassNotFoundException {
+         ListarTablaUsuarios = new DefaultTableModel(null,getColumna());
         setFilas();
         initComponents();
-        this.setLocationRelativeTo(null);
-         this.getContentPane().setBackground(Color.WHITE);
         
-     
     }
 
     /**
@@ -52,10 +42,8 @@ public class ListarUsuarios extends javax.swing.JFrame {
         TableListarUsuarios = new javax.swing.JTable();
         BtnAceptar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1150, 530));
-        setResizable(false);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listado de usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Georgia", 3, 18))); // NOI18N
 
         TableListarUsuarios.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         TableListarUsuarios.setModel(ListarTablaUsuarios);
@@ -70,13 +58,13 @@ public class ListarUsuarios extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1126, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 961, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(117, 117, 117)
@@ -92,55 +80,7 @@ public class ListarUsuarios extends javax.swing.JFrame {
                 .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
-      dispose();        
-    }//GEN-LAST:event_BtnAceptarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new ListarUsuarios().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ListarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(ListarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
-    
     public String [] getColumna(){
         String columna[]= new String[]{"RUT","NOMBRE","APELLIDO PATERNO","APELLIDO MATERNO","CORREO ELECTRONICO","DIRECCION","TELEFONO","ROL","COMUNA"};
         return columna;
@@ -171,6 +111,10 @@ public class ListarUsuarios extends javax.swing.JFrame {
         }
         rs.close();
     }
+    private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
+     this.setVisible(false);
+    }//GEN-LAST:event_BtnAceptarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;

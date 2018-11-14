@@ -605,6 +605,7 @@ public class RegistarUsuario extends javax.swing.JFrame {
             while(rss.next()){
                 CbxTiendas.addItem(rss.getString(2));
             }
+            rss.close();
             
         } catch (ClassNotFoundException | NumberFormatException | SQLException e) {
         }

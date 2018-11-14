@@ -6,6 +6,8 @@
 package Interfaces;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -18,13 +20,36 @@ import java.util.logging.Logger;
  */
 public class Administrador extends javax.swing.JFrame {
 
+    GridBagLayout layout =  new GridBagLayout();
+    RegistrarUsuarioP pregistrar;
+    ModificarUsuarioP pmodificar;
+    ListarUsuariosP plistado;
     /**
      * Creates new form Administrador
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
-    public Administrador() {
+    public Administrador() throws ClassNotFoundException, SQLException {
+        this.pregistrar = new RegistrarUsuarioP();
+        this.pmodificar = new ModificarUsuarioP();
+        this.plistado =  new ListarUsuariosP();
         initComponents();
        this.getContentPane().setBackground(Color.WHITE);
          this.setLocationRelativeTo(null);
+         jPAdministrador.setLayout(layout);
+         GridBagConstraints c = new GridBagConstraints();
+         c.gridx = 0;
+         c.gridy = 0;
+         jPAdministrador.add(pregistrar);
+         c.gridx = 0;
+         c.gridy = 0 ;
+         jPAdministrador.add(pmodificar);
+                c.gridx = 0;
+         c.gridy = 0 ;
+         jPAdministrador.add(plistado);
+         pregistrar.setVisible(false);
+         pmodificar.setVisible(false);
+         plistado.setVisible(false);
     }
 
     /**
@@ -36,6 +61,7 @@ public class Administrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPAdministrador = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
@@ -48,7 +74,19 @@ public class Administrador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(1241, 730));
-        setResizable(false);
+
+        jPAdministrador.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPAdministradorLayout = new javax.swing.GroupLayout(jPAdministrador);
+        jPAdministrador.setLayout(jPAdministradorLayout);
+        jPAdministradorLayout.setHorizontalGroup(
+            jPAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPAdministradorLayout.setVerticalGroup(
+            jPAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 506, Short.MAX_VALUE)
+        );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Iconocompleto.png"))); // NOI18N
 
@@ -104,31 +142,39 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 889, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 1092, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 607, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+                .addContainerGap()
+                .addComponent(jPAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(55, 55, 55))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearUsuarioActionPerformed
-          RegistarUsuario registrar = null;
+       /*RegistarUsuario registrar = null;
         try {
             registrar = new RegistarUsuario();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-          registrar.setVisible(true);
+          registrar.setVisible(true);*/
         
-         
-          
+         pregistrar.setVisible(true);
+          pmodificar.setVisible(false);
+          plistado.setVisible(false);
           
           
     }//GEN-LAST:event_MenuCrearUsuarioActionPerformed
@@ -139,7 +185,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void MenuLIstarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLIstarUsuariosActionPerformed
          
-         ListarUsuarios listar = null;
+         /*ListarUsuarios listar = null;
         try {
             listar = new ListarUsuarios();
         } catch (SQLException ex) {
@@ -147,19 +193,24 @@ public class Administrador extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-         listar.setVisible(true);
-       
+         listar.setVisible(true);*/
+          pregistrar.setVisible(false);
+          pmodificar.setVisible(false);
+          plistado.setVisible(true);
          
     }//GEN-LAST:event_MenuLIstarUsuariosActionPerformed
 
     private void MenuModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModificarUsuarioActionPerformed
-        ModificarUsuario modificar = null;
+       /* ModificarUsuario modificar = null;
         try {
             modificar = new ModificarUsuario();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        modificar.setVisible(true);
+        modificar.setVisible(true);*/
+       pmodificar.setVisible(true);
+       pregistrar.setVisible(false);
+       plistado.setVisible(false);
     }//GEN-LAST:event_MenuModificarUsuarioActionPerformed
  @Override
     public Image getIconImage() {
@@ -199,7 +250,11 @@ public class Administrador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Administrador().setVisible(true);
+                try {
+                    new Administrador().setVisible(true);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -213,5 +268,6 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JPanel jPAdministrador;
     // End of variables declaration//GEN-END:variables
 }
