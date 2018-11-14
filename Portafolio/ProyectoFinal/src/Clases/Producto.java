@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,12 +19,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "PRODUCTO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")
-    , @NamedQuery(name = "Producto.findByIdProducto", query = "SELECT p FROM Producto p WHERE p.idProducto = :idProducto")
-    , @NamedQuery(name = "Producto.findByNombreProducto", query = "SELECT p FROM Producto p WHERE p.nombreProducto = :nombreProducto")
-    , @NamedQuery(name = "Producto.findByPrecioProducto", query = "SELECT p FROM Producto p WHERE p.precioProducto = :precioProducto")
-    , @NamedQuery(name = "Producto.findByStockProducto", query = "SELECT p FROM Producto p WHERE p.stockProducto = :stockProducto")
-    , @NamedQuery(name = "Producto.findByDescripcionProducto", query = "SELECT p FROM Producto p WHERE p.descripcionProducto = :descripcionProducto")})
+    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
+    @NamedQuery(name = "Producto.findByIdProducto", query = "SELECT p FROM Producto p WHERE p.idProducto = :idProducto"),
+    @NamedQuery(name = "Producto.findByNombreProducto", query = "SELECT p FROM Producto p WHERE p.nombreProducto = :nombreProducto"),
+    @NamedQuery(name = "Producto.findByPrecioProducto", query = "SELECT p FROM Producto p WHERE p.precioProducto = :precioProducto"),
+    @NamedQuery(name = "Producto.findByStockProducto", query = "SELECT p FROM Producto p WHERE p.stockProducto = :stockProducto"),
+    @NamedQuery(name = "Producto.findByDescripcionProducto", query = "SELECT p FROM Producto p WHERE p.descripcionProducto = :descripcionProducto")})
+
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,19 +49,13 @@ public class Producto implements Serializable {
     @Lob
     @Column(name = "IMAGEN_PRODUCTO")
     private byte[] imagenProducto;
-    
-    
-   
     private int idTienda;
-    
-   
     private int catprodIdCatprod;
-    
     private int marcaIdMarca;
-    
     private int ofertaIdOferta;
-    
     private int rubroproductoIdRubro;
+    private Marca objMarca;
+    private Catgoriaproducto objCategoria;
 
     public int getRubroproductoIdRubro() {
         return rubroproductoIdRubro;
@@ -75,7 +64,6 @@ public class Producto implements Serializable {
     public void setRubroproductoIdRubro(int rubroproductoIdRubro) {
         this.rubroproductoIdRubro = rubroproductoIdRubro;
     }
-    
     private Oferta oferta;
 
     public Producto() {
@@ -85,7 +73,8 @@ public class Producto implements Serializable {
         this.idProducto = idProducto;
     }
 
-    public Producto(Integer idProducto, String nombreProducto, Integer precioProducto, Integer stockProducto, byte[] imagenProducto) {
+    public Producto(Integer idProducto, String nombreProducto, Integer precioProducto,
+            Integer stockProducto, byte[] imagenProducto) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.precioProducto = precioProducto;
@@ -177,15 +166,28 @@ public class Producto implements Serializable {
         this.ofertaIdOferta = ofertaIdOferta;
     }
 
-  
-
-
     public Oferta getOferta() {
         return oferta;
     }
 
     public void setOferta(Oferta oferta) {
         this.oferta = oferta;
+    }
+
+    public Catgoriaproducto getObjCategoria() {
+        return objCategoria;
+    }
+
+    public Marca getObjMarca() {
+        return objMarca;
+    }
+
+    public void setObjCategoria(Catgoriaproducto objCategoria) {
+        this.objCategoria = objCategoria;
+    }
+
+    public void setObjMarca(Marca objMarca) {
+        this.objMarca = objMarca;
     }
 
     @Override
@@ -210,12 +212,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Validacion.Producto[ idProducto=" + idProducto + " ]";
+        return "Validacion.Producto[idProducto=" + idProducto + "]";
     }
-    
-    
-    
-    
-    
-    
+
 }

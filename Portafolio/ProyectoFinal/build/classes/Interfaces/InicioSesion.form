@@ -124,7 +124,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Georgia" size="14" style="2"/>
         </Property>
-        <Property name="echoChar" type="char" value="&#x2022;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="BtnInicioSesion">

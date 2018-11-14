@@ -1,16 +1,22 @@
-
 package Interfaces;
 
-import Clases.Conexion;
+import Clases.Producto;
+import Clases.RedibujarTabla;
+import Negocio.ProductoNegocio;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.ResultSet;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,19 +24,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Eduardo
  */
 public class ListarProductos extends javax.swing.JFrame {
-     int idtienda = 0;
-    DefaultTableModel ListarTablaProductos;
-    
-     
 
     public ListarProductos() throws SQLException, ClassNotFoundException {
-          ListarTablaProductos = new DefaultTableModel(null,getColumna());
-          initComponents();
-       this.getContentPane().setBackground(Color.WHITE);
-         this.setLocationRelativeTo(null);
-         this.lblIDdelatienda.setVisible(false);
+        initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
+        this.setLocationRelativeTo(null);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,7 +37,7 @@ public class ListarProductos extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         TableListarProductos = new javax.swing.JTable();
-        BtnAceptar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         lblIDdelatienda = new javax.swing.JLabel();
         btnListar = new javax.swing.JButton();
 
@@ -50,18 +49,17 @@ public class ListarProductos extends javax.swing.JFrame {
         setResizable(false);
 
         TableListarProductos.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        TableListarProductos.setModel(ListarTablaProductos);
         TableListarProductos.setGridColor(new java.awt.Color(204, 255, 255));
         TableListarProductos.setSelectionBackground(new java.awt.Color(204, 255, 204));
         TableListarProductos.setSelectionForeground(new java.awt.Color(0, 0, 51));
         TableListarProductos.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(TableListarProductos);
 
-        BtnAceptar.setBackground(new java.awt.Color(153, 153, 255));
-        BtnAceptar.setText("Aceptar");
-        BtnAceptar.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(255, 153, 153));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAceptarActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -79,15 +77,19 @@ public class ListarProductos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1105, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(lblIDdelatienda)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblIDdelatienda))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1075, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +98,7 @@ public class ListarProductos extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblIDdelatienda))
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -105,55 +107,29 @@ public class ListarProductos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
-      dispose();        
-    }//GEN-LAST:event_BtnAceptarActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        // TODO add your handling code here:
-        
-         idtienda = Integer.parseInt(this.lblIDdelatienda.getText());
-         try {
-             setFilas();
-         } catch (SQLException | ClassNotFoundException ex) {
-             Logger.getLogger(ListarProductos.class.getName()).log(Level.SEVERE, null, ex);
-         }
+
+        try {
+            cargarTabla(TableListarProductos);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ListarProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnListarActionPerformed
-@Override
+    @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Img/iconoV2.png"));
-
-
         return retValue;
     }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -166,41 +142,60 @@ public class ListarProductos extends javax.swing.JFrame {
             }
         });
     }
-    
-    public String [] getColumna(){
-        String columna[]= new String[]{"NOMBRE","PRECIO","STOCK","DESCRIPCION","RUBRO","CATEGORIA","MARCA"};
-        return columna;
-    }
 
-    public void setFilas() throws SQLException, ClassNotFoundException{
-        ListarTablaProductos.setRowCount(0);
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query =  "SELECT p.nombre_producto, p.precio_producto, p.stock_producto, p.descripcion_producto, r.nombre_rubro, c.nombre_categoriaprod, m.nombre_marca\n" +
-"FROM Producto p ,marca m , CATGORIAPRODUCTO c, rubroproducto r, tienda_produco tp \n" +
-"WHERE p.marca_id_marca = m.id_marca and p.catprod_id_catprod= c.id_categoriaproducto and p.rubroproducto_id_rubro = r.id_rubro and tp.producto_id_producto = p.id_producto and tp.tienda_id_tienda = "+idtienda+"";
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-        Object datos []=new Object[7];
-        
-        while(rs.next()){
-            for (int i = 0; i < 7; i++) {
-                datos[i]= rs.getObject(i+1);
+    public void cargarTabla(JTable tabla) throws ClassNotFoundException, SQLException {
+        tabla.setDefaultRenderer(Object.class, new RedibujarTabla());
+        DefaultTableModel objDT = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
             }
-            ListarTablaProductos.addRow(datos);
+        };
+        objDT.addColumn("NOMBRE");
+        objDT.addColumn("PRECIO");
+        objDT.addColumn("STOCK");
+        objDT.addColumn("DESCRIPCION");
+        objDT.addColumn("IMAGEN");
+        objDT.addColumn("CATEGORIA");
+        objDT.addColumn("MARCA");
+
+        ProductoNegocio objProNegocio = new ProductoNegocio();
+        Producto objProducto = new Producto();
+        ArrayList<Producto> lstProductos = new ArrayList<Producto>();
+        lstProductos = objProNegocio.listarProductos();
+
+        if (lstProductos.size() > 0) {
+            for (int i = 0; i < lstProductos.size(); i++) {
+                Object[] fila = new Object[9];
+                objProducto = lstProductos.get(i);
+                fila[0] = objProducto.getNombreProducto();
+                fila[1] = objProducto.getPrecioProducto();
+                fila[2] = objProducto.getStockProducto();
+                fila[3] = objProducto.getDescripcionProducto();
+                try {
+                    byte[] arrByte = objProducto.getImagenProducto();
+                    BufferedImage imagen = null;
+                    InputStream in = new ByteArrayInputStream(arrByte);
+                    imagen = ImageIO.read(in);
+                    ImageIcon imgIcono = new ImageIcon(imagen.getScaledInstance(60, 60, 0));
+                    fila[4] = new JLabel(imgIcono);
+                } catch (Exception e) {
+                    fila[4] = new JLabel("No hay imagen cargada");
+                }
+
+                fila[5] = objProducto.getObjCategoria().getNombreCategoriaprod();
+                fila[6] = objProducto.getObjMarca().getNombreMarca();
+                objDT.addRow(fila);
+            }
         }
-        rs.close();
+        tabla.setModel(objDT);
+        tabla.setRowHeight(60);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAceptar;
     public javax.swing.JTable TableListarProductos;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblIDdelatienda;
     // End of variables declaration//GEN-END:variables

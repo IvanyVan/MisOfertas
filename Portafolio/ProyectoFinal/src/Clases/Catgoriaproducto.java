@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,22 +23,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Eduardo
  */
 @Entity
-@Table(name = "CATGORIAPRODUCTO")
+@Table(name = "CATEGORIA")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Catgoriaproducto.findAll", query = "SELECT c FROM Catgoriaproducto c")
-    , @NamedQuery(name = "Catgoriaproducto.findByIdCategoriaproducto", query = "SELECT c FROM Catgoriaproducto c WHERE c.idCategoriaproducto = :idCategoriaproducto")
-    , @NamedQuery(name = "Catgoriaproducto.findByNombreCategoriaprod", query = "SELECT c FROM Catgoriaproducto c WHERE c.nombreCategoriaprod = :nombreCategoriaprod")})
+    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c")
+    , @NamedQuery(name = "Categoria.findByIdCategoriaproducto", query = "SELECT c FROM Categoria c WHERE c.id_Categoria = :idCategoriaproducto")
+    , @NamedQuery(name = "Categoria.findByNombreCategoriaprod", query = "SELECT c FROM Categoria c WHERE c.nombre_Categoria = :nombreCategoriaprod")})
 public class Catgoriaproducto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
-    @Column(name = "ID_CATEGORIAPRODUCTO")
-    private BigDecimal idCategoriaproducto;
+    @Column(name = "ID_CATEGORIA")
+    private Integer idCategoriaproducto;
     @Basic(optional = false)
-    @Column(name = "NOMBRE_CATEGORIAPROD")
+    @Column(name = "NOMBRE_CATEGORIA")
     private String nombreCategoriaprod;
     @OneToMany(mappedBy = "catprodIdCatprod")
     private Collection<VwListadoProductos> vwListadoProductosCollection;
@@ -54,20 +48,20 @@ public class Catgoriaproducto implements Serializable {
     public Catgoriaproducto() {
     }
 
-    public Catgoriaproducto(BigDecimal idCategoriaproducto) {
+    public Catgoriaproducto(Integer idCategoriaproducto) {
         this.idCategoriaproducto = idCategoriaproducto;
     }
 
-    public Catgoriaproducto(BigDecimal idCategoriaproducto, String nombreCategoriaprod) {
+    public Catgoriaproducto(Integer idCategoriaproducto, String nombreCategoriaprod) {
         this.idCategoriaproducto = idCategoriaproducto;
         this.nombreCategoriaprod = nombreCategoriaprod;
     }
 
-    public BigDecimal getIdCategoriaproducto() {
+    public Integer getIdCategoriaproducto() {
         return idCategoriaproducto;
     }
 
-    public void setIdCategoriaproducto(BigDecimal idCategoriaproducto) {
+    public void setIdCategoriaproducto(Integer idCategoriaproducto) {
         this.idCategoriaproducto = idCategoriaproducto;
     }
 
@@ -119,7 +113,7 @@ public class Catgoriaproducto implements Serializable {
 
     @Override
     public String toString() {
-        return "Validacion.Catgoriaproducto[ idCategoriaproducto=" + idCategoriaproducto + " ]";
+        return "Validacion.Categoria[ idCategoria=" + idCategoriaproducto + " ]";
     }
     
      public ResultSet getCategoriaProds() throws ClassNotFoundException, SQLException{
@@ -130,7 +124,7 @@ public class Catgoriaproducto implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select NOMBRE_CATEGORIAPROD from CATGORIAPRODUCTO order by ID_CATEGORIAPRODUCTO"; 
+        String query = "select NOMBRE_CATEGORIA from CATEGORIA order by ID_CATEGORIA"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
@@ -145,7 +139,7 @@ public class Catgoriaproducto implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select ID_CATEGORIAPRODUCTO from CATGORIAPRODUCTO where NOMBRE_CATEGORIAPROD = '"+categoria+"' order by ID_CATEGORIAPRODUCTO";
+        String query = "select ID_CATEGORIA from CATEGORIA where NOMBRE_CATEGORIA = '"+categoria+"' order by ID_CATEGORIA";
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        

@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Eduardo
  */
 @Entity
-@Table(name = "RUBROPRODUCTO")
+@Table(name = "RUBRO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rubroproducto.findAll", query = "SELECT r FROM Rubroproducto r")
-    , @NamedQuery(name = "Rubroproducto.findByIdRubro", query = "SELECT r FROM Rubroproducto r WHERE r.idRubro = :idRubro")
-    , @NamedQuery(name = "Rubroproducto.findByNombreRubro", query = "SELECT r FROM Rubroproducto r WHERE r.nombreRubro = :nombreRubro")
-    , @NamedQuery(name = "Rubroproducto.findByDescripcion", query = "SELECT r FROM Rubroproducto r WHERE r.descripcion = :descripcion")})
+    @NamedQuery(name = "Rubro.findAll", query = "SELECT r FROM Rubro r")
+    , @NamedQuery(name = "Rubro.findByIdRubro", query = "SELECT r FROM Rubro r WHERE r.idRubro = :idRubro")
+    , @NamedQuery(name = "Rubro.findByNombreRubro", query = "SELECT r FROM Rubro r WHERE r.nombreRubro = :nombreRubro")
+    , @NamedQuery(name = "Rubro.findByDescripcion", query = "SELECT r FROM Rubro r WHERE r.descripcion = :descripcion")})
 public class Rubroproducto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -141,7 +141,7 @@ public class Rubroproducto implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select NOMBRE_RUBRO from RUBROPRODUCTO order by ID_RUBRO"; 
+        String query = "select NOMBRE_RUBRO from RUBRO order by ID_RUBRO"; 
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
@@ -157,7 +157,7 @@ public class Rubroproducto implements Serializable {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query = "select ID_RUBRO from RUBROPRODUCTO where NOMBRE_RUBRO = '"+nombrerubro+"' order by ID_RUBRO";
+        String query = "select ID_RUBRO from RUBRO where NOMBRE_RUBRO = '"+nombrerubro+"' order by ID_RUBRO";
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        
