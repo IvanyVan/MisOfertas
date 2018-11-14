@@ -13,9 +13,7 @@ import java.sql.SQLException;
  *
  * @author Eduardo
  */
-public class Conexion {
- 
-    
+public class Conexion {   
     
 
 public Connection getConnection() throws ClassNotFoundException, SQLException{

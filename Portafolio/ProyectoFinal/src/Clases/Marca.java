@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,9 +26,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "MARCA")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m")
-    , @NamedQuery(name = "Marca.findByIdMarca", query = "SELECT m FROM Marca m WHERE m.idMarca = :idMarca")
-    , @NamedQuery(name = "Marca.findByNombreMarca", query = "SELECT m FROM Marca m WHERE m.nombreMarca = :nombreMarca")})
+    @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m"),
+    @NamedQuery(name = "Marca.findByIdMarca", query = "SELECT m FROM Marca m WHERE m.idMarca = :idMarca"),
+    @NamedQuery(name = "Marca.findByNombreMarca", query = "SELECT m FROM Marca m WHERE m.nombreMarca = :nombreMarca")})
 public class Marca implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,7 +36,7 @@ public class Marca implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID_MARCA")
-    private BigDecimal idMarca;
+    private Integer idMarca;
     @Basic(optional = false)
     @Column(name = "NOMBRE_MARCA")
     private String nombreMarca;
@@ -54,20 +48,20 @@ public class Marca implements Serializable {
     public Marca() {
     }
 
-    public Marca(BigDecimal idMarca) {
+    public Marca(Integer idMarca) {
         this.idMarca = idMarca;
     }
 
-    public Marca(BigDecimal idMarca, String nombreMarca) {
+    public Marca(Integer idMarca, String nombreMarca) {
         this.idMarca = idMarca;
         this.nombreMarca = nombreMarca;
     }
 
-    public BigDecimal getIdMarca() {
+    public Integer getIdMarca() {
         return idMarca;
     }
 
-    public void setIdMarca(BigDecimal idMarca) {
+    public void setIdMarca(Integer idMarca) {
         this.idMarca = idMarca;
     }
 
@@ -116,46 +110,42 @@ public class Marca implements Serializable {
         }
         return true;
     }
-
     @Override
     public String toString() {
         return "Validacion.Marca[ idMarca=" + idMarca + " ]";
     }
-    
-       public ResultSet getMarcaProd() throws ClassNotFoundException, SQLException{
-        
+
+    public ResultSet getMarcaProd() throws ClassNotFoundException, SQLException {
+
         Connection conn = null;
         Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
+        conn = conexion.getConnection();
         Statement sentencia = null;
         ResultSet rs = null;
-        String tipo=null;
-        String query = "select NOMBRE_MARCA from MARCA order by ID_MARCA"; 
-        sentencia =conn.createStatement();
+        String tipo = null;
+        String query = "select NOMBRE_MARCA from MARCA order by ID_MARCA";
+        sentencia = conn.createStatement();
         rs = sentencia.executeQuery(query);
-       
-         return rs;
-         
-}
-       
-         public int getMarcaID(String nombremarca) throws ClassNotFoundException, SQLException{
+        return rs;
+    }
+
+    public int getMarcaID(String nombremarca) throws ClassNotFoundException, SQLException {
         int id = 0;
         Connection conn = null;
         Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
+        conn = conexion.getConnection();
         Statement sentencia = null;
         ResultSet rs = null;
-        String tipo=null;
-        String query = "select ID_MARCA from MARCA where NOMBRE_MARCA = '"+nombremarca+"' order by ID_MARCA";
-        sentencia =conn.createStatement();
+        String tipo = null;
+        String query = "select ID_MARCA from MARCA where NOMBRE_MARCA = '" + nombremarca + "' order by ID_MARCA";
+        sentencia = conn.createStatement();
         rs = sentencia.executeQuery(query);
-       
-        while(rs.next()){
-        id = Integer.parseInt(rs.getString(1));
+        while (rs.next()) {
+            id = Integer.parseInt(rs.getString(1));
         };
         rs.close();
-         return id;
-         
-}
-    
+        return id;
+
+    }
+
 }
