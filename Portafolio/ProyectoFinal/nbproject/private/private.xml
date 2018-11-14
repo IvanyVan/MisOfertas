@@ -12,12 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Comuna.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/RegistrarProducto.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/RegistarUsuario.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Tienda.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Negocio/UsuarioNegocio.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Negocio/Registros.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/EncargadoTienda.java</file>
+            <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Clases/VwListadoProductos.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Conexion.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/RegistrarUsuarioP.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/InicioSesion.java</file>
@@ -28,6 +30,7 @@
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/Administrador.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/ListarUsuarios.java</file>
             <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/BuscadorImagen.java</file>
+            <file>file:/C:/Users/Ivan/Documents/GitHub/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Empresa.java</file>
         </group>
     </open-files>
 </project-private>
