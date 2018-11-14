@@ -524,13 +524,13 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
                     TxtCorreo.getText(),0,TxtTelefono.getText());
                 JOptionPane.showMessageDialog(null, "Usuario Modificado");
                 LbModificado.setText("Usuario Modificado");
-
+                
             }
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarUsuarioP.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarUsuarioP.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BtnModificarActionPerformed
 
@@ -558,9 +558,9 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
         try {
             rss = usuario.getUsuarioRut(CbxRut.getSelectedItem().toString());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarUsuarioP.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarUsuarioP.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             while(rss.next()){
@@ -574,7 +574,7 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarUsuarioP.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_CbxRutActionPerformed
 
