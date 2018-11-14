@@ -140,7 +140,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private void BtnInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInicioSesionActionPerformed
         ResultSet rs = null;
         boolean validado;
-<<<<<<< HEAD
         if (validacion.isValidRut(TxtUsuarioRut.getText()) == true) {
 
             try {
@@ -180,13 +179,13 @@ public class InicioSesion extends javax.swing.JFrame {
                         LbError.setVisible(true);
                     }
                 } else {
-=======
         HasharClave hs = new HasharClave();
         if (validacion.isValidRut(TxtUsuarioRut.getText())==true) {
             String ClaveHash = hs.MD5(TxtClave.getText());
-        
+        }
+            else  {
         try {
-          validado = validacion.validarUsuario(TxtUsuarioRut.getText(), ClaveHash);
+          validado = validacion.validarUsuario(TxtUsuarioRut.getText(),ClaveHash);
             if (validado==true) {
                 if(validacion.devolverTipo(TxtUsuarioRut.getText(), ClaveHash).equals("1")){
                     Administrador administrador = new Administrador();
@@ -216,7 +215,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 if(validacion.devolverTipo(TxtUsuarioRut.getText(), ClaveHash).equals("4")){
                     
                     LbError.setText("Este usuario esta inhabilitado");
->>>>>>> origin/master
+
                     LbError.setVisible(true);
                 }
             } catch (SQLException ex) {
@@ -224,22 +223,49 @@ public class InicioSesion extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
+        }   catch (ClassNotFoundException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+{
             LbError.setText("Ingrese un rut valido, sin puntos y guión.");
             LbError.setVisible(true);
         }
         TxtUsuarioRut.setText("");
         TxtClave.setText("");
     }//GEN-LAST:event_BtnInicioSesionActionPerformed
+    
     @Override
-    public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().
-                getImage(ClassLoader.getSystemResource("Img/iconoV2.png"));
-
+     public Image getIconImage() {
+        new Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Img/iconoV2.png"));
         return retValue;
     }
 
     /**
+     * @param args the command line arguments
+     */
+            catch (SQLException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+    /**
+     * @param args the command line arguments
+     */
+            catch (SQLException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);    /**
+     * @param args the command line arguments
+     */
+            catch (SQLException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex); /**
+     * @param args the command line arguments
+     */
+            catch (ClassNotFoundException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);/**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
