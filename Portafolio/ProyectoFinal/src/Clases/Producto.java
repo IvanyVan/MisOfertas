@@ -1,15 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Clases;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -19,13 +34,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "PRODUCTO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
-    @NamedQuery(name = "Producto.findByIdProducto", query = "SELECT p FROM Producto p WHERE p.idProducto = :idProducto"),
-    @NamedQuery(name = "Producto.findByNombreProducto", query = "SELECT p FROM Producto p WHERE p.nombreProducto = :nombreProducto"),
-    @NamedQuery(name = "Producto.findByPrecioProducto", query = "SELECT p FROM Producto p WHERE p.precioProducto = :precioProducto"),
-    @NamedQuery(name = "Producto.findByStockProducto", query = "SELECT p FROM Producto p WHERE p.stockProducto = :stockProducto"),
-    @NamedQuery(name = "Producto.findByDescripcionProducto", query = "SELECT p FROM Producto p WHERE p.descripcionProducto = :descripcionProducto")})
-
+    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")
+    , @NamedQuery(name = "Producto.findByIdProducto", query = "SELECT p FROM Producto p WHERE p.idProducto = :idProducto")
+    , @NamedQuery(name = "Producto.findByNombreProducto", query = "SELECT p FROM Producto p WHERE p.nombreProducto = :nombreProducto")
+    , @NamedQuery(name = "Producto.findByPrecioProducto", query = "SELECT p FROM Producto p WHERE p.precioProducto = :precioProducto")
+    , @NamedQuery(name = "Producto.findByStockProducto", query = "SELECT p FROM Producto p WHERE p.stockProducto = :stockProducto")
+    , @NamedQuery(name = "Producto.findByDescripcionProducto", query = "SELECT p FROM Producto p WHERE p.descripcionProducto = :descripcionProducto")})
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,48 +47,50 @@ public class Producto implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID_PRODUCTO")
-    private Integer idProducto;
+    private BigDecimal idProducto;
     @Basic(optional = false)
     @Column(name = "NOMBRE_PRODUCTO")
     private String nombreProducto;
     @Basic(optional = false)
     @Column(name = "PRECIO_PRODUCTO")
-    private Integer precioProducto;
+    private BigInteger precioProducto;
     @Basic(optional = false)
     @Column(name = "STOCK_PRODUCTO")
-    private Integer stockProducto;
+    private BigInteger stockProducto;
     @Column(name = "DESCRIPCION_PRODUCTO")
     private String descripcionProducto;
     @Basic(optional = false)
     @Lob
     @Column(name = "IMAGEN_PRODUCTO")
-    private byte[] imagenProducto;
-    private int idTienda;
-    private int catprodIdCatprod;
-    private int marcaIdMarca;
-    private int ofertaIdOferta;
-    private int rubroproductoIdRubro;
-    private Marca objMarca;
-    private Catgoriaproducto objCategoria;
-
-    public int getRubroproductoIdRubro() {
-        return rubroproductoIdRubro;
-    }
-
-    public void setRubroproductoIdRubro(int rubroproductoIdRubro) {
-        this.rubroproductoIdRubro = rubroproductoIdRubro;
-    }
+    private Serializable imagenProducto;
+    @JoinTable(name = "TIENDA_PRODUCO", joinColumns = {
+        @JoinColumn(name = "PRODUCTO_ID_PRODUCTO", referencedColumnName = "ID_PRODUCTO")}, inverseJoinColumns = {
+        @JoinColumn(name = "TIENDA_ID_TIENDA", referencedColumnName = "ID_TIENDA")})
+    @ManyToMany
+    private Collection<Tienda> tiendaCollection;
+    @JoinColumn(name = "CATPROD_ID_CATPROD", referencedColumnName = "ID_CATEGORIAPRODUCTO")
+    @ManyToOne(optional = false)
+    private Catgoriaproducto catprodIdCatprod;
+    @JoinColumn(name = "MARCA_ID_MARCA", referencedColumnName = "ID_MARCA")
+    @ManyToOne(optional = false)
+    private Marca marcaIdMarca;
+    @JoinColumn(name = "OFERTA_ID_OFERTA", referencedColumnName = "ID_OFERTA")
+    @OneToOne(optional = false)
+    private Oferta ofertaIdOferta;
+    @JoinColumn(name = "RUBROPRODUCTO_ID_RUBRO", referencedColumnName = "ID_RUBRO")
+    @ManyToOne(optional = false)
+    private Rubroproducto rubroproductoIdRubro;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productoIdProducto")
     private Oferta oferta;
 
     public Producto() {
     }
 
-    public Producto(Integer idProducto) {
+    public Producto(BigDecimal idProducto) {
         this.idProducto = idProducto;
     }
 
-    public Producto(Integer idProducto, String nombreProducto, Integer precioProducto,
-            Integer stockProducto, byte[] imagenProducto) {
+    public Producto(BigDecimal idProducto, String nombreProducto, BigInteger precioProducto, BigInteger stockProducto, Serializable imagenProducto) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.precioProducto = precioProducto;
@@ -82,11 +98,11 @@ public class Producto implements Serializable {
         this.imagenProducto = imagenProducto;
     }
 
-    public Integer getIdProducto() {
+    public BigDecimal getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Integer idProducto) {
+    public void setIdProducto(BigDecimal idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -98,19 +114,19 @@ public class Producto implements Serializable {
         this.nombreProducto = nombreProducto;
     }
 
-    public Integer getPrecioProducto() {
+    public BigInteger getPrecioProducto() {
         return precioProducto;
     }
 
-    public void setPrecioProducto(Integer precioProducto) {
+    public void setPrecioProducto(BigInteger precioProducto) {
         this.precioProducto = precioProducto;
     }
 
-    public Integer getStockProducto() {
+    public BigInteger getStockProducto() {
         return stockProducto;
     }
 
-    public void setStockProducto(Integer stockProducto) {
+    public void setStockProducto(BigInteger stockProducto) {
         this.stockProducto = stockProducto;
     }
 
@@ -122,48 +138,53 @@ public class Producto implements Serializable {
         this.descripcionProducto = descripcionProducto;
     }
 
-    public byte[] getImagenProducto() {
+    public Serializable getImagenProducto() {
         return imagenProducto;
     }
 
-    public void setImagenProducto(byte[] imagenProducto) {
+    public void setImagenProducto(Serializable imagenProducto) {
         this.imagenProducto = imagenProducto;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    @XmlTransient
+    public Collection<Tienda> getTiendaCollection() {
+        return tiendaCollection;
     }
 
-    public int getIdTienda() {
-        return idTienda;
+    public void setTiendaCollection(Collection<Tienda> tiendaCollection) {
+        this.tiendaCollection = tiendaCollection;
     }
 
-    public int getCatprodIdCatprod() {
+    public Catgoriaproducto getCatprodIdCatprod() {
         return catprodIdCatprod;
     }
 
-    public int getMarcaIdMarca() {
-        return marcaIdMarca;
-    }
-
-    public int getOfertaIdOferta() {
-        return ofertaIdOferta;
-    }
-
-    public void setIdTienda(int idTienda) {
-        this.idTienda = idTienda;
-    }
-
-    public void setCatprodIdCatprod(int catprodIdCatprod) {
+    public void setCatprodIdCatprod(Catgoriaproducto catprodIdCatprod) {
         this.catprodIdCatprod = catprodIdCatprod;
     }
 
-    public void setMarcaIdMarca(int marcaIdMarca) {
+    public Marca getMarcaIdMarca() {
+        return marcaIdMarca;
+    }
+
+    public void setMarcaIdMarca(Marca marcaIdMarca) {
         this.marcaIdMarca = marcaIdMarca;
     }
 
-    public void setOfertaIdOferta(int ofertaIdOferta) {
+    public Oferta getOfertaIdOferta() {
+        return ofertaIdOferta;
+    }
+
+    public void setOfertaIdOferta(Oferta ofertaIdOferta) {
         this.ofertaIdOferta = ofertaIdOferta;
+    }
+
+    public Rubroproducto getRubroproductoIdRubro() {
+        return rubroproductoIdRubro;
+    }
+
+    public void setRubroproductoIdRubro(Rubroproducto rubroproductoIdRubro) {
+        this.rubroproductoIdRubro = rubroproductoIdRubro;
     }
 
     public Oferta getOferta() {
@@ -172,22 +193,6 @@ public class Producto implements Serializable {
 
     public void setOferta(Oferta oferta) {
         this.oferta = oferta;
-    }
-
-    public Catgoriaproducto getObjCategoria() {
-        return objCategoria;
-    }
-
-    public Marca getObjMarca() {
-        return objMarca;
-    }
-
-    public void setObjCategoria(Catgoriaproducto objCategoria) {
-        this.objCategoria = objCategoria;
-    }
-
-    public void setObjMarca(Marca objMarca) {
-        this.objMarca = objMarca;
     }
 
     @Override
@@ -212,7 +217,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Validacion.Producto[idProducto=" + idProducto + "]";
+        return "Validacion.Producto[ idProducto=" + idProducto + " ]";
     }
-
+    
 }

@@ -7,10 +7,6 @@ package Clases;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -121,42 +117,5 @@ public class Tipousuario implements Serializable {
     public String toString() {
         return "Validacion.Tipousuario[ idTipousuario=" + idTipousuario + " ]";
     }
-    
-    
-        public ResultSet getTipoUsuario() throws ClassNotFoundException, SQLException{
-        
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select * from TIPOUSUARIO order by id_tipousuario"; 
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-         return rs;
-    }
-        
-              public int getIDxNombre(String rol) throws ClassNotFoundException, SQLException{
-        int id = 0;
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select * from tipousuario where nombre_tipousuario = '"+rol+"'";
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-        
-        while(rs.next()){
-        id = Integer.parseInt(rs.getString(1));
-        };
-        rs.close();
-         return id;
-         
-}
     
 }

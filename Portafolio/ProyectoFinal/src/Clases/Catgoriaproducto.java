@@ -1,10 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Clases;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -23,22 +25,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Eduardo
  */
 @Entity
-@Table(name = "CATEGORIA")
+@Table(name = "CATGORIAPRODUCTO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c")
-    , @NamedQuery(name = "Categoria.findByIdCategoriaproducto", query = "SELECT c FROM Categoria c WHERE c.id_Categoria = :idCategoriaproducto")
-    , @NamedQuery(name = "Categoria.findByNombreCategoriaprod", query = "SELECT c FROM Categoria c WHERE c.nombre_Categoria = :nombreCategoriaprod")})
+    @NamedQuery(name = "Catgoriaproducto.findAll", query = "SELECT c FROM Catgoriaproducto c")
+    , @NamedQuery(name = "Catgoriaproducto.findByIdCategoriaproducto", query = "SELECT c FROM Catgoriaproducto c WHERE c.idCategoriaproducto = :idCategoriaproducto")
+    , @NamedQuery(name = "Catgoriaproducto.findByNombreCategoriaprod", query = "SELECT c FROM Catgoriaproducto c WHERE c.nombreCategoriaprod = :nombreCategoriaprod")})
 public class Catgoriaproducto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
-    @Column(name = "ID_CATEGORIA")
-    private Integer idCategoriaproducto;
+    @Column(name = "ID_CATEGORIAPRODUCTO")
+    private BigDecimal idCategoriaproducto;
     @Basic(optional = false)
-    @Column(name = "NOMBRE_CATEGORIA")
+    @Column(name = "NOMBRE_CATEGORIAPROD")
     private String nombreCategoriaprod;
     @OneToMany(mappedBy = "catprodIdCatprod")
     private Collection<VwListadoProductos> vwListadoProductosCollection;
@@ -48,20 +50,20 @@ public class Catgoriaproducto implements Serializable {
     public Catgoriaproducto() {
     }
 
-    public Catgoriaproducto(Integer idCategoriaproducto) {
+    public Catgoriaproducto(BigDecimal idCategoriaproducto) {
         this.idCategoriaproducto = idCategoriaproducto;
     }
 
-    public Catgoriaproducto(Integer idCategoriaproducto, String nombreCategoriaprod) {
+    public Catgoriaproducto(BigDecimal idCategoriaproducto, String nombreCategoriaprod) {
         this.idCategoriaproducto = idCategoriaproducto;
         this.nombreCategoriaprod = nombreCategoriaprod;
     }
 
-    public Integer getIdCategoriaproducto() {
+    public BigDecimal getIdCategoriaproducto() {
         return idCategoriaproducto;
     }
 
-    public void setIdCategoriaproducto(Integer idCategoriaproducto) {
+    public void setIdCategoriaproducto(BigDecimal idCategoriaproducto) {
         this.idCategoriaproducto = idCategoriaproducto;
     }
 
@@ -113,41 +115,7 @@ public class Catgoriaproducto implements Serializable {
 
     @Override
     public String toString() {
-        return "Validacion.Categoria[ idCategoria=" + idCategoriaproducto + " ]";
+        return "Validacion.Catgoriaproducto[ idCategoriaproducto=" + idCategoriaproducto + " ]";
     }
-    
-     public ResultSet getCategoriaProds() throws ClassNotFoundException, SQLException{
-        
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select NOMBRE_CATEGORIA from CATEGORIA order by ID_CATEGORIA"; 
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-         return rs;
-}
-     
-         public int getCategoriaID(String categoria) throws ClassNotFoundException, SQLException{
-        int id = 0;
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select ID_CATEGORIA from CATEGORIA where NOMBRE_CATEGORIA = '"+categoria+"' order by ID_CATEGORIA";
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-           while(rs.next()){
-        id = Integer.parseInt(rs.getString(1));
-        };
-        rs.close();
-         return id;
-}
     
 }

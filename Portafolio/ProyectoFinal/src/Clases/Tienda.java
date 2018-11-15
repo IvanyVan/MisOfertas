@@ -1,12 +1,12 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Clases;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -166,75 +166,6 @@ public class Tienda implements Serializable {
     @Override
     public String toString() {
         return "Validacion.Tienda[ idTienda=" + idTienda + " ]";
-    }
-    
-        public ResultSet getTienda(int empresa) throws ClassNotFoundException, SQLException{
-        
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select * from TIENDA where id_empresa ="+empresa+" order by id_tienda"; 
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-         return rs;
-    }
-    
-        public ResultSet getTiendaxID(int idComuna) throws ClassNotFoundException, SQLException{
-        
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select * from Tienda where id_comuna ="+idComuna+"";
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-         return rs;
-}
-        
-               public int getIDxNombre(String nomtienda) throws ClassNotFoundException, SQLException{
-        int id = 0;
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select * from tienda where nombre_tienda = '"+nomtienda+"'";
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-        
-        while(rs.next()){
-        id = Integer.parseInt(rs.getString(1));
-        };
-        rs.close();
-         return id;
-         
-}
-               
-            public String getNombreTiendaStringxEmpresa(int empresa) throws ClassNotFoundException, SQLException{
-        String nombre = "";
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select NOMBRE_TIENDA from TIENDA where id_empresa ="+empresa+" order by id_tienda"; 
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-        while(rs.next()){
-        nombre = rs.getString(1);
-        };
-        rs.close();
-         return nombre;
     }
     
 }

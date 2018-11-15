@@ -1,10 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Clases;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -26,9 +28,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "MARCA")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m"),
-    @NamedQuery(name = "Marca.findByIdMarca", query = "SELECT m FROM Marca m WHERE m.idMarca = :idMarca"),
-    @NamedQuery(name = "Marca.findByNombreMarca", query = "SELECT m FROM Marca m WHERE m.nombreMarca = :nombreMarca")})
+    @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m")
+    , @NamedQuery(name = "Marca.findByIdMarca", query = "SELECT m FROM Marca m WHERE m.idMarca = :idMarca")
+    , @NamedQuery(name = "Marca.findByNombreMarca", query = "SELECT m FROM Marca m WHERE m.nombreMarca = :nombreMarca")})
 public class Marca implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,7 +38,7 @@ public class Marca implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID_MARCA")
-    private Integer idMarca;
+    private BigDecimal idMarca;
     @Basic(optional = false)
     @Column(name = "NOMBRE_MARCA")
     private String nombreMarca;
@@ -48,20 +50,20 @@ public class Marca implements Serializable {
     public Marca() {
     }
 
-    public Marca(Integer idMarca) {
+    public Marca(BigDecimal idMarca) {
         this.idMarca = idMarca;
     }
 
-    public Marca(Integer idMarca, String nombreMarca) {
+    public Marca(BigDecimal idMarca, String nombreMarca) {
         this.idMarca = idMarca;
         this.nombreMarca = nombreMarca;
     }
 
-    public Integer getIdMarca() {
+    public BigDecimal getIdMarca() {
         return idMarca;
     }
 
-    public void setIdMarca(Integer idMarca) {
+    public void setIdMarca(BigDecimal idMarca) {
         this.idMarca = idMarca;
     }
 
@@ -110,42 +112,10 @@ public class Marca implements Serializable {
         }
         return true;
     }
+
     @Override
     public String toString() {
         return "Validacion.Marca[ idMarca=" + idMarca + " ]";
     }
-
-    public ResultSet getMarcaProd() throws ClassNotFoundException, SQLException {
-
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn = conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo = null;
-        String query = "select NOMBRE_MARCA from MARCA order by ID_MARCA";
-        sentencia = conn.createStatement();
-        rs = sentencia.executeQuery(query);
-        return rs;
-    }
-
-    public int getMarcaID(String nombremarca) throws ClassNotFoundException, SQLException {
-        int id = 0;
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn = conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo = null;
-        String query = "select ID_MARCA from MARCA where NOMBRE_MARCA = '" + nombremarca + "' order by ID_MARCA";
-        sentencia = conn.createStatement();
-        rs = sentencia.executeQuery(query);
-        while (rs.next()) {
-            id = Integer.parseInt(rs.getString(1));
-        };
-        rs.close();
-        return id;
-
-    }
-
+    
 }

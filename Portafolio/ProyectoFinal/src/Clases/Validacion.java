@@ -17,14 +17,14 @@ import java.sql.Statement;
  */
 public class Validacion {
 
-    public boolean validarUsuario(String rut, String clave) throws SQLException, ClassNotFoundException{
+    public boolean validarUsuario(String user, String clave) throws SQLException, ClassNotFoundException{
         boolean validar = false;
         Connection conn = null;
         Conexion conexion = new Conexion();
         conn=conexion.getConnection();
         Statement sentencia = null;
         ResultSet rs = null;
-        String query = "Select count(*) from USUARIO where rut_usuario ='"+rut+"' and password_usuario='"+clave+"'";
+        String query = "Select count(*) from USUARIO where nombre_usuario ='"+user+"' and password_usuario='"+clave+"'";
         sentencia=conn.createStatement();
         rs = sentencia.executeQuery(query);
         while (rs.next()) {            

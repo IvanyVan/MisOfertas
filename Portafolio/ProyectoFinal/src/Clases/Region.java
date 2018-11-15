@@ -7,10 +7,6 @@ package Clases;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -111,34 +107,4 @@ public class Region implements Serializable {
         return "Validacion.Region[ idRegion=" + idRegion + " ]";
     }
     
-     public ResultSet getRegiono() throws ClassNotFoundException, SQLException{
-        
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select nombre_region from Region order by id_region"; 
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-         return rs;
 }
-     
-          public ResultSet getRegionID(String nombreRegion) throws ClassNotFoundException, SQLException{
-        
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select id_region from Region where nombre_region = '"+nombreRegion+"' order by id_region";
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-         return rs;
-}
-}
-

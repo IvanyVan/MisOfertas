@@ -7,10 +7,6 @@ package Clases;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -131,54 +127,7 @@ public class Empresa implements Serializable {
         }
         return true;
     }
-    
-    public ResultSet getEmpresas() throws ClassNotFoundException, SQLException{
-        
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select nombre_empresa from Empresa order by id_empresa"; 
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-         return rs;
-}
 
-        public ResultSet getEmpresasID(String nombre) throws ClassNotFoundException, SQLException{
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select * from EMPRESA where NOMBRE_EMPRESA = '"+nombre+"'"; 
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-       
-         return rs;
-    }
-    
-        public String getNombreEmpresa(int empresa) throws ClassNotFoundException, SQLException{
-        String nombre = "";
-        Connection conn = null;
-        Conexion conexion = new Conexion();
-        conn=conexion.getConnection();
-        Statement sentencia = null;
-        ResultSet rs = null;
-        String tipo=null;
-        String query = "select NOMBRE_EMPRESA  from EMPRESA where ID_EMPRESA = "+empresa+" order by ID_EMPRESA"; 
-        sentencia =conn.createStatement();
-        rs = sentencia.executeQuery(query);
-        while(rs.next()){
-        nombre = rs.getString(1);
-        };
-        rs.close();
-         return nombre;
-    }
-    
     @Override
     public String toString() {
         return "Validacion.Empresa[ idEmpresa=" + idEmpresa + " ]";

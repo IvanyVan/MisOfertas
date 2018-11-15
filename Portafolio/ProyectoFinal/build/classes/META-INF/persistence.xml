@@ -17,7 +17,6 @@
     <class>Clases.Valoracion</class>
     <class>Clases.Marca</class>
     <class>Clases.Catgoriaproducto</class>
-    <class>Negocio.TiendaProducto</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="MO2"/>
