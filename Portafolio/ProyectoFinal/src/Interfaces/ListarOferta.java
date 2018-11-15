@@ -1,6 +1,6 @@
 
 package Interfaces;
-
+//CVomentari
 import Clases.Conexion;
 import java.awt.Color;
 import java.awt.Image;
