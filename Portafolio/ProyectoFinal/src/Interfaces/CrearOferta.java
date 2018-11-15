@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import Negocio.OfertaNegocio;
 import Negocio.Validacion;
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -217,6 +217,7 @@ public final class CrearOferta extends javax.swing.JFrame {
         jLabel7.setText("Fecha de expiracón");
 
         jDateChooser1.setDateFormatString("dd/MM/yyyy");
+        jDateChooser1.setMinSelectableDate(new Date());
 
         lblIDdelatienda.setText("  ");
 
@@ -388,6 +389,42 @@ public final class CrearOferta extends javax.swing.JFrame {
                          lblMinCompras.setVisible(true);
                     validado++;
                        }
+                       
+                //validacion max positvo
+        String max_pos = TxtNMaximo.getText();
+        int max_numero = Integer.parseInt(max_pos);
+        if (max_numero < 1){
+            lblMaxCompras.setText("El máximo de compras no debe ser un valor menor que 1");
+            lblMaxCompras.setVisible(true);
+            validado++;
+        }
+                
+                if(validacion.validacionLetras(TxtNMinimo.getText())){//validaciones menores
+                    lblMinCompras.setText("El mínimo de compras no puede tener letras");
+                    lblMinCompras.setVisible(true);
+                    validado++;}
+               
+                       if(TxtNMinimo.getText().trim().length()<=0){
+                    lblMinCompras.setText("El mínimo de compras no debe estar vacío");
+                         lblMinCompras.setVisible(true);
+                    validado++;
+                       }
+         //validacion min positvo
+        String min_pos = TxtNMinimo.getText();
+        int min_numero = Integer.parseInt(min_pos);
+        if (min_numero < 1){
+            lblMinCompras.setText("El mínimo de compras no debe ser un valor menor que 1");
+            lblMinCompras.setVisible(true);
+            validado++;
+        }
+        
+        if(min_numero > max_numero){
+            lblMaxCompras.setText("El máximo de compras debe ser mayor o igual al mínimo de compras");
+            lblMaxCompras.setVisible(true);
+            validado++;
+        }
+        
+        
         if(validado>1){
              JOptionPane.showMessageDialog(null, "Registro no completado","Verifique datos ingresados", JOptionPane.WARNING_MESSAGE);
         }else{
