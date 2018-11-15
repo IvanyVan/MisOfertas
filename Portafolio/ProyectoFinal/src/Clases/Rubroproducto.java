@@ -7,6 +7,10 @@ package Clases;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -25,13 +29,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Eduardo
  */
 @Entity
-@Table(name = "RUBROPRODUCTO")
+@Table(name = "RUBRO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rubroproducto.findAll", query = "SELECT r FROM Rubroproducto r")
-    , @NamedQuery(name = "Rubroproducto.findByIdRubro", query = "SELECT r FROM Rubroproducto r WHERE r.idRubro = :idRubro")
-    , @NamedQuery(name = "Rubroproducto.findByNombreRubro", query = "SELECT r FROM Rubroproducto r WHERE r.nombreRubro = :nombreRubro")
-    , @NamedQuery(name = "Rubroproducto.findByDescripcion", query = "SELECT r FROM Rubroproducto r WHERE r.descripcion = :descripcion")})
+    @NamedQuery(name = "Rubro.findAll", query = "SELECT r FROM Rubro r")
+    , @NamedQuery(name = "Rubro.findByIdRubro", query = "SELECT r FROM Rubro r WHERE r.idRubro = :idRubro")
+    , @NamedQuery(name = "Rubro.findByNombreRubro", query = "SELECT r FROM Rubro r WHERE r.nombreRubro = :nombreRubro")
+    , @NamedQuery(name = "Rubro.findByDescripcion", query = "SELECT r FROM Rubro r WHERE r.descripcion = :descripcion")})
 public class Rubroproducto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -128,5 +132,42 @@ public class Rubroproducto implements Serializable {
     public String toString() {
         return "Validacion.Rubroproducto[ idRubro=" + idRubro + " ]";
     }
+    
+         public ResultSet getRubroProd() throws ClassNotFoundException, SQLException{
+        
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select NOMBRE_RUBRO from RUBRO order by ID_RUBRO"; 
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+         return rs;
+         
+}
+     
+          public int getRubroporID(String nombrerubro) throws ClassNotFoundException, SQLException{
+        int id = 0;
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select ID_RUBRO from RUBRO where NOMBRE_RUBRO = '"+nombrerubro+"' order by ID_RUBRO";
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+            
+        while(rs.next()){
+        id = Integer.parseInt(rs.getString(1));
+        };
+        rs.close();
+         return id;
+}
+         
     
 }

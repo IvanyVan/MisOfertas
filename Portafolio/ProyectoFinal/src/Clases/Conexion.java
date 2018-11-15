@@ -8,27 +8,22 @@ package Clases;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Eduardo
  */
-public class Conexion {
- 
-    
+public class Conexion {   
     
 
 public Connection getConnection() throws ClassNotFoundException, SQLException{
 
 String driver="oracle.jdbc.OracleDriver";
-String url="jdbc:oracle:thin:@localhost:1521:XE";
+//String url="jdbc:oracle:thin:@35.237.6.81:1521:XE";
+String url="jdbc:oracle:thin:@35.237.6.81:1521:XE";
 String username="MO2";
 String password="123";
 Connection conn = null;
-
-
 
    Class.forName(driver);
      

@@ -8,6 +8,10 @@ package Clases;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -271,4 +275,34 @@ public class Usuario implements Serializable {
         return "Validacion.Usuario[ idUsuario=" + idUsuario + " ]";
     }
     
+    
+     public ResultSet getUsuario() throws ClassNotFoundException, SQLException{
+        
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select * from USUARIO"; 
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+         return rs;
+    }
+     
+       public ResultSet getUsuarioRut(String rut) throws ClassNotFoundException, SQLException{
+        
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select * from USUARIO where rut_usuario = '"+rut+"'"; 
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+         return rs;
+    }
 }
