@@ -18,8 +18,8 @@ public class HasharClave {
         
         try{
             
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(md5.getBytes());
+            MessageDigest md1 = MessageDigest.getInstance("MD5");
+            byte[] array = md1.digest(md5.getBytes());
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < array.length; i++) {
                 sb.append(Integer.toHexString((array[i] & 0xff) |0x100).substring(1,3));
