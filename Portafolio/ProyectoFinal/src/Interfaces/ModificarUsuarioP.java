@@ -522,8 +522,8 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
                     TxtContrasena.getText(),comuna.getIDxNombre(CbxComuna.getSelectedItem().toString()),
                     TxtNombre.getText(),tusuario.getIDxNombre(CbxRoles.getSelectedItem().toString()),
                     TxtCorreo.getText(),0,TxtTelefono.getText());
-                JOptionPane.showMessageDialog(null, "Usuario Modificado");
-                LbModificado.setText("Usuario Modificado");
+                JOptionPane.showMessageDialog(null, "Usuario Modificado Correctamente");// se cambio el mensaje a modo de ejemplo
+                LbModificado.setText("Usuario Modificado Correctamente");
 
             }
 
