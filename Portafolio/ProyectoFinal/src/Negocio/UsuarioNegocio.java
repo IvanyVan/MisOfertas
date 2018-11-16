@@ -39,7 +39,7 @@ public class UsuarioNegocio {
         conn = conexion.getConnection();
         Statement sentencia = null;
         String query = "Begin usuario_tapi.upd(" + tipoUsuario + ",'" + direccionUsuario
-                + "'," + correoActivo + "','" + apellidoPaterno + "','" + nombreUsuario + "','"
+                + "','" + correoActivo + "','" + apellidoPaterno + "','" + nombreUsuario + "','"
                 + rutUsuario + "','" + correoUsuario + "','" + apellidoMaterno + "'," + 0 + ",'"
                 + telefonoUsuario + "'," + idComuna + ",'" + password + "'); end;";
 
