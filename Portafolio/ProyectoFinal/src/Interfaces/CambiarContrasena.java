@@ -27,7 +27,7 @@ public class CambiarContrasena extends javax.swing.JFrame {
         
         initComponents();
         LblErrorClave.setVisible(false);
-        LblEmpleado.setVisible(false);
+        LblEmpleado.setVisible(true);
         LblNombre.setVisible(false);
         
     }
