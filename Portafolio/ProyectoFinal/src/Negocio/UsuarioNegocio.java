@@ -68,5 +68,22 @@ public class UsuarioNegocio {
         }
         return validar;
     }
+    
+    public void CambiarContraseña(String Clave, char Nuevo, String rut) throws ClassNotFoundException, SQLException{
+        
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn = conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        
+            String query = "UPDATE USUARIO SET password_usuario= '"+Clave+"', correoactivo = '"+Nuevo+"' where rut_usuario ='" +rut+ "'";
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(query);
+        
+        
+            
+     
+    }
 
 }

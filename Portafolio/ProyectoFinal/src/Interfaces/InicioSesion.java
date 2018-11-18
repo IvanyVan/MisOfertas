@@ -7,6 +7,7 @@ package Interfaces;
 
 import Clases.Empresa;
 import Clases.Tienda;
+import Clases.Usuario;
 import Negocio.Validacion;
 import Negocio.HasharClave;
 //import com.sun.xml.internal.ws.api.message.Message;
@@ -157,10 +158,30 @@ Empresa emp = new Empresa();
         HasharClave hs = new HasharClave();
         if (validacion.isValidRut(TxtUsuarioRut.getText())==true) {
             String ClaveHash = hs.MD5(TxtClave.getText());
+          
+            
         
         try {
           validado = validacion.validarUsuario(TxtUsuarioRut.getText(), ClaveHash);
             if (validado==true) {
+                
+                    if(validacion.devolverActivacion(TxtUsuarioRut.getText(), ClaveHash)== 'N'){
+                     JOptionPane.showMessageDialog(null, "Como es su primer ingreso, debe cambiar su contraseña");
+                     CambiarContrasena Camb = new CambiarContrasena();
+                     Camb.setVisible(true);
+                     String rut = TxtUsuarioRut.getText();
+                  
+                    
+                      Camb.LblEmpleado.setText(rut);//id del usuario
+                      
+                    
+                      
+                  
+                     
+                     
+                     dispose();
+                    }else{
+
                 if(validacion.devolverTipo(TxtUsuarioRut.getText(), ClaveHash).equals("1")){
                     Administrador administrador = new Administrador();
                     administrador.setVisible(true);
@@ -191,7 +212,7 @@ Empresa emp = new Empresa();
                     LbError.setText("Este usuario esta inhabilitado");
                     LbError.setVisible(true);
                 }
-                
+              }  
                 
             } else {
                 LbError.setVisible(true);

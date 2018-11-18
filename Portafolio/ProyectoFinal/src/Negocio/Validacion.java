@@ -62,6 +62,30 @@ public class Validacion {
         rs.close();
         return tipo;
     }
+    
+        public Character devolverActivacion(String user, String clave) throws ClassNotFoundException, SQLException {
+
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn = conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        char activacion = 0;
+        String query = "select CORREOACTIVO from USUARIO where rut_usuario='" + user + "' and password_usuario='" + clave + "'";
+        sentencia = conn.createStatement();
+        rs = sentencia.executeQuery(query);
+        while (rs.next()) {
+
+            String Activacion = rs.getString(1);
+            if (!Activacion.equals(null)) {
+                activacion = Activacion.charAt(0);
+                
+            }
+
+        }
+        rs.close();
+        return activacion;
+    }
 
     public ResultSet devolverUsuariocompleto(String rut, String clave) throws ClassNotFoundException, SQLException {
 
