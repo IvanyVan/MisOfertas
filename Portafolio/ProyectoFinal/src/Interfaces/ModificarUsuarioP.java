@@ -34,6 +34,7 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
         Empresa empresa = new Empresa();
         Validacion validacion = new Validacion();
         UsuarioNegocio usuarioN = new UsuarioNegocio();
+        
     public ModificarUsuarioP() throws SQLException, ClassNotFoundException {
         initComponents();
          LbErrorNombres.setVisible(false);
@@ -45,6 +46,7 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
          LbErrorCorreo.setVisible(false);
         LbModificado.setVisible(false);
          rss= usuario.getUsuario();
+         
          while(rss.next()){
              CbxRut.addItem(rss.getString("RUT_USUARIO"));
          }
@@ -393,16 +395,12 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
         CbxTiendas.removeAllItems();
         try {
             rss= empresa.getEmpresasID(CbxEmpresa.getSelectedItem().toString());
-
             while (rss.next()){
                 idEmpresa= rss.getInt(1);
-
             }
-
             rss = tienda.getTienda(idEmpresa);
             while (rss.next()){
                 CbxTiendas.addItem(rss.getString(2));
-
             }
             rss.close();
         } catch (ClassNotFoundException ex) {
@@ -410,7 +408,6 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_CbxEmpresaActionPerformed
 
     private void CbxRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxRegionActionPerformed
@@ -430,9 +427,7 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
 
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RegistarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 

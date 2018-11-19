@@ -33,102 +33,96 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="TxtCorreoElectronico" pref="223" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="LbErrorCorreo" pref="65" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="560" max="-2" attributes="0"/>
+                      <Component id="TxtCorreoElectronico" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel5" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel8" alignment="0" pref="136" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TxtRut" pref="161" max="32767" attributes="0"/>
-                                  <Component id="TxtApellidoMaterno" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="TxtContraseña" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="TxtRepetirContraseña" max="32767" attributes="0"/>
-                                  <Component id="TxtTelefono" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="TxtDireccion" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel5" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" pref="136" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel2" pref="136" max="32767" attributes="0"/>
-                                  <Component id="jLabel1" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="TxtNombre" pref="161" max="32767" attributes="0"/>
-                                  <Component id="TxtApellidoPaterno" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="LbErrorTelefono" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="LbErrorNombres" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="LbErrorApepa" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="LbErrorApMa" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="LbErroRut" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="LbErrorClave" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="LbErroDireccion" min="-2" pref="130" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="TxtRut" pref="161" max="32767" attributes="0"/>
+                          <Component id="TxtApellidoMaterno" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TxtContraseña" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TxtRepetirContraseña" max="32767" attributes="0"/>
+                          <Component id="TxtTelefono" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TxtDireccion" alignment="0" max="32767" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Region" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel2" pref="136" max="32767" attributes="0"/>
+                          <Component id="jLabel1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="TxtNombre" pref="161" max="32767" attributes="0"/>
+                          <Component id="TxtApellidoPaterno" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LbErrorTelefono" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="LbErrorNombres" alignment="0" pref="181" max="32767" attributes="0"/>
+                                  <Component id="LbErrorApepa" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="LbErrorApMa" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="LbErroRut" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="LbErrorClave" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="CbxComuna" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="CbxRegion" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="CbxRoles" alignment="0" pref="294" max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="CbxEmpresa" alignment="0" pref="292" max="32767" attributes="0"/>
-                                  <Component id="CbxTiendas" alignment="0" pref="292" max="32767" attributes="0"/>
-                                  <Component id="BtnRegistrar" alignment="0" pref="292" max="32767" attributes="0"/>
-                                  <Component id="BtnCancelar" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="LbErrorCorreo" alignment="0" pref="265" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="LbErroDireccion" min="-2" pref="130" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Region" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="CbxComuna" alignment="0" max="32767" attributes="0"/>
+                          <Component id="CbxRegion" alignment="0" max="32767" attributes="0"/>
+                          <Component id="CbxRoles" alignment="0" pref="294" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="CbxEmpresa" alignment="0" pref="292" max="32767" attributes="0"/>
+                          <Component id="CbxTiendas" alignment="0" pref="292" max="32767" attributes="0"/>
+                          <Component id="BtnRegistrar" alignment="0" pref="292" max="32767" attributes="0"/>
+                          <Component id="BtnCancelar" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

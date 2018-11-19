@@ -24,6 +24,7 @@ public class Administrador extends javax.swing.JFrame {
     RegistrarUsuarioP pregistrar;
     ModificarUsuarioP pmodificar;
     ListarUsuariosP plistado;
+    AsignarTiendaPanel pasignaTienda;
     /**
      * Creates new form Administrador
      * @throws java.lang.ClassNotFoundException
@@ -33,6 +34,7 @@ public class Administrador extends javax.swing.JFrame {
         this.pregistrar = new RegistrarUsuarioP();
         this.pmodificar = new ModificarUsuarioP();
         this.plistado =  new ListarUsuariosP();
+        this.pasignaTienda = new AsignarTiendaPanel();
         initComponents();
        this.getContentPane().setBackground(Color.WHITE);
          this.setLocationRelativeTo(null);
@@ -44,12 +46,16 @@ public class Administrador extends javax.swing.JFrame {
          c.gridx = 0;
          c.gridy = 0 ;
          jPAdministrador.add(pmodificar);
-                c.gridx = 0;
+         c.gridx = 0;
          c.gridy = 0 ;
          jPAdministrador.add(plistado);
+         c.gridx = 0;
+         c.gridy = 0 ;
+         jPAdministrador.add(pasignaTienda);
          pregistrar.setVisible(false);
          pmodificar.setVisible(false);
          plistado.setVisible(false);
+         pasignaTienda.setVisible(false);
     }
 
     /**
@@ -69,7 +75,9 @@ public class Administrador extends javax.swing.JFrame {
         MenuLIstarUsuarios = new javax.swing.JMenuItem();
         MenuModificarUsuario = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        MenuGenerarBI = new javax.swing.JMenuItem();
+        MenuAsignacionTienda = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        MenuGenerarBI1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -123,18 +131,32 @@ public class Administrador extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu4);
 
-        jMenu5.setText("Reporte");
+        jMenu5.setText("Asignacion Tiendas");
         jMenu5.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
 
-        MenuGenerarBI.setText("Generar BI");
-        MenuGenerarBI.addActionListener(new java.awt.event.ActionListener() {
+        MenuAsignacionTienda.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        MenuAsignacionTienda.setText("Asignacion de tiendas");
+        MenuAsignacionTienda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuGenerarBIActionPerformed(evt);
+                MenuAsignacionTiendaActionPerformed(evt);
             }
         });
-        jMenu5.add(MenuGenerarBI);
+        jMenu5.add(MenuAsignacionTienda);
 
         jMenuBar2.add(jMenu5);
+
+        jMenu6.setText("Reporte");
+        jMenu6.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+
+        MenuGenerarBI1.setText("Generar BI");
+        MenuGenerarBI1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuGenerarBI1ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MenuGenerarBI1);
+
+        jMenuBar2.add(jMenu6);
 
         setJMenuBar(jMenuBar2);
 
@@ -175,13 +197,16 @@ public class Administrador extends javax.swing.JFrame {
          pregistrar.setVisible(true);
           pmodificar.setVisible(false);
           plistado.setVisible(false);
-          
+          pasignaTienda.setVisible(false);
           
     }//GEN-LAST:event_MenuCrearUsuarioActionPerformed
 
-    private void MenuGenerarBIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuGenerarBIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuGenerarBIActionPerformed
+    private void MenuAsignacionTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAsignacionTiendaActionPerformed
+        pmodificar.setVisible(false);
+       pregistrar.setVisible(false);
+       plistado.setVisible(false);
+       pasignaTienda.setVisible(true);   
+    }//GEN-LAST:event_MenuAsignacionTiendaActionPerformed
 
     private void MenuLIstarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLIstarUsuariosActionPerformed
          
@@ -197,7 +222,7 @@ public class Administrador extends javax.swing.JFrame {
           pregistrar.setVisible(false);
           pmodificar.setVisible(false);
           plistado.setVisible(true);
-         
+         pasignaTienda.setVisible(false);
     }//GEN-LAST:event_MenuLIstarUsuariosActionPerformed
 
     private void MenuModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuModificarUsuarioActionPerformed
@@ -211,7 +236,12 @@ public class Administrador extends javax.swing.JFrame {
        pmodificar.setVisible(true);
        pregistrar.setVisible(false);
        plistado.setVisible(false);
+       pasignaTienda.setVisible(false);
     }//GEN-LAST:event_MenuModificarUsuarioActionPerformed
+
+    private void MenuGenerarBI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuGenerarBI1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuGenerarBI1ActionPerformed
  @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
@@ -260,13 +290,15 @@ public class Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuAsignacionTienda;
     private javax.swing.JMenuItem MenuCrearUsuario;
-    private javax.swing.JMenuItem MenuGenerarBI;
+    private javax.swing.JMenuItem MenuGenerarBI1;
     private javax.swing.JMenuItem MenuLIstarUsuarios;
     private javax.swing.JMenuItem MenuModificarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPAdministrador;
     // End of variables declaration//GEN-END:variables

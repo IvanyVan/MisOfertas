@@ -80,10 +80,21 @@ public class UsuarioNegocio {
             String query = "UPDATE USUARIO SET password_usuario= '"+Clave+"', correoactivo = '"+Nuevo+"' where rut_usuario ='" +rut+ "'";
             sentencia = conn.createStatement();
             rs = sentencia.executeQuery(query);
+    }
+    
+         public ResultSet getUsuarioRutNombre(String rut) throws ClassNotFoundException, SQLException{
         
-        
-            
-     
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select * from USUARIO where rut_usuario = '"+rut+"'"; 
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+         return rs;
     }
 
 }
