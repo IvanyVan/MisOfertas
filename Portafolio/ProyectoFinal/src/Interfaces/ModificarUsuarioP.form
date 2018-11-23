@@ -38,7 +38,7 @@
                   <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel9" alignment="0" pref="144" max="32767" attributes="0"/>
                   <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -54,7 +54,7 @@
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="LbErrorNombres" alignment="0" max="32767" attributes="0"/>
+                  <Component id="LbErrorNombres" alignment="0" pref="60" max="32767" attributes="0"/>
                   <Component id="LbErrorApepa" alignment="0" max="32767" attributes="0"/>
                   <Component id="LbErrorApema" alignment="0" max="32767" attributes="0"/>
                   <Component id="LbErrorClave" alignment="0" max="32767" attributes="0"/>
@@ -62,13 +62,18 @@
                   <Component id="LbErrorCorreo" alignment="0" max="32767" attributes="0"/>
                   <Component id="LbErrorTelefono" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="171" max="32767" attributes="0"/>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="LbModificado" alignment="0" pref="330" max="32767" attributes="0"/>
+                  <Component id="jLabelTienda" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelComuna" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LbModificado" alignment="0" pref="335" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="BtnModificar" pref="176" max="32767" attributes="0"/>
+                      <Component id="BtnModificar" pref="178" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="BtnCancelar" pref="105" max="32767" attributes="0"/>
+                      <Component id="BtnCancelar" pref="108" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -111,6 +116,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" max="32767" attributes="0"/>
                           <Component id="CbxTiendas" alignment="3" max="32767" attributes="0"/>
+                          <Component id="jLabelTienda" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -121,6 +127,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" max="32767" attributes="0"/>
                           <Component id="CbxComuna" alignment="3" max="32767" attributes="0"/>
+                          <Component id="jLabelComuna" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -396,7 +403,9 @@
           <Font name="Georgia" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value="Seleccione Rol"/>
+          </StringArray>
         </Property>
       </Properties>
       <Events>
@@ -552,6 +561,28 @@
           <Font name="Georgia" size="14" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Correo Electronico"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTienda">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="13" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel5"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelComuna">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="13" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel5"/>
       </Properties>
     </Component>
   </SubComponents>

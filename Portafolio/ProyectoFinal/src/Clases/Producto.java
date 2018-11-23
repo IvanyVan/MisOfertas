@@ -1,6 +1,10 @@
 package Clases;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -214,5 +218,7 @@ public class Producto implements Serializable {
     public String toString() {
         return "Validacion.Producto[idProducto=" + idProducto + "]";
     }
+    
+    
 
 }

@@ -45,7 +45,12 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
          LbErrorApema.setVisible(false);
          LbErrorCorreo.setVisible(false);
         LbModificado.setVisible(false);
+        jLabelComuna.setVisible(false);
+        jLabelTienda.setVisible(false);
+        
+        
          rss= usuario.getUsuario();
+         
          
          while(rss.next()){
              CbxRut.addItem(rss.getString("RUT_USUARIO"));
@@ -109,6 +114,8 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
         TxtApellidoMaterno = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabelTienda = new javax.swing.JLabel();
+        jLabelComuna = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modificación de usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Georgia", 3, 18))); // NOI18N
@@ -187,6 +194,7 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
         LbErrorApepa.setText("jLabel17");
 
         CbxRoles.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        CbxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Rol" }));
         CbxRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CbxRolesActionPerformed(evt);
@@ -257,6 +265,14 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         jLabel9.setText("Correo Electronico");
 
+        jLabelTienda.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabelTienda.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelTienda.setText("jLabel5");
+
+        jLabelComuna.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabelComuna.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelComuna.setText("jLabel5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -270,7 +286,7 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -284,21 +300,24 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
                     .addComponent(TxtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LbErrorNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LbErrorNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                     .addComponent(LbErrorApepa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LbErrorApema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LbErrorClave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LbErrorDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LbErrorCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LbErrorTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(LbModificado, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(BtnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                            .addGap(49, 49, 49)
-                            .addComponent(BtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
+                    .addComponent(jLabelTienda, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelComuna, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LbModificado, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                        .addGap(49, 49, 49)
+                        .addComponent(BtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -331,7 +350,8 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CbxTiendas))
+                            .addComponent(CbxTiendas)
+                            .addComponent(jLabelTienda))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -339,7 +359,8 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CbxComuna))
+                            .addComponent(CbxComuna)
+                            .addComponent(jLabelComuna))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
@@ -434,7 +455,17 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
     }//GEN-LAST:event_CbxRegionActionPerformed
 
     private void CbxRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxRolesActionPerformed
-
+       if(CbxRoles.getSelectedIndex()==1){
+                CbxTiendas.setVisible(false);
+                jLabel7.setVisible(false);
+                
+                
+            }else{
+            CbxTiendas.setVisible(true);
+                jLabel7.setVisible(true);
+                
+            }
+        
     }//GEN-LAST:event_CbxRolesActionPerformed
 
     private void CbxTiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxTiendasActionPerformed
@@ -508,6 +539,21 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
                 LbErrorTelefono.setVisible(true);
                 validado++;
             };
+            
+            
+            
+           if(CbxComuna.getSelectedIndex()==-1){
+               jLabelTienda.setText("Seleccione una comuna");
+                jLabelComuna.setVisible(true);
+                validado++;
+                
+            }
+            if(CbxTiendas.getSelectedIndex()==-1){
+                jLabelTienda.setText("Seleccione una tienda");
+                jLabelTienda.setVisible(true);
+                validado++;
+                
+            }
             if(validado>0){
                 validado=0;
 
@@ -611,5 +657,7 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelComuna;
+    private javax.swing.JLabel jLabelTienda;
     // End of variables declaration//GEN-END:variables
 }

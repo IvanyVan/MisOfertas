@@ -1,14 +1,20 @@
 package Interfaces;
 
+import Clases.Catgoriaproducto;
+import Clases.Marca;
 import Clases.Producto;
 import Clases.RedibujarTabla;
+import Clases.Rubroproducto;
 import Negocio.ProductoNegocio;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,19 +22,43 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author Eduardo
  */
 public class ListarProductos extends javax.swing.JFrame {
+    ResultSet rss = null;
+    Catgoriaproducto catprod = new Catgoriaproducto();
+    Marca marca = new Marca();
+            
+    
+    private TableRowSorter trsfiltro;
 
     public ListarProductos() throws SQLException, ClassNotFoundException {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
+        rss = catprod.getCategoriaProds();
+        while (rss.next()) {
+            CbxCategoria.addItem(rss.getString("NOMBRE_CATEGORIA"));
+        }
+        try {
+            cargarTabla(TableListarProductos);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ListarProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        rss = marca.getMarcaProd();
+        while (rss.next()) {
+            CbxRubro.addItem(rss.getString("NOMBRE_MARCA"));
+        }
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -39,7 +69,10 @@ public class ListarProductos extends javax.swing.JFrame {
         TableListarProductos = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
         lblIDdelatienda = new javax.swing.JLabel();
-        btnListar = new javax.swing.JButton();
+        CbxCategoria = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        CbxRubro = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 255, 204));
@@ -65,11 +98,49 @@ public class ListarProductos extends javax.swing.JFrame {
 
         lblIDdelatienda.setText("  ");
 
-        btnListar.setBackground(new java.awt.Color(153, 255, 153));
-        btnListar.setText("Listar");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
+        CbxCategoria.setEditable(true);
+        CbxCategoria.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        CbxCategoria.setToolTipText("");
+        CbxCategoria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CbxCategoriaItemStateChanged(evt);
+            }
+        });
+        CbxCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
+                CbxCategoriaActionPerformed(evt);
+            }
+        });
+        CbxCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CbxCategoriaKeyTyped(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel1.setText("Filtrar por Categoria");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel2.setText("Filtrar por Marca");
+
+        CbxRubro.setEditable(true);
+        CbxRubro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CbxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        CbxRubro.setToolTipText("");
+        CbxRubro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CbxRubroItemStateChanged(evt);
+            }
+        });
+        CbxRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CbxRubroActionPerformed(evt);
+            }
+        });
+        CbxRubro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CbxRubroKeyTyped(evt);
             }
         });
 
@@ -78,30 +149,43 @@ public class ListarProductos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1075, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(176, 176, 176)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(CbxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblIDdelatienda))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1075, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(157, 157, 157))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIDdelatienda))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(lblIDdelatienda)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CbxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,14 +195,58 @@ public class ListarProductos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+    private void CbxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxCategoriaActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CbxCategoriaActionPerformed
 
-        try {
-            cargarTabla(TableListarProductos);
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(ListarProductos.class.getName()).log(Level.SEVERE, null, ex);
+    private void CbxCategoriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CbxCategoriaKeyTyped
+       /* CbxCategoria.addKeyListener(new KeyAdapter() {
+            public void KeyReleased(final KeyEvent e){
+               String cadena = (CbxCategoria.getSelectedItem().toString()).toUpperCase();
+               CbxCategoria.setSelectedItem(cadena);
+               repaint();
+               filtro();
+            }
+    });
+        trsfiltro = new TableRowSorter(TableListarProductos.getModel());
+        TableListarProductos.setRowSorter(trsfiltro);*/
+        
+    }//GEN-LAST:event_CbxCategoriaKeyTyped
+        
+    private void CbxCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CbxCategoriaItemStateChanged
+        String query = CbxCategoria.getSelectedItem().toString();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>((DefaultTableModel) TableListarProductos.getModel());
+        TableListarProductos.setRowSorter(tr);
+        if(query != ""){
+            tr.setRowFilter(RowFilter.regexFilter(query));
+            
+            
+        }else{
+            TableListarProductos.setRowSorter(tr);
         }
-    }//GEN-LAST:event_btnListarActionPerformed
+    }//GEN-LAST:event_CbxCategoriaItemStateChanged
+
+    private void CbxRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CbxRubroItemStateChanged
+        String query = CbxRubro.getSelectedItem().toString();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>((DefaultTableModel) TableListarProductos.getModel());
+        TableListarProductos.setRowSorter(tr);
+        if(query != ""){
+            tr.setRowFilter(RowFilter.regexFilter(query));
+            
+            
+        }else{
+            TableListarProductos.setRowSorter(tr);
+        }
+    }//GEN-LAST:event_CbxRubroItemStateChanged
+
+    private void CbxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxRubroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CbxRubroActionPerformed
+
+    private void CbxRubroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CbxRubroKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CbxRubroKeyTyped
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
@@ -144,6 +272,7 @@ public class ListarProductos extends javax.swing.JFrame {
     }
 
     public void cargarTabla(JTable tabla) throws ClassNotFoundException, SQLException {
+        
         tabla.setDefaultRenderer(Object.class, new RedibujarTabla());
         DefaultTableModel objDT = new DefaultTableModel() {
             @Override
@@ -168,6 +297,7 @@ public class ListarProductos extends javax.swing.JFrame {
             for (int i = 0; i < lstProductos.size(); i++) {
                 Object[] fila = new Object[9];
                 objProducto = lstProductos.get(i);
+              // if (catprod.getCategoriaID(CbxCategoria.getSelectedItem().toString())==objProducto.getCatprodIdCatprod()) {
                 fila[0] = objProducto.getNombreProducto();
                 fila[1] = objProducto.getPrecioProducto();
                 fila[2] = objProducto.getStockProducto();
@@ -186,16 +316,30 @@ public class ListarProductos extends javax.swing.JFrame {
                 fila[5] = objProducto.getObjCategoria().getNombreCategoriaprod();
                 fila[6] = objProducto.getObjMarca().getNombreMarca();
                 objDT.addRow(fila);
-            }
+           // }
+           /* else {
+                    //JOptionPane.showMessageDialog(null, catprod.getCategoriaID(CbxCategoria.getSelectedItem().toString()));
+                }*/
+            }     
         }
         tabla.setModel(objDT);
         tabla.setRowHeight(60);
     }
+    
+    
+    
+    
+     
+     
+             
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CbxCategoria;
+    private javax.swing.JComboBox<String> CbxRubro;
     public javax.swing.JTable TableListarProductos;
-    private javax.swing.JButton btnListar;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblIDdelatienda;
     // End of variables declaration//GEN-END:variables

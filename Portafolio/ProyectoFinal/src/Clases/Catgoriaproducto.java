@@ -131,7 +131,7 @@ public class Catgoriaproducto implements Serializable {
          return rs;
 }
      
-         public int getCategoriaID(String categoria) throws ClassNotFoundException, SQLException{
+        public int getCategoriaID(String categoria) throws ClassNotFoundException, SQLException{
         int id = 0;
         Connection conn = null;
         Conexion conexion = new Conexion();
@@ -149,5 +149,5 @@ public class Catgoriaproducto implements Serializable {
         rs.close();
          return id;
 }
-    
+        
 }
