@@ -147,5 +147,19 @@ public class Marca implements Serializable {
         return id;
 
     }
+    
+    
+    public void insertarMarca(String nombreMarca) throws SQLException, ClassNotFoundException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn = conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String query="insert into MARCA values(MARCA_SEQ.NEXTVAL,  '"+ nombreMarca+"')";
+        sentencia = conn.createStatement();
+        sentencia.executeUpdate(query);
+        
+        
+    }
 
 }

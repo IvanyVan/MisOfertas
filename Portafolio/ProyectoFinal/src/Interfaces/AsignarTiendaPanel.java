@@ -383,10 +383,10 @@ txtNombre.setText("");
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
         Object datos []=new Object[2];
-       String query2 = "select u.RUT_USUARIO, u.NOMBRE_USUARIO ||' '||u.APEPA_USUARIO||' '||u.APEMA_USUARIO AS \"Nombre\" FROM USUARIO u ,tienda t  WHERE u.id_tipousuario = 2 ";
+       String query2 = "select u.RUT_USUARIO, u.NOMBRE_USUARIO ||' '||u.APEPA_USUARIO||' '||u.APEMA_USUARIO AS \"Nombre\" FROM USUARIO u ,tienda t  WHERE u.id_tipousuario = 2";
        
             while(rs.next()){
-                             //  datos[i]= rs.getObject(i+1);
+                             //  datos[i]= rs.getObject(i+1); Group by u.rut_usuario,u.nombre_usuario,u.apepa_usuario,u.apema_usuario order by u.rut_usuario
             query2 += "and u.rut_usuario <> "+rs.getObject(1).toString()+" ";
            } 
         

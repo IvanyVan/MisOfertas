@@ -9,6 +9,7 @@ import Clases.Rubroproducto;
 import Negocio.ProductoNegocio;
 import Negocio.Registros;
 import Negocio.TiendaProducto;
+import Negocio.Validacion;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -33,10 +34,12 @@ public class RegistrarProducto extends javax.swing.JFrame {
     Marca marca = new Marca();
     Catgoriaproducto catprod = new Catgoriaproducto();
     Rubroproducto rubro = new Rubroproducto();
+    Validacion validacion = new Validacion();
     Comuna comuna = new Comuna();
     Empresa empresa = new Empresa();
     TiendaProducto tindaprod = new TiendaProducto();
     ProductoNegocio prodControl = new ProductoNegocio();
+   
 
     public RegistrarProducto() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -47,10 +50,10 @@ public class RegistrarProducto extends javax.swing.JFrame {
         txtFoto.setVisible(true);
         btnBuscarFoto.setVisible(true);
         LbErrorNombres.setVisible(false);
-        LbErrorApepa.setVisible(false);
-        LbErrorTelefono.setVisible(false);
-        LbErrorApMa.setVisible(false);
-        LbErrorCorreo.setVisible(false);
+        LbErrorStock.setVisible(false);
+        LbErrorCategoria.setVisible(false);
+        LbErrorPrecio.setVisible(false);
+        LbErrorMarca.setVisible(false);
         rss = catprod.getCategoriaProds();
         while (rss.next()) {
             cbxCategoria.addItem(rss.getString("NOMBRE_CATEGORIA"));
@@ -81,10 +84,10 @@ public class RegistrarProducto extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         LbErrorNombre = new javax.swing.JLabel();
         LbErrorNombres = new javax.swing.JLabel();
-        LbErrorApepa = new javax.swing.JLabel();
-        LbErrorApMa = new javax.swing.JLabel();
-        LbErrorCorreo = new javax.swing.JLabel();
-        LbErrorTelefono = new javax.swing.JLabel();
+        LbErrorStock = new javax.swing.JLabel();
+        LbErrorPrecio = new javax.swing.JLabel();
+        LbErrorMarca = new javax.swing.JLabel();
+        LbErrorCategoria = new javax.swing.JLabel();
         cbxMarca = new javax.swing.JComboBox<>();
         cbxCategoria = new javax.swing.JComboBox<>();
         txtFoto = new javax.swing.JTextField();
@@ -153,21 +156,21 @@ public class RegistrarProducto extends javax.swing.JFrame {
         LbErrorNombres.setForeground(new java.awt.Color(255, 0, 0));
         LbErrorNombres.setText("jLabel13");
 
-        LbErrorApepa.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
-        LbErrorApepa.setForeground(new java.awt.Color(255, 0, 0));
-        LbErrorApepa.setText("jLabel13");
+        LbErrorStock.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        LbErrorStock.setForeground(new java.awt.Color(255, 0, 0));
+        LbErrorStock.setText("jLabel13");
 
-        LbErrorApMa.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
-        LbErrorApMa.setForeground(new java.awt.Color(255, 0, 0));
-        LbErrorApMa.setText("jLabel13");
+        LbErrorPrecio.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        LbErrorPrecio.setForeground(new java.awt.Color(255, 0, 0));
+        LbErrorPrecio.setText("jLabel13");
 
-        LbErrorCorreo.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
-        LbErrorCorreo.setForeground(new java.awt.Color(255, 0, 0));
-        LbErrorCorreo.setText("jLabel13");
+        LbErrorMarca.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        LbErrorMarca.setForeground(new java.awt.Color(255, 0, 0));
+        LbErrorMarca.setText("jLabel13");
 
-        LbErrorTelefono.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
-        LbErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
-        LbErrorTelefono.setText("jLabel13");
+        LbErrorCategoria.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        LbErrorCategoria.setForeground(new java.awt.Color(255, 0, 0));
+        LbErrorCategoria.setText("jLabel13");
 
         cbxMarca.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         cbxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione marca" }));
@@ -225,18 +228,18 @@ public class RegistrarProducto extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(LbErrorTelefono))
+                                                .addComponent(LbErrorCategoria))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(cbxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(LbErrorCorreo))
+                                                .addComponent(LbErrorMarca))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(TxtNombreProd, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(77, 77, 77)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(LbErrorNombres, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(LbErrorApMa, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(LbErrorApepa, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                                    .addComponent(LbErrorPrecio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(LbErrorStock, javax.swing.GroupLayout.Alignment.TRAILING))))
                                         .addGap(58, 58, 58)
                                         .addComponent(lblProducto))
                                     .addComponent(Txtstockprod, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,10 +266,10 @@ public class RegistrarProducto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(LbErrorApMa)
+                                .addComponent(LbErrorPrecio)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LbErrorApepa)
+                                    .addComponent(LbErrorStock)
                                     .addComponent(lblProducto)
                                     .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnBuscarFoto))
@@ -283,12 +286,12 @@ public class RegistrarProducto extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(cbxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LbErrorCorreo))
+                            .addComponent(LbErrorMarca))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LbErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LbErrorCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -308,6 +311,52 @@ public class RegistrarProducto extends javax.swing.JFrame {
         try {
             Registros registro = new Registros();
             Producto prod = new Producto();
+            int validado= 0;
+            if (TxtNombreProd.getText().trim().length()<=0) {
+                LbErrorNombres.setText("El campo no debe ir vacio");
+                LbErrorNombres.setVisible(true);
+                validado++;
+            }
+            
+            if (Txtprecioprod.getText().trim().length()<=0) {
+                LbErrorPrecio.setText("El campo no debe ir vacio");
+                LbErrorPrecio.setVisible(true); 
+                validado++;
+            }
+            if(validacion.validacionLetras(Txtprecioprod.getText())){
+                    LbErrorPrecio.setText("El precio no debe contener letras");
+                    LbErrorPrecio.setVisible(true);
+                    validado++;
+            }
+            if (Txtstockprod.getText().trim().length()<=0) {
+                LbErrorStock.setText("El campo no debe ir vacio");
+                LbErrorStock.setVisible(true);  
+                validado++;
+            }
+             if(validacion.validacionLetras(Txtstockprod.getText())){
+                    LbErrorStock.setText("El stock no debe contener letras");
+                    LbErrorStock.setVisible(true);
+                    validado++;
+            }
+            if(cbxMarca.getSelectedIndex()==0){
+               LbErrorMarca.setText("Seleccione una marca");
+                LbErrorMarca.setVisible(true);
+                validado++;
+                
+            }
+            if(cbxCategoria.getSelectedIndex()==0){
+               LbErrorCategoria.setText("Seleccione una categoria");
+                LbErrorCategoria.setVisible(true);
+                validado++;
+                
+            }
+            
+            
+            if (validado>0) {
+                validado=0;
+                     JOptionPane.showMessageDialog(null, "Registro no completado","Producto no registrado", JOptionPane.WARNING_MESSAGE);
+                
+            }else{
             prod.setIdProducto(1);
             prod.setStockProducto(Integer.parseInt(Txtstockprod.getText()));
             prod.setDescripcionProducto(TxtDescripprod.getText());
@@ -328,7 +377,8 @@ public class RegistrarProducto extends javax.swing.JFrame {
             registro.insertarProducto(prod);
             //tindaprod.insertarProductoTienda(prodControl.getUltimoRegistro(), Integer.parseInt(this.lblIDEMPRESAUSAR.getText()));
             JOptionPane.showMessageDialog(null, "Producto insertado", "Se registro un nuevo producto", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
+               dispose();
+        }
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al registrar producto", "No se pudo registrar el producto "
                     + "Error: " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);          
@@ -384,12 +434,12 @@ public class RegistrarProducto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCancelar;
     private javax.swing.JButton BtnRegistrar;
-    private javax.swing.JLabel LbErrorApMa;
-    private javax.swing.JLabel LbErrorApepa;
-    private javax.swing.JLabel LbErrorCorreo;
+    private javax.swing.JLabel LbErrorCategoria;
+    private javax.swing.JLabel LbErrorMarca;
     private javax.swing.JLabel LbErrorNombre;
     private javax.swing.JLabel LbErrorNombres;
-    private javax.swing.JLabel LbErrorTelefono;
+    private javax.swing.JLabel LbErrorPrecio;
+    private javax.swing.JLabel LbErrorStock;
     private javax.swing.JTextField TxtDescripprod;
     private javax.swing.JTextField TxtNombreProd;
     private javax.swing.JTextField Txtprecioprod;

@@ -5,18 +5,41 @@
  */
 package Interfaces;
 
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Eduardo
  */
 public class Gerente extends javax.swing.JFrame {
+    ListarUsuariosP objListar;
+    RegistrarMarcas objRegisMarcas;
+    GridBagLayout layout =  new GridBagLayout();
 
     /**
      * Creates new form Gerente
      */
-    public Gerente() {
+    public Gerente() throws SQLException, ClassNotFoundException {
+        this.objListar = new ListarUsuariosP();
+        this.objRegisMarcas = new RegistrarMarcas();
+        objListar.setVisible(false);
+        objRegisMarcas.setVisible(false);
+        
+        
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
+         GridBagConstraints c = new GridBagConstraints();
          this.setLocationRelativeTo(null);
+         setResizable(false);
+         setTitle("Gerente");
+          jPGerente.setLayout(layout);
+          jPGerente.add(objListar);
+          jPGerente.add(objRegisMarcas);
     }
 
     /**
@@ -28,14 +51,34 @@ public class Gerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPGerente = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuRegistorConsumidores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         MenuListarUsuarios = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuRegistrarMarcas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(631, 575));
+        setPreferredSize(new java.awt.Dimension(1241, 730));
+
+        jPGerente.setBackground(new java.awt.Color(255, 255, 255));
+        jPGerente.setName(""); // NOI18N
+        jPGerente.setPreferredSize(new java.awt.Dimension(0, 560));
+
+        javax.swing.GroupLayout jPGerenteLayout = new javax.swing.GroupLayout(jPGerente);
+        jPGerente.setLayout(jPGerenteLayout);
+        jPGerenteLayout.setHorizontalGroup(
+            jPGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1404, Short.MAX_VALUE)
+        );
+        jPGerenteLayout.setVerticalGroup(
+            jPGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 591, Short.MAX_VALUE)
+        );
+
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
         jMenu1.setText("Reporte");
 
@@ -47,9 +90,26 @@ public class Gerente extends javax.swing.JFrame {
         jMenu2.setText("Usuarios");
 
         MenuListarUsuarios.setText("Listar Usuarios");
+        MenuListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListarUsuariosActionPerformed(evt);
+            }
+        });
         jMenu2.add(MenuListarUsuarios);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Marcas");
+
+        jMenuRegistrarMarcas.setText("Registrar Marcas");
+        jMenuRegistrarMarcas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuRegistrarMarcasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuRegistrarMarcas);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -57,15 +117,33 @@ public class Gerente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPGerente, javax.swing.GroupLayout.DEFAULT_SIZE, 1404, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 431, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPGerente, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MenuListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListarUsuariosActionPerformed
+        
+            objListar.setVisible(true);
+            objRegisMarcas.setVisible(false);
+
+    }//GEN-LAST:event_MenuListarUsuariosActionPerformed
+
+    private void jMenuRegistrarMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRegistrarMarcasActionPerformed
+        objListar.setVisible(false);
+        objRegisMarcas.setVisible(true);
+    }//GEN-LAST:event_jMenuRegistrarMarcasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,7 +175,13 @@ public class Gerente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Gerente().setVisible(true);
+                try {
+                    new Gerente().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -107,6 +191,9 @@ public class Gerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuRegistorConsumidores;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuRegistrarMarcas;
+    private javax.swing.JPanel jPGerente;
     // End of variables declaration//GEN-END:variables
 }

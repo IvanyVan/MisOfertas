@@ -71,20 +71,20 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="cbxCategoria" min="-2" pref="195" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="LbErrorTelefono" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LbErrorCategoria" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="cbxMarca" min="-2" pref="195" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="LbErrorCorreo" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LbErrorMarca" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="TxtNombreProd" min="-2" pref="195" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="LbErrorNombres" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="LbErrorApMa" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="LbErrorApepa" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="LbErrorPrecio" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="LbErrorStock" alignment="1" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -124,10 +124,10 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="LbErrorApMa" min="-2" max="-2" attributes="0"/>
+                              <Component id="LbErrorPrecio" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="LbErrorApepa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LbErrorStock" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtFoto" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnBuscarFoto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -150,13 +150,13 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbxMarca" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LbErrorCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LbErrorMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbxCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LbErrorTelefono" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="LbErrorCategoria" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -307,7 +307,7 @@
         <Property name="text" type="java.lang.String" value="jLabel13"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LbErrorApepa">
+    <Component class="javax.swing.JLabel" name="LbErrorStock">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="3"/>
@@ -318,7 +318,7 @@
         <Property name="text" type="java.lang.String" value="jLabel13"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LbErrorApMa">
+    <Component class="javax.swing.JLabel" name="LbErrorPrecio">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="3"/>
@@ -329,7 +329,7 @@
         <Property name="text" type="java.lang.String" value="jLabel13"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LbErrorCorreo">
+    <Component class="javax.swing.JLabel" name="LbErrorMarca">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="3"/>
@@ -340,7 +340,7 @@
         <Property name="text" type="java.lang.String" value="jLabel13"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LbErrorTelefono">
+    <Component class="javax.swing.JLabel" name="LbErrorCategoria">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="3"/>
