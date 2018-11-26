@@ -37,6 +37,10 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
         
     public ModificarUsuarioP() throws SQLException, ClassNotFoundException {
         initComponents();
+        if(usuario.getAdministradores()==1){
+            CbxRoles.setEnabled(false);
+        }
+        
          LbErrorNombres.setVisible(false);
          LbErrorApepa.setVisible(false);
          LbErrorDireccion.setVisible(false);
@@ -456,8 +460,8 @@ public class ModificarUsuarioP extends javax.swing.JPanel {
 
     private void CbxRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxRolesActionPerformed
        if(CbxRoles.getSelectedIndex()==1){
-                CbxTiendas.setVisible(false);
-                jLabel7.setVisible(false);
+                CbxTiendas.setEnabled(false);
+                
                 
                 
             }else{

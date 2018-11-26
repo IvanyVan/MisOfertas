@@ -305,4 +305,22 @@ public class Usuario implements Serializable {
        
          return rs;
     }
+       
+       public int getAdministradores() throws SQLException, ClassNotFoundException{
+           int conteo = 0;
+           Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select Count(*) from USUARIO where id_tipousuario = '"+1+"'"; 
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+        while(rs.next()){
+            conteo = Integer.parseInt(rs.getString(1));
+        }
+        return conteo;
+           
+       }
 }

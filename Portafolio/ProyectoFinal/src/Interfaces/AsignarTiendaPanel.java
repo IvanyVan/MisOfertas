@@ -387,8 +387,9 @@ txtNombre.setText("");
        
             while(rs.next()){
                              //  datos[i]= rs.getObject(i+1); Group by u.rut_usuario,u.nombre_usuario,u.apepa_usuario,u.apema_usuario order by u.rut_usuario
-            query2 += "and u.rut_usuario <> "+rs.getObject(1).toString()+" ";
+            query2 += " and u.rut_usuario <> '"+rs.getObject(1).toString()+"' ";
            } 
+            query2 +=" Group by u.rut_usuario,u.nombre_usuario,u.apepa_usuario,u.apema_usuario order by u.rut_usuario";
         
          rs.close();
         sentencia =conn.createStatement();
