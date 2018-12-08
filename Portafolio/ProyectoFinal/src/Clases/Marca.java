@@ -148,6 +148,27 @@ public class Marca implements Serializable {
 
     }
     
+    public boolean verNombreMarca(String nombremarca) throws SQLException, ClassNotFoundException{
+        boolean validado = false;
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn = conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String nombre = "";
+        String query = "select NOMBRE_MARCA from MARCA where NOMBRE_MARCA = '" + nombremarca +"'";
+        sentencia = conn.createStatement();
+ 
+        nombre = query;
+        if(!nombre.isEmpty()){
+            validado=true;
+        }
+        return validado;
+
+        
+        
+        
+    }
     
     public void insertarMarca(String nombreMarca) throws SQLException, ClassNotFoundException{
         Connection conn = null;

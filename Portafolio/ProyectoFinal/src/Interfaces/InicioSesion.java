@@ -11,6 +11,7 @@ import Clases.Usuario;
 import Negocio.Validacion;
 import Negocio.HasharClave;
 //import com.sun.xml.internal.ws.api.message.Message;
+import com.placeholder.PlaceHolder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -40,7 +41,9 @@ Empresa emp = new Empresa();
         LbError.setVisible(false);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.WHITE);
-        
+        PlaceHolder holder = new PlaceHolder(TxtUsuarioRut, "Ingrese su RUT, sin puntos y sin guión");
+        PlaceHolder holder1 = new PlaceHolder(TxtClave, "**********");
+        BtnInicioSesion.requestFocus();
     }
   
    
@@ -158,8 +161,29 @@ Empresa emp = new Empresa();
         HasharClave hs = new HasharClave();
         if (validacion.isValidRut(TxtUsuarioRut.getText())==true) {
             String ClaveHash = hs.MD5(TxtClave.getText());
-          
+            String RutUsuario = TxtUsuarioRut.getText();
             
+            /*char[] vector = RutUsuario.toCharArray();
+            for (int i = 0; i < RutUsuario.length(); i++) {
+                if(RutUsuario.contentEquals("-") || RutUsuario.contentEquals(".")){
+                    LbError.setText("Ingrese un rut valido, sin puntos y guión.");
+                    LbError.setVisible(true);
+                    
+                }
+                
+            }*/
+            String a = "-";
+            String b = ".";
+            boolean  resultado = RutUsuario.contains(a);
+            boolean resultado1 = RutUsuario.contains(a);
+            
+            if(resultado || resultado1){
+                LbError.setText("Ingrese un rut valido, sin puntos y guión.");
+                    LbError.setVisible(true);
+            }
+            
+                    
+                        
         
         try {
           validado = validacion.validarUsuario(TxtUsuarioRut.getText(), ClaveHash);

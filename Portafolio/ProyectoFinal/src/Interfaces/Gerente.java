@@ -8,6 +8,8 @@ package Interfaces;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,11 +37,17 @@ public class Gerente extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.WHITE);
          GridBagConstraints c = new GridBagConstraints();
          this.setLocationRelativeTo(null);
-         setResizable(false);
-         setTitle("Gerente");
-          jPGerente.setLayout(layout);
-          jPGerente.add(objListar);
-          jPGerente.add(objRegisMarcas);
+          c.gridx = 0;
+          c.gridy = 0 ;
+         jPGerente.setLayout(layout);
+          c.gridx = 0;
+          c.gridy = 0 ;
+         jPGerente.add(objListar);
+          c.gridx = 0;
+          c.gridy = 0 ;
+         jPGerente.add(objRegisMarcas);
+          c.gridx = 0;
+          c.gridy = 0 ;
     }
 
     /**
@@ -52,6 +60,7 @@ public class Gerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPGerente = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuRegistorConsumidores = new javax.swing.JMenuItem();
@@ -61,7 +70,6 @@ public class Gerente extends javax.swing.JFrame {
         jMenuRegistrarMarcas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1241, 730));
 
         jPGerente.setBackground(new java.awt.Color(255, 255, 255));
         jPGerente.setName(""); // NOI18N
@@ -75,20 +83,26 @@ public class Gerente extends javax.swing.JFrame {
         );
         jPGerenteLayout.setVerticalGroup(
             jPGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+            .addGap(0, 589, Short.MAX_VALUE)
         );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Iconocompleto.png"))); // NOI18N
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
         jMenu1.setText("Reporte");
+        jMenu1.setFont(new java.awt.Font("Georgia", 3, 24)); // NOI18N
 
+        MenuRegistorConsumidores.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         MenuRegistorConsumidores.setText("Registro Consumidores");
         jMenu1.add(MenuRegistorConsumidores);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Usuarios");
+        jMenu2.setFont(new java.awt.Font("Georgia", 3, 24)); // NOI18N
 
+        MenuListarUsuarios.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         MenuListarUsuarios.setText("Listar Usuarios");
         MenuListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +114,9 @@ public class Gerente extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Marcas");
+        jMenu3.setFont(new java.awt.Font("Georgia", 3, 24)); // NOI18N
 
+        jMenuRegistrarMarcas.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         jMenuRegistrarMarcas.setText("Registrar Marcas");
         jMenuRegistrarMarcas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,15 +135,21 @@ public class Gerente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPGerente, javax.swing.GroupLayout.DEFAULT_SIZE, 1404, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPGerente, javax.swing.GroupLayout.DEFAULT_SIZE, 1404, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPGerente, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPGerente, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
         pack();
@@ -147,7 +169,16 @@ public class Gerente extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
+     * @return 
      */
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Img/iconoV2.png"));
+
+
+        return retValue;
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -189,6 +220,7 @@ public class Gerente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuListarUsuarios;
     private javax.swing.JMenuItem MenuRegistorConsumidores;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

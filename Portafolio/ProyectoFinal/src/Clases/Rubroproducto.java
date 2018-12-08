@@ -168,6 +168,41 @@ public class Rubroproducto implements Serializable {
         rs.close();
          return id;
 }
+          
+    public void insertarRubro(String nombreRubro, String Descripcion) throws SQLException, ClassNotFoundException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn = conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String query="insert into RUBRO values(RUBRO_SEQ1.NEXTVAL, '"+nombreRubro+"' ,'"+ Descripcion+"')";
+        sentencia = conn.createStatement();
+        sentencia.executeUpdate(query);
+        
+        
+    }
+    
+    public boolean verNombreRubro(String nombrerubro) throws SQLException, ClassNotFoundException{
+        boolean validado = false;
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn = conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String nombre = "";
+        String query = "select NOMBRE_RUBRO from MARCA where NOMBRE_RUBRO = '" + nombrerubro +"'";
+        sentencia = conn.createStatement();
+ 
+        nombre = query;
+        if(!nombre.isEmpty()){
+            validado=true;
+        }
+        return validado;
+
+        
+        
+        
+    }
          
     
 }

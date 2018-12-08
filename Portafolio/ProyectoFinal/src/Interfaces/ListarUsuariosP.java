@@ -55,6 +55,7 @@ public class ListarUsuariosP extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listado de usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Georgia", 3, 18))); // NOI18N
+        setRequestFocusEnabled(false);
 
         TableListarUsuarios.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         TableListarUsuarios.setModel(ListarTablaUsuarios);
