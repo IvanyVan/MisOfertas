@@ -11,7 +11,7 @@ import Clases.Usuario;
 import Negocio.Validacion;
 import Negocio.HasharClave;
 //import com.sun.xml.internal.ws.api.message.Message;
-import com.placeholder.PlaceHolder;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -41,8 +41,8 @@ Empresa emp = new Empresa();
         LbError.setVisible(false);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.WHITE);
-        PlaceHolder holder = new PlaceHolder(TxtUsuarioRut, "Ingrese su RUT, sin puntos y sin guión");
-        PlaceHolder holder1 = new PlaceHolder(TxtClave, "**********");
+      //  PlaceHolder holder = new PlaceHolder(TxtUsuarioRut, "Ingrese su RUT, sin puntos y sin guión");
+       // PlaceHolder holder1 = new PlaceHolder(TxtClave, "**********");
         BtnInicioSesion.requestFocus();
     }
   

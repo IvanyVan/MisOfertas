@@ -5,14 +5,22 @@
  */
 package Interfaces;
 
+import Clases.Oferta;
+import Clases.Valoracion;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +44,7 @@ public class Administrador extends javax.swing.JFrame {
         this.plistado =  new ListarUsuariosP();
         this.pasignaTienda = new AsignarTiendaPanel();
         initComponents();
+       
        this.getContentPane().setBackground(Color.WHITE);
          this.setLocationRelativeTo(null);
          jPAdministrador.setLayout(layout);
@@ -240,7 +249,48 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuModificarUsuarioActionPerformed
 
     private void MenuGenerarBI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuGenerarBI1ActionPerformed
-        // TODO add your handling code here:
+       Valoracion valoracion = new Valoracion();
+       ResultSet rs;
+       rs = null;
+        try {
+            rs = valoracion.retornarValoracion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String ruta = "C:\\Users\\Ivan\\Desktop\\archivoPrueba.txt";
+        File archivo = new File(ruta);
+        BufferedWriter bw = null;
+        if(archivo.exists()){
+           try {
+               bw= new BufferedWriter(new FileWriter(archivo));
+               bw.write("  PRODUCTO           "+"||"+"PRECIO PRODUCTO  "+"||"+"ID OFERTA"+"||"+"      VALORACION"+"||"+"   RUT USUARIO"+"||"+"   VALORACION");
+               while(rs.next()){
+                   bw.newLine();
+                   bw.write(rs.getString(1)+" || $            "+rs.getString(2)+"||        "  +rs.getString(3)+"||               "+rs.getString(4)+"||    "+rs.getString(5)+"||            "+rs.getString(6));
+               
+               }
+               JOptionPane.showMessageDialog(jMenu4, "El archivo se ah creado en  "+ruta+" ");
+           } catch (IOException ex) {
+               Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (SQLException ex) {
+               Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        }else{
+           try {
+               bw= new BufferedWriter(new FileWriter(archivo));
+               bw.write("El archivo ha sido creado");
+           } catch (IOException ex) {
+               Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+        }
+        try {
+            bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_MenuGenerarBI1ActionPerformed
  @Override
     public Image getIconImage() {

@@ -8,6 +8,10 @@ package Clases;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -144,4 +148,20 @@ public class Valoracion implements Serializable {
         return "Validacion.Valoracion[ idValoracion=" + idValoracion + " ]";
     }
     
+    public ResultSet retornarValoracion() throws SQLException, ClassNotFoundException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select p.nombre_producto,p.precio_producto,o.id_oferta,v.id_valoracion,v.rut_usuario,v.calificacion\n" +
+                       "from producto p ,oferta o,valoracion v\n" +
+                        "where p.id_producto=o.id_producto and o.id_oferta =v.id_oferta"; 
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+        
+         return rs;
+    }
 }
