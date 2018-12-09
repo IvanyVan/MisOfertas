@@ -1,6 +1,7 @@
 
 package Interfaces;
 
+import Clases.Tienda;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Image;
@@ -28,6 +29,7 @@ public class EncargadoTienda extends javax.swing.JFrame {
          jMenu3.setVisible(false);
          MenuModificarOferta.setVisible(false);
          MenuModificarProducto.setVisible(true);
+         
     }
 
     @SuppressWarnings("unchecked")
@@ -252,9 +254,11 @@ public class EncargadoTienda extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuReporteOfertaActionPerformed
 
     private void MenuRegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistrarProductoActionPerformed
+        Tienda tienda = new Tienda();
         try {
             // TODO add your handling code here:
             RegistrarProducto registraroferta =  new RegistrarProducto();
+          registraroferta.LbTiendaId.setText(lblIdEmpresa.getText());
             
             //this.rootPane.getContentPane().add(registraroferta);
             //registraroferta.lblIDEMPRESAUSAR.setText(this.lblIdEmpresa.getText());

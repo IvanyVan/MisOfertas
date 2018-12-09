@@ -174,10 +174,6 @@ Empresa emp = new Empresa();
                     
                       Camb.LblEmpleado.setText(rut);//id del usuario
                       
-                    
-                      
-                  
-                     
                      
                      dispose();
                     }else{
@@ -192,7 +188,7 @@ Empresa emp = new Empresa();
                   rs= validacion.devolverUsuariocompleto(TxtUsuarioRut.getText(), ClaveHash);
                   
                    while (rs.next()) {     //Extraemos los datos del usuario y los colocaremos en la siguiente pantalla       
-            encargadoTienda.lblempleado.setText(rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4));//nombre apellido apellido
+                    encargadoTienda.lblempleado.setText(rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4));//nombre apellido apellido
                     encargadoTienda.lblIdEmpleado.setText(rs.getString(1));//id del usuario
                     encargadoTienda.lblIdEmpresa.setText(rs.getString(5));//id de la tienda a la cual esta asignado 
                     encargadoTienda.lbltienda.setText(ti.getNombreTiendaStringxEmpresa(Integer.parseInt(rs.getString(5)))); // nos devuelve el nombre de la tienda segun su id 

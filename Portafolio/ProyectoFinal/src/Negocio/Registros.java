@@ -19,7 +19,7 @@ public class Registros {
         conn = conexion.getConnection();
         String query = "insert into PRODUCTO (NOMBRE_PRODUCTO, PRECIO_PRODUCTO,"
                 + "STOCK_PRODUCTO, DESCRIPCION_PRODUCTO, IMAGEN_PRODUCTO,"
-                + "ID_MARCA, ID_CATEGORIA) VALUES(?,?,?,?,?,?,?)";
+                + "ID_MARCA, ID_CATEGORIA,ID_TIENDA) VALUES(?,?,?,?,?,?,?,?)";
 
         /* String query ="{ call PRODUCTO_TAPI.INS(?,?,?,?,0,?,null,?,?)}";*/
         PreparedStatement objPs = null;
@@ -31,6 +31,7 @@ public class Registros {
         objPs.setBytes(5, prod.getImagenProducto());
         objPs.setInt(6, prod.getMarcaIdMarca());
         objPs.setInt(7, prod.getCatprodIdCatprod());
+        objPs.setInt(8,prod.getIdTienda());
         //objPs.setInt(5, prod.getOfertaIdOferta());        
         //objPs.setInt(7, prod.getIdProducto());       
         objPs.executeUpdate();

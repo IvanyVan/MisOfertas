@@ -12,9 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jorpi/Desktop/Caso%202%20Portafolio/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Conexion.java</file>
-            <file>file:/C:/Users/jorpi/Desktop/Caso%202%20Portafolio/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/ModificarUsuarioP.java</file>
-            <file>file:/C:/Users/jorpi/Desktop/Caso%202%20Portafolio/MisOfertas/Portafolio/ProyectoFinal/src/Interfaces/ListarProductos.java</file>
+            <file>file:/C:/Users/Admin/Documents/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Catgoriaproducto.java</file>
+            <file>file:/C:/Users/Admin/Documents/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Empresa.java</file>
+            <file>file:/C:/Users/Admin/Documents/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Comuna.java</file>
+            <file>file:/C:/Users/Admin/Documents/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Conexion.java</file>
+            <file>file:/C:/Users/Admin/Documents/MisOfertas/Portafolio/ProyectoFinal/src/Clases/Producto.java</file>
         </group>
     </open-files>
 </project-private>

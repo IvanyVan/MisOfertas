@@ -236,5 +236,23 @@ public class Tienda implements Serializable {
         rs.close();
          return nombre;
     }
+            
+               public int getIdTiendaPorNombre(String NombreTienda) throws ClassNotFoundException, SQLException{
+        int id = 0;
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String tipo=null;
+        String query = "select ID_TIENDA from TIENDA where nombre_tienda ="+NombreTienda+" order by id_tienda"; 
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+        while(rs.next()){
+        id = rs.getInt(1);
+        };
+        rs.close();
+         return id;
+    }   
     
 }
