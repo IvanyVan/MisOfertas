@@ -5,14 +5,21 @@
  */
 package Interfaces;
 
+import Negocio.UsuarioNegocio;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -95,6 +102,11 @@ public class Gerente extends javax.swing.JFrame {
 
         MenuRegistorConsumidores.setFont(new java.awt.Font("Georgia", 3, 14)); // NOI18N
         MenuRegistorConsumidores.setText("Registro Consumidores");
+        MenuRegistorConsumidores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRegistorConsumidoresActionPerformed(evt);
+            }
+        });
         jMenu1.add(MenuRegistorConsumidores);
 
         jMenuBar1.add(jMenu1);
@@ -166,6 +178,97 @@ public class Gerente extends javax.swing.JFrame {
         objListar.setVisible(false);
         objRegisMarcas.setVisible(true);
     }//GEN-LAST:event_jMenuRegistrarMarcasActionPerformed
+
+    private void MenuRegistorConsumidoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistorConsumidoresActionPerformed
+       UsuarioNegocio negocio = new UsuarioNegocio();
+       ResultSet rsNumUsuarios;
+       ResultSet rsCorreosEnviados;
+       ResultSet rsNumeroValo;
+       ResultSet rsDscEntregados;
+       rsNumUsuarios = null;
+       rsCorreosEnviados = null;
+       rsNumeroValo = null;
+       rsDscEntregados = null;
+       
+        try {
+            rsNumUsuarios = negocio.NumeroUsuariosReg();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            rsCorreosEnviados = negocio.CorreosEnviados();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            rsNumeroValo = negocio.NumeroValoraciones();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            rsDscEntregados = negocio.DescuentosEntregados();
+            
+            // TODO add your handling code here:
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String ruta="C:\\Users\\Admin\\Desktop\\ReporteUsuarios.txt";
+        File archivo = new File(ruta);
+        BufferedWriter bw = null;
+        if(archivo.exists()){
+        
+           try {            
+               bw= new BufferedWriter(new FileWriter(archivo));
+           } catch (IOException ex) {
+               Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           try {
+               while(rsNumUsuarios.next()){
+                 bw.newLine();
+                 bw.write("Cantidad de consumidores registrados en el sistema "+rsNumUsuarios.getString(1));
+               }
+               while(rsCorreosEnviados.next()){
+                bw.newLine();
+                bw.write("Cantidad de ofertas enviadas por correo "+rsCorreosEnviados.getString(1));
+               }
+               while(rsNumeroValo.next()){
+                   bw.newLine();
+                   bw.write("Cantidad de valoraciones echas por los usuarios "+rsNumeroValo.getString(1));
+               }while(rsDscEntregados.next()){
+                   bw.newLine();
+                   bw.write("|RUBRO|"+rsDscEntregados.getString(1)+       "   |PRODUCTO| "+rsDscEntregados.getString(3)+"|   PORCENTAJE DESCUENTO |%" +rsDscEntregados.getString(4));
+               }
+               JOptionPane.showMessageDialog(null, "El archivo se ah creado en  "+ruta+" ");
+           } catch (SQLException ex) {
+               Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (IOException ex) {
+               Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+           }
+            
+        }else{
+           try {
+               bw= new BufferedWriter(new FileWriter(archivo));
+               bw.write("El archivo ha sido creado");
+           } catch (IOException ex) {
+               Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+        }
+          try {
+            bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_MenuRegistorConsumidoresActionPerformed
 
     /**
      * @param args the command line arguments

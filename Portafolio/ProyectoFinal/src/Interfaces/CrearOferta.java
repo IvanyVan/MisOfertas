@@ -62,7 +62,7 @@ public final class CrearOferta extends javax.swing.JFrame {
         }
         rss = categoria.getCategoriaProds();
         while (rss.next()) {    
-            CbxCategoria.addItem(rss.getString("NOMBRE_CATEGORIAPROD"));
+            CbxCategoria.addItem(rss.getString("NOMBRE_CATEGORIA"));
         }
         
           //TableListarProductos = new DefaultTableModel(null,getColumna());
@@ -432,7 +432,7 @@ public final class CrearOferta extends javax.swing.JFrame {
                 int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);
                 int mes = jDateChooser1.getCalendar().get(Calendar.MONTH);
                 int agno = jDateChooser1.getCalendar().get(Calendar.YEAR);
-               String fecha = dia+"/"+mes+"/"+agno;
+               String fecha = dia+"/"+(mes+1)+"/"+agno;
                 
         ofertaObj.setMaximoPro(Integer.parseInt(TxtNMaximo.getText()));
         ofertaObj.setMinimoPro(Integer.parseInt(TxtNMinimo.getText()));
@@ -467,9 +467,9 @@ public final class CrearOferta extends javax.swing.JFrame {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query =  "SELECT p.ID_PRODUCTO, p.nombre_producto, p.precio_producto, p.stock_producto, p.descripcion_producto, r.nombre_rubro, c.nombre_categoriaprod, m.nombre_marca\n" +
-"FROM Producto p ,marca m , CATGORIAPRODUCTO c, rubroproducto r, tienda_produco tp \n" +
-"WHERE p.marca_id_marca = m.id_marca and p.catprod_id_catprod= c.id_categoriaproducto and p.rubroproducto_id_rubro = r.id_rubro and tp.producto_id_producto = p.id_producto and tp.tienda_id_tienda = "+idtienda+"";
+        String query =  "SELECT  (p.id_producto), p.nombre_producto, p.precio_producto, p.stock_producto,p.descripcion_producto,r.nombre_rubro, c.nombre_categoria, m.nombre_marca\n" +
+"FROM Producto p ,marca m , CATEGORIA c, rubro r\n" +
+"where p.id_marca = m.id_marca and p.id_categoria = c.id_categoria and r.id_rubro = c.id_rubro and p.id_tienda = "+idtienda+" ";
          sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        

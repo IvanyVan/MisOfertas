@@ -164,4 +164,37 @@ public class Valoracion implements Serializable {
         
          return rs;
     }
+    
+    public ResultSet ValoracionesAltas() throws ClassNotFoundException, SQLException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String query="Select p.nombre_producto, o.id_oferta, v.calificacion, v.rut_usuario  \n" +
+                      "from producto p, oferta o , valoracion v \n" +
+                       "where p.id_producto = o.id_producto and o.id_oferta = v.id_oferta and v.calificacion=5";
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+        
+         return rs;
+    }
+    
+    
+    public ResultSet ValoracionesBajas() throws ClassNotFoundException, SQLException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String query="Select p.nombre_producto, o.id_oferta, v.calificacion, v.rut_usuario  \n" +
+                      "from producto p, oferta o , valoracion v \n" +
+                       "where p.id_producto = o.id_producto and o.id_oferta = v.id_oferta and v.calificacion=1";
+        sentencia =conn.createStatement();
+        rs = sentencia.executeQuery(query);
+       
+        
+         return rs;
+    }
 }

@@ -181,10 +181,10 @@ public class ListarOferta extends javax.swing.JFrame {
         Statement sentencia = null;
         ResultSet rs = null;
         String tipo=null;
-        String query =  "SELECT p.nombre_producto, p.precio_producto, p.stock_producto,ta.fecha_limite, ta.fecha_registro,ta.porcentaje_descuento,ta.minimo_pro,ta.maximo_pro \n" +
-"FROM Producto p ,marca m , CATGORIAPRODUCTO c, rubroproducto r, tienda_produco tp,oferta ta\n" +
-"WHERE p.marca_id_marca = m.id_marca and p.catprod_id_catprod= c.id_categoriaproducto and p.rubroproducto_id_rubro = r.id_rubro \n" +
-"and tp.producto_id_producto = p.id_producto and tp.tienda_id_tienda = "+idtienda+" and ta.producto_id_producto = p.id_producto";
+        String query =  "SELECT distinct p.nombre_producto, p.precio_producto, p.stock_producto,ta.fecha_limite, ta.fecha_registro,ta.porcentaje_descuento,ta.minimo_pro,ta.maximo_pro \n" +
+"FROM Producto p ,marca m , CATeGORIA c, rubro r,oferta ta\n" +
+"WHERE p.id_marca = m.id_marca and p.ID_CATEGORIA= c.ID_CATEGORIA \n" +
+" and p.id_tienda = "+idtienda+" and ta.id_producto = p.id_producto";
         sentencia =conn.createStatement();
         rs = sentencia.executeQuery(query);
        

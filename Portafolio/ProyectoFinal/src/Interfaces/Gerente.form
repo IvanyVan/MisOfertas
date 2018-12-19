@@ -24,6 +24,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registro Consumidores"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuRegistorConsumidoresActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

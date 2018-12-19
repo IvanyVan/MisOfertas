@@ -259,7 +259,7 @@ public class Administrador extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String ruta = "C:\\Users\\Ivan\\Desktop\\archivoPrueba.txt";
+        String ruta = "C:\\Users\\Admin\\Desktop\\archivoBIOfertas.txt";
         File archivo = new File(ruta);
         BufferedWriter bw = null;
         if(archivo.exists()){

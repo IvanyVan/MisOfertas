@@ -1,13 +1,21 @@
 
 package Interfaces;
 
+import Clases.Tienda;
+import Clases.Valoracion;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,9 +33,9 @@ public class EncargadoTienda extends javax.swing.JFrame {
          lblIdEmpresa.setVisible(false);
          lblIdEmpleado.setVisible(false);
          lblIdTienda.setVisible(false);
-         jMenu3.setVisible(false);
+         
          MenuModificarOferta.setVisible(false);
-         MenuModificarProducto.setVisible(true);
+         MenuModificarProducto.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -55,7 +63,6 @@ public class EncargadoTienda extends javax.swing.JFrame {
         MenuRegistrarProducto = new javax.swing.JMenuItem();
         MenuListarProductos = new javax.swing.JMenuItem();
         MenuModificarProducto = new javax.swing.JMenuItem();
-        mnuEliminarProducto = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MenuReporteOferta = new javax.swing.JMenuItem();
 
@@ -148,22 +155,13 @@ public class EncargadoTienda extends javax.swing.JFrame {
         });
         jMenu2.add(MenuModificarProducto);
 
-        mnuEliminarProducto.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        mnuEliminarProducto.setText("Eliminar producto");
-        mnuEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuEliminarProductoActionPerformed(evt);
-            }
-        });
-        jMenu2.add(mnuEliminarProducto);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Reportes");
         jMenu3.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
 
         MenuReporteOferta.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        MenuReporteOferta.setText("Generar Reporte");
+        MenuReporteOferta.setText("Reporte Ofertas");
         MenuReporteOferta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuReporteOfertaActionPerformed(evt);
@@ -249,12 +247,79 @@ public class EncargadoTienda extends javax.swing.JFrame {
 
     private void MenuReporteOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReporteOfertaActionPerformed
         // TODO add your handling code here:
+        Valoracion valoracion = new Valoracion();
+        ResultSet rsAltas;
+        ResultSet rsBajas;
+        rsAltas=null;
+        rsBajas=null;
+        
+        try {
+            rsAltas = valoracion.ValoracionesAltas();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            rsBajas = valoracion.ValoracionesBajas();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String ruta="C:\\Users\\Admin\\Desktop\\archivoValoracion.txt";
+        File archivo = new File(ruta);
+        BufferedWriter bw = null;
+        if(archivo.exists()){
+            try {
+                bw= new BufferedWriter(new FileWriter(archivo));
+            } catch (IOException ex) {
+                Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           /* try {
+                bw.write("  PRODUCTO                  "+"||"+"      NUMERO OFERTA     "+"||"+"     CALIFICACION     "+"||"+"       USUARIO");
+            } catch (IOException ex) {
+                Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+            } */
+            try {
+                while(rsAltas.next()){
+                    bw.newLine();
+                    bw.write("|PRODUCTO|"+rsAltas.getString(1).substring(0, 10)+       "   |NUMERO OFERTA| "+rsAltas.getString(2)+"|   CALIFICACION OFERTA |"  +rsAltas.getString(3)+"|  USUARIO | "+rsAltas.getString(4));
+                    
+                }
+                while(rsBajas.next()){
+                    bw.newLine();
+                    bw.write("|PRODUCTO|"+rsBajas.getString(1).substring(0, 10)+       "   |NUMERO OFERTA| "+rsBajas.getString(2)+"|   CALIFICACION OFERTA |"  +rsBajas.getString(3)+"|  USUARIO | "+rsBajas.getString(4));
+                }
+                JOptionPane.showMessageDialog(null, "El archivo se ah creado en  "+ruta+" ");
+            } catch (SQLException ex) {
+                Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(EncargadoTienda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+           try {
+               bw= new BufferedWriter(new FileWriter(archivo));
+               bw.write("El archivo ha sido creado");
+           } catch (IOException ex) {
+               Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+        }
+          try {
+            bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_MenuReporteOfertaActionPerformed
 
     private void MenuRegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistrarProductoActionPerformed
+        Tienda tienda = new Tienda();
         try {
             // TODO add your handling code here:
             RegistrarProducto registraroferta =  new RegistrarProducto();
+          registraroferta.LbTiendaId.setText(lblIdEmpresa.getText());
             
             //this.rootPane.getContentPane().add(registraroferta);
             //registraroferta.lblIDEMPRESAUSAR.setText(this.lblIdEmpresa.getText());
@@ -310,11 +375,6 @@ public class EncargadoTienda extends javax.swing.JFrame {
         frmModificarProductos objFrmModificarP = new frmModificarProductos(this, rootPaneCheckingEnabled);
         objFrmModificarP.setVisible(true);
     }//GEN-LAST:event_MenuModificarProductoActionPerformed
-
-    private void mnuEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEliminarProductoActionPerformed
-        frmEliminarProductos objFrmEliminar = new frmEliminarProductos(this, rootPaneCheckingEnabled);
-        objFrmEliminar.setVisible(true);
-    }//GEN-LAST:event_mnuEliminarProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,6 +435,5 @@ public class EncargadoTienda extends javax.swing.JFrame {
     public javax.swing.JLabel lblempleado;
     public javax.swing.JLabel lblempresa;
     public javax.swing.JLabel lbltienda;
-    private javax.swing.JMenuItem mnuEliminarProducto;
     // End of variables declaration//GEN-END:variables
 }

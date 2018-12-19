@@ -38,7 +38,7 @@ public class OfertaNegocio {
                         
 String query = "Begin\n" +
 "\n" +
-"oferta_tapi.ins("+idProducto+","+oferta.getMaximoPro()+",sysdate,1,TO_DATE('"+oferta.getFechaLimite()+"','DD-MM-YYYY HH:MI'),"+oferta.getPorcentajeDescuento()+","+oferta.getMinimoPro()+");\n" +
+"oferta_tapi.ins("+oferta.getMaximoPro()+" ,sysdate,1,TO_DATE('"+oferta.getFechaLimite()+"','DD-MM-YYYY HH:MI'),"+oferta.getPorcentajeDescuento()+","+idProducto+","+oferta.getMinimoPro()+");\n" +
 "\n" +
 "end;";
 mensaje = "Registro completado";

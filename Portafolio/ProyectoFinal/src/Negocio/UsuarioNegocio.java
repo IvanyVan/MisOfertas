@@ -96,5 +96,59 @@ public class UsuarioNegocio {
        
          return rs;
     }
-
+       
+         
+         public ResultSet NumeroUsuariosReg() throws ClassNotFoundException, SQLException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String query="select count(*) from usuario where id_tipousuario=4";
+        sentencia = conn.createStatement();
+        rs = sentencia.executeQuery(query);
+        
+        return rs;
+         }
+         
+         public ResultSet CorreosEnviados() throws ClassNotFoundException, SQLException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String query="select count(*) from usuario where correoactivo='S'";
+        sentencia = conn.createStatement();
+        rs = sentencia.executeQuery(query);
+        
+        return rs;
+         }
+         
+             public ResultSet NumeroValoraciones() throws ClassNotFoundException, SQLException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String query="select count(*) from valoracion";
+        sentencia = conn.createStatement();
+        rs = sentencia.executeQuery(query);
+        
+        return rs;
+         }
+             
+        public ResultSet DescuentosEntregados() throws ClassNotFoundException, SQLException{
+        Connection conn = null;
+        Conexion conexion = new Conexion();
+        conn=conexion.getConnection();
+        Statement sentencia = null;
+        ResultSet rs = null;
+        String query="select r.nombre_rubro, c.nombre_categoria , p.nombre_producto , o.porcentaje_descuento\n" +
+                      "from rubro r, categoria c, producto p, oferta o\n" +
+                      "where r.id_rubro=c.id_rubro and c.id_categoria=p.id_categoria and p.id_producto= o.id_producto";
+        sentencia = conn.createStatement();
+        rs = sentencia.executeQuery(query);
+        
+        return rs;
+         }    
 }
