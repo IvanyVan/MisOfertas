@@ -357,6 +357,9 @@ public final class CrearOferta extends javax.swing.JFrame {
           lblMaxCompras.setVisible(false);
          lblMinCompras.setVisible(false);
          lbldescuento.setVisible(false);
+         
+       
+         
          if(validacion.validacionLetras(TxtPorcentajeDescuento.getText())){// validacion de descuento
                     lbldescuento.setText("El descuento no puede tener letras");
                     lbldescuento.setVisible(true);
@@ -366,7 +369,7 @@ public final class CrearOferta extends javax.swing.JFrame {
                     lbldescuento.setText("El descuento de compras no debe estar vacío");
                          lbldescuento.setVisible(true);
                     validado++;
-                       }
+                       };
                 
                 if(validacion.validacionLetras(TxtNMaximo.getText())){//validacion de compras maximas
                     lblMaxCompras.setText("El maximo de compras no puede tener letras");
@@ -377,18 +380,18 @@ public final class CrearOferta extends javax.swing.JFrame {
                     lblMaxCompras.setText("El maximo de compras no debe estar vacío");
                          lblMaxCompras.setVisible(true);
                     validado++;
-                       }
+                       };
                 
                 if(validacion.validacionLetras(TxtNMinimo.getText())){//validaciones menores
                     lblMinCompras.setText("El minimo de compras no puede tener letras");
                     lblMinCompras.setVisible(true);
-                    validado++;}
+                    validado++;};
                
                        if(TxtNMinimo.getText().trim().length()<=0){
                     lblMinCompras.setText("El minimo de compras no debe estar vacío");
                          lblMinCompras.setVisible(true);
                     validado++;
-                       }
+                       };
                        
                 //validacion max positvo
         String max_pos = TxtNMaximo.getText();
@@ -397,35 +400,41 @@ public final class CrearOferta extends javax.swing.JFrame {
             lblMaxCompras.setText("El máximo de compras no debe ser un valor menor que 1");
             lblMaxCompras.setVisible(true);
             validado++;
-        }
+        };
                 
                 if(validacion.validacionLetras(TxtNMinimo.getText())){//validaciones menores
                     lblMinCompras.setText("El mínimo de compras no puede tener letras");
                     lblMinCompras.setVisible(true);
-                    validado++;}
+                    validado++;};
                
                        if(TxtNMinimo.getText().trim().length()<=0){
                     lblMinCompras.setText("El mínimo de compras no debe estar vacío");
                          lblMinCompras.setVisible(true);
                     validado++;
-                       }
+                       };
          //validacion min positvo
         String min_pos = TxtNMinimo.getText();
+        
+        
         int min_numero = Integer.parseInt(min_pos);
         if (min_numero < 1){
             lblMinCompras.setText("El mínimo de compras no debe ser un valor menor que 1");
             lblMinCompras.setVisible(true);
             validado++;
+            
+           
         }
         
-        if(min_numero > max_numero){
+            if(min_numero > max_numero){
             lblMaxCompras.setText("El máximo de compras debe ser mayor o igual al mínimo de compras");
             lblMaxCompras.setVisible(true);
             validado++;
+        
         }
         
         
-        if(validado>1){
+        if(validado>0){
+            validado=0;
              JOptionPane.showMessageDialog(null, "Registro no completado","Verifique datos ingresados", JOptionPane.WARNING_MESSAGE);
         }else{
             filaseleccionada =    TableListarProductos.getSelectedRow();

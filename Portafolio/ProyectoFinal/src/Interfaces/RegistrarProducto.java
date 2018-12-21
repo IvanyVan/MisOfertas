@@ -328,40 +328,40 @@ public class RegistrarProducto extends javax.swing.JFrame {
                 LbErrorNombres.setText("El campo no debe ir vacio");
                 LbErrorNombres.setVisible(true);
                 validado++;
-            }
+            };
             
             if (Txtprecioprod.getText().trim().length()<=0) {
                 LbErrorPrecio.setText("El campo no debe ir vacio");
                 LbErrorPrecio.setVisible(true); 
                 validado++;
-            }
+            };
             if(validacion.validacionLetras(Txtprecioprod.getText())){
                     LbErrorPrecio.setText("El precio no debe contener letras");
                     LbErrorPrecio.setVisible(true);
                     validado++;
-            }
+            };
             if (Txtstockprod.getText().trim().length()<=0) {
                 LbErrorStock.setText("El campo no debe ir vacio");
                 LbErrorStock.setVisible(true);  
                 validado++;
-            }
+            };
              if(validacion.validacionLetras(Txtstockprod.getText())){
                     LbErrorStock.setText("El stock no debe contener letras");
                     LbErrorStock.setVisible(true);
                     validado++;
-            }
+            };
             if(cbxMarca.getSelectedIndex()==0){
                LbErrorMarca.setText("Seleccione una marca");
                 LbErrorMarca.setVisible(true);
                 validado++;
                 
-            }
+            };
             if(cbxCategoria.getSelectedIndex()==0){
                LbErrorCategoria.setText("Seleccione una categoria");
                 LbErrorCategoria.setVisible(true);
                 validado++;
                 
-            }
+            };
             
             
             if (validado>0) {
